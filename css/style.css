@@ -2723,3 +2723,12 @@ strong{
 .overflow-hidden{
     overflow:hidden;
 }
+.loading.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.5s;
+
+}
