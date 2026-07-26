@@ -664,3 +664,198 @@ backToTop() {
     });
 
 },
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+accessibility() {
+
+    const html = document.documentElement;
+
+    const increase =
+        document.getElementById('increase-font');
+
+    const decrease =
+        document.getElementById('decrease-font');
+
+    const reset =
+        document.getElementById('reset-font');
+
+    const dark =
+        document.getElementById('dark-mode');
+
+    const darkQuick =
+        document.getElementById('darkModeToggle');
+
+    const contrast =
+        document.getElementById('high-contrast');
+
+    const gray =
+        document.getElementById('grayscale-mode');
+
+    const animation =
+        document.getElementById('disable-animation');
+
+    let fontSize =
+        Number(localStorage.getItem('fontSize')) || 100;
+
+    /* ===============================
+       LOAD SAVED SETTINGS
+    =============================== */
+
+    this.applyFont(fontSize);
+
+    if (localStorage.getItem('darkMode') === 'true') {
+
+        html.classList.add('dark-mode');
+
+    }
+
+    if (localStorage.getItem('highContrast') === 'true') {
+
+        html.classList.add('high-contrast');
+
+    }
+
+    if (localStorage.getItem('grayscale') === 'true') {
+
+        html.classList.add('grayscale');
+
+    }
+
+    if (localStorage.getItem('reduceMotion') === 'true') {
+
+        html.classList.add('reduce-motion');
+
+    }
+
+    /* ===============================
+       FONT SIZE
+    =============================== */
+
+    increase?.addEventListener('click', () => {
+
+        if (fontSize >= 130) return;
+
+        fontSize += 10;
+
+        this.applyFont(fontSize);
+
+    });
+
+    decrease?.addEventListener('click', () => {
+
+        if (fontSize <= 80) return;
+
+        fontSize -= 10;
+
+        this.applyFont(fontSize);
+
+    });
+
+    reset?.addEventListener('click', () => {
+
+        fontSize = 100;
+
+        this.applyFont(fontSize);
+
+    });
+
+    /* ===============================
+       DARK MODE
+    =============================== */
+
+    const toggleDark = () => {
+
+        html.classList.toggle('dark-mode');
+
+        localStorage.setItem(
+
+            'darkMode',
+
+            html.classList.contains('dark-mode')
+
+        );
+
+    };
+
+    dark?.addEventListener('click', toggleDark);
+
+    darkQuick?.addEventListener('click', toggleDark);
+
+    /* ===============================
+       HIGH CONTRAST
+    =============================== */
+
+    contrast?.addEventListener('click', () => {
+
+        html.classList.toggle('high-contrast');
+
+        localStorage.setItem(
+
+            'highContrast',
+
+            html.classList.contains('high-contrast')
+
+        );
+
+    });
+
+    /* ===============================
+       GRAYSCALE
+    =============================== */
+
+    gray?.addEventListener('click', () => {
+
+        html.classList.toggle('grayscale');
+
+        localStorage.setItem(
+
+            'grayscale',
+
+            html.classList.contains('grayscale')
+
+        );
+
+    });
+
+    /* ===============================
+       REDUCE MOTION
+    =============================== */
+
+    animation?.addEventListener('click', () => {
+
+        html.classList.toggle('reduce-motion');
+
+        localStorage.setItem(
+
+            'reduceMotion',
+
+            html.classList.contains('reduce-motion')
+
+        );
+
+    });
+
+},
+
+
+
+/* ==========================================
+   APPLY FONT SIZE
+========================================== */
+
+applyFont(size) {
+
+    document.documentElement.style.fontSize =
+        `${size}%`;
+
+    localStorage.setItem(
+
+        'fontSize',
+
+        size
+
+    );
+
+},
