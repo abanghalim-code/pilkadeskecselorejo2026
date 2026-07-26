@@ -1451,7 +1451,7 @@ strong{
   STATISTIK
 =====================================================*/
 
-.statistik{
+.statistik-section
 
     background:linear-gradient(
         135deg,
@@ -2592,12 +2592,6 @@ strong{
 
 }
 
-.text-center{
-
-    text-align:center;
-
-}
-
 .bg-primary{
 
     background:var(--primary);
@@ -2705,4 +2699,27 @@ strong{
 
     }
 
+}
+.d-grid{
+    display:grid;
+}
+
+.d-none{
+    display:none;
+}
+
+.flex-column{
+    flex-direction:column;
+}
+
+.justify-center{
+    justify-content:center;
+}
+
+.align-start{
+    align-items:flex-start;
+}
+
+.overflow-hidden{
+    overflow:hidden;
 }
