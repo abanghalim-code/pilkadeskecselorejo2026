@@ -2108,3 +2108,72 @@ transform:translateY(0);
 animation:fadeUp .8s ease both;
 
 }
+/* ==========================
+   JAVASCRIPT SUPPORT
+========================== */
+
+.navbar-scroll{
+
+background:rgba(13,110,253,.96);
+
+backdrop-filter:blur(14px);
+
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+transition:.35s;
+
+}
+
+nav a.active{
+
+color:#FFD54F;
+
+font-weight:700;
+
+}
+
+.hidden{
+
+opacity:0;
+
+transform:translateY(60px);
+
+transition:all .8s ease;
+
+}
+
+.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+body{
+
+overflow-x:hidden;
+
+}
+
+body.loaded{
+
+animation:fadePage .6s ease;
+
+}
+
+@keyframes fadePage{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
