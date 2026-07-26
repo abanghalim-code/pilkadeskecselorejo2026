@@ -1101,3 +1101,625 @@ html:focus-within{
     transform:translateY(0);
 
 }
+/* ==========================================================
+   PART 1C
+   HERO SECTION + COUNTDOWN
+========================================================== */
+
+/* ==========================================================
+   HERO SECTION
+========================================================== */
+
+.hero{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    padding-top:var(--navbar-height);
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd 0%,
+            #2d8cff 50%,
+            #61a8ff 100%
+        );
+
+    color:#ffffff;
+
+}
+
+/* Background Pattern */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    radial-gradient(
+        rgba(255,255,255,.08) 2px,
+        transparent 2px
+    );
+
+    background-size:40px 40px;
+
+    opacity:.7;
+
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:-180px;
+
+    bottom:-180px;
+
+    width:520px;
+
+    height:520px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    filter:blur(20px);
+
+}
+
+/* ==========================================================
+   HERO CONTAINER
+========================================================== */
+
+.hero-container{
+
+    position:relative;
+
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:1.1fr .9fr;
+
+    align-items:center;
+
+    gap:4rem;
+
+}
+
+/* ==========================================================
+   HERO CONTENT
+========================================================== */
+
+.hero-content{
+
+    color:#ffffff;
+
+}
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:.6rem;
+
+    padding:.6rem 1.2rem;
+
+    margin-bottom:1.5rem;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+}
+
+.hero-title{
+
+    font-size:clamp(2.8rem,6vw,4.8rem);
+
+    line-height:1.15;
+
+    margin-bottom:1.5rem;
+
+    color:#ffffff;
+
+}
+
+.hero-title span{
+
+    color:#ffe082;
+
+}
+
+.hero-description{
+
+    max-width:620px;
+
+    font-size:1.08rem;
+
+    color:rgba(255,255,255,.92);
+
+    margin-bottom:2rem;
+
+}
+
+/* ==========================================================
+   HERO BUTTON
+========================================================== */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:1rem;
+
+    flex-wrap:wrap;
+
+}
+
+.btn-primary{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:.7rem;
+
+    padding:1rem 2rem;
+
+    border-radius:999px;
+
+    background:#ffffff;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    transition:.35s;
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 20px 35px rgba(0,0,0,.18);
+
+}
+
+.btn-outline{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:.7rem;
+
+    padding:1rem 2rem;
+
+    border-radius:999px;
+
+    border:2px solid rgba(255,255,255,.45);
+
+    color:#ffffff;
+
+    transition:.35s;
+
+}
+
+.btn-outline:hover{
+
+    background:#ffffff;
+
+    color:var(--primary);
+
+}
+
+/* ==========================================================
+   HERO IMAGE
+========================================================== */
+
+.hero-image{
+
+    position:relative;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    max-width:560px;
+
+    margin:auto;
+
+    animation:heroFloat 6s ease-in-out infinite;
+
+}
+
+/* ==========================================================
+   FLOATING CARDS
+========================================================== */
+
+.floating-card{
+
+    position:absolute;
+
+    background:#ffffff;
+
+    color:var(--dark);
+
+    border-radius:16px;
+
+    padding:1rem 1.3rem;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.10);
+
+    animation:floatCard 5s ease-in-out infinite;
+
+}
+
+.floating-card h5{
+
+    margin-bottom:.3rem;
+
+    font-size:1rem;
+
+}
+
+.floating-card p{
+
+    margin:0;
+
+    font-size:.88rem;
+
+}
+
+.card-1{
+
+    top:12%;
+
+    left:-30px;
+
+}
+
+.card-2{
+
+    bottom:12%;
+
+    right:-30px;
+
+}
+
+/* ==========================================================
+   COUNTDOWN
+========================================================== */
+
+.countdown{
+
+    margin-top:3rem;
+
+}
+
+.countdown-card{
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:24px;
+
+    padding:2rem;
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
+
+.countdown-title{
+
+    color:#ffffff;
+
+    margin-bottom:1.5rem;
+
+    text-align:center;
+
+}
+
+.countdown-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:1rem;
+
+}
+
+.count-item{
+
+    text-align:center;
+
+    background:rgba(255,255,255,.12);
+
+    padding:1.2rem;
+
+    border-radius:18px;
+
+}
+
+.count-number{
+
+    display:block;
+
+    font-size:2.4rem;
+
+    font-weight:800;
+
+    color:#ffffff;
+
+}
+
+.count-label{
+
+    display:block;
+
+    margin-top:.4rem;
+
+    color:rgba(255,255,255,.85);
+
+    font-size:.9rem;
+
+}
+
+/* ==========================================================
+   SCROLL INDICATOR
+========================================================== */
+
+.scroll-down{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:35px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:.5rem;
+
+    color:#ffffff;
+
+    font-size:.8rem;
+
+}
+
+.scroll-mouse{
+
+    width:28px;
+
+    height:46px;
+
+    border:2px solid #ffffff;
+
+    border-radius:20px;
+
+    position:relative;
+
+}
+
+.scroll-mouse span{
+
+    position:absolute;
+
+    left:50%;
+
+    top:8px;
+
+    width:5px;
+
+    height:8px;
+
+    border-radius:999px;
+
+    background:#ffffff;
+
+    transform:translateX(-50%);
+
+    animation:scrollWheel 2s infinite;
+
+}
+
+/* ==========================================================
+   ANIMATION
+========================================================== */
+
+@keyframes heroFloat{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-18px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes floatCard{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes scrollWheel{
+
+    0%{
+
+        opacity:1;
+
+        transform:translate(-50%,0);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:translate(-50%,16px);
+
+    }
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+    .hero-container{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .hero-description{
+
+        margin-inline:auto;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+    }
+
+    .hero-image{
+
+        margin-top:2rem;
+
+    }
+
+    .floating-card{
+
+        display:none;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .countdown-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .hero{
+
+        padding-top:110px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .hero-title{
+
+        font-size:2.3rem;
+
+    }
+
+    .hero-description{
+
+        font-size:1rem;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .btn-primary,
+    .btn-outline{
+
+        width:100%;
+
+    }
+
+    .count-number{
+
+        font-size:2rem;
+
+    }
+
+    .countdown-card{
+
+        padding:1.5rem;
+
+    }
+
+}
+
+@media(max-width:420px){
+
+    .countdown-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
