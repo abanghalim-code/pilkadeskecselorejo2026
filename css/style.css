@@ -542,3 +542,575 @@ strong{
     transform:scale(1.08);
 
 }
+/* =====================================================
+   STYLE.CSS FINAL V3.0
+   BAGIAN 2
+   Navbar
+   Running Information
+   Hero Section
+=====================================================*/
+
+
+/*=====================================================
+  NAVBAR
+=====================================================*/
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    z-index:9999;
+
+    background:rgba(15,76,129,.92);
+
+    backdrop-filter:blur(12px);
+
+    transition:all .35s ease;
+
+    box-shadow:0 4px 18px rgba(0,0,0,.12);
+
+}
+
+.navbar.scrolled{
+
+    background:#0F4C81;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.20);
+
+}
+
+.nav-container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    height:82px;
+
+}
+
+
+/*=====================================================
+  LOGO
+=====================================================*/
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.logo img{
+
+    width:58px;
+
+    height:58px;
+
+    object-fit:contain;
+
+}
+
+.logo-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    color:#fff;
+
+}
+
+.logo-text small{
+
+    font-size:.70rem;
+
+    letter-spacing:1px;
+
+    opacity:.9;
+
+}
+
+.logo-text h2{
+
+    font-size:1.15rem;
+
+    color:#fff;
+
+    margin:2px 0;
+
+}
+
+.logo-text span{
+
+    font-size:.82rem;
+
+    color:#FFD54F;
+
+}
+
+
+/*=====================================================
+  MENU
+=====================================================*/
+
+.navbar nav ul{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:28px;
+
+}
+
+.navbar nav ul li{
+
+    position:relative;
+
+}
+
+.navbar nav ul li a{
+
+    color:#fff;
+
+    font-weight:500;
+
+    font-size:.95rem;
+
+    transition:.3s;
+
+}
+
+.navbar nav ul li a:hover{
+
+    color:#FFD54F;
+
+}
+
+.navbar nav ul li a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:3px;
+
+    border-radius:20px;
+
+    background:#FFC107;
+
+    transition:.35s;
+
+}
+
+.navbar nav ul li a:hover::after{
+
+    width:100%;
+
+}
+
+
+/*=====================================================
+  RUNNING NEWS
+=====================================================*/
+
+.running-news{
+
+    margin-top:82px;
+
+    background:#FFC107;
+
+    display:flex;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    min-height:48px;
+
+}
+
+.running-label{
+
+    min-width:170px;
+
+    background:#0F4C81;
+
+    color:#fff;
+
+    font-weight:700;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    height:48px;
+
+}
+
+.running-content{
+
+    flex:1;
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    position:relative;
+
+}
+
+#runningText{
+
+    display:inline-block;
+
+    padding-left:100%;
+
+    color:#222;
+
+    font-weight:600;
+
+    animation:marquee 28s linear infinite;
+
+}
+
+@keyframes marquee{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(-100%);
+
+    }
+
+}
+
+
+/*=====================================================
+  HERO
+=====================================================*/
+
+.hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15,76,129,.96),
+            rgba(25,118,210,.88)
+        );
+
+    color:#fff;
+
+    min-height:92vh;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at top right,
+    rgba(255,255,255,.18),
+    transparent 35%),
+
+    radial-gradient(circle at bottom left,
+    rgba(255,193,7,.15),
+    transparent 30%);
+
+}
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.05),
+        rgba(0,0,0,.18)
+    );
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:1.2fr .8fr;
+
+    align-items:center;
+
+    gap:70px;
+
+}
+
+
+/*=====================================================
+  HERO LEFT
+=====================================================*/
+
+.hero-left .badge{
+
+    display:inline-block;
+
+    background:#FFC107;
+
+    color:#222;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-weight:700;
+
+    margin-bottom:22px;
+
+    letter-spacing:.5px;
+
+}
+
+.hero-left h1{
+
+    font-size:4rem;
+
+    color:#fff;
+
+    margin-bottom:10px;
+
+}
+
+.hero-left h1 span{
+
+    display:block;
+
+    color:#FFD54F;
+
+}
+
+.hero-left h2{
+
+    color:#fff;
+
+    font-size:2rem;
+
+    margin-bottom:20px;
+
+}
+
+.hero-left p{
+
+    color:rgba(255,255,255,.92);
+
+    max-width:650px;
+
+    font-size:1.05rem;
+
+}
+
+.hero-button{
+
+    display:flex;
+
+    gap:18px;
+
+    margin-top:40px;
+
+    flex-wrap:wrap;
+
+}
+
+
+/*=====================================================
+  HERO RIGHT
+=====================================================*/
+
+.hero-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:35px;
+
+}
+
+.ballot-image{
+
+    width:340px;
+
+    animation:floating 4s ease-in-out infinite;
+
+    filter:drop-shadow(0 20px 35px rgba(0,0,0,.30));
+
+}
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-14px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.desa-card{
+
+    width:100%;
+
+    max-width:340px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    border-radius:22px;
+
+    padding:28px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.20);
+
+}
+
+.desa-card h3{
+
+    color:#FFD54F;
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+}
+
+.desa-card p{
+
+    color:#fff;
+
+    margin-bottom:18px;
+
+}
+
+.desa-card ul{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.desa-card li{
+
+    padding:10px;
+
+    background:rgba(255,255,255,.10);
+
+    border-radius:12px;
+
+    color:#fff;
+
+    font-weight:500;
+
+}
+
+
+/*=====================================================
+  HERO BUTTON OVERRIDE
+=====================================================*/
+
+.hero .btn-primary{
+
+    background:#FFC107;
+
+    color:#222;
+
+}
+
+.hero .btn-primary:hover{
+
+    background:#FFD54F;
+
+}
+
+.hero .btn-secondary{
+
+    background:transparent;
+
+    color:#fff;
+
+    border:2px solid rgba(255,255,255,.5);
+
+}
+
+.hero .btn-secondary:hover{
+
+    background:#fff;
+
+    color:#0F4C81;
+
+}
