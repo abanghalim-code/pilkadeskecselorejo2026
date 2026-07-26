@@ -1,27 +1,343 @@
+/* ==========================================
+   PILKADES SERENTAK 2026
+   Kecamatan Selorejo
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
 body{
 
-background:#f5f7fb;
+    background:linear-gradient(135deg,#0b2c66,#0f4c81,#1976d2);
 
-font-family:Arial;
+    color:white;
 
-text-align:center;
+    text-align:center;
 
-padding:80px;
-
-}
-
-h1{
-
-color:#0d47a1;
-
-font-size:42px;
+    min-height:100vh;
 
 }
 
-p{
+/* ================= HEADER ================= */
 
-font-size:22px;
+header{
 
-color:#444;
+    background:#b71c1c;
+
+    padding:20px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.35);
+
+}
+
+header h3{
+
+    font-size:20px;
+
+    letter-spacing:1px;
+
+}
+
+header h2{
+
+    font-size:34px;
+
+    margin-top:5px;
+
+}
+
+header p{
+
+    margin-top:8px;
+
+    font-size:18px;
+
+    color:#ffe082;
+
+    font-weight:bold;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+    padding:40px 20px;
+
+}
+
+.hero h1{
+
+    font-size:62px;
+
+    color:#ffd54f;
+
+    text-shadow:3px 3px 8px #000;
+
+}
+
+.hero h2{
+
+    margin-top:10px;
+
+    font-size:42px;
+
+}
+
+.hero h3{
+
+    margin-top:15px;
+
+    font-size:24px;
+
+    color:#ffffff;
+
+}
+
+/* ================= JADWAL ================= */
+
+.jadwal{
+
+    width:90%;
+
+    max-width:850px;
+
+    margin:30px auto;
+
+    background:white;
+
+    color:#222;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+
+}
+
+.jadwal h1{
+
+    font-size:48px;
+
+    color:#c62828;
+
+}
+
+.jadwal h2{
+
+    margin:10px 0;
+
+}
+
+.jadwal h3{
+
+    color:#1565c0;
+
+    font-size:28px;
+
+}
+
+/* ================= COUNTDOWN ================= */
+
+#countdown{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:25px;
+
+    margin:40px auto;
+
+}
+
+.box{
+
+    width:180px;
+
+    background:#111;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    border:3px solid #ffd54f;
+
+    box-shadow:0 0 18px rgba(255,213,79,.5);
+
+}
+
+.box span{
+
+    display:block;
+
+    font-size:64px;
+
+    font-weight:bold;
+
+    color:#00ff99;
+
+    text-shadow:0 0 12px #00ff99;
+
+}
+
+.box small{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-size:24px;
+
+    color:white;
+
+    letter-spacing:2px;
+
+}
+
+/* ================= PESAN ================= */
+
+.pesan{
+
+    width:90%;
+
+    max-width:900px;
+
+    margin:40px auto;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(8px);
+
+    border-radius:18px;
+
+    padding:30px;
+
+}
+
+.pesan h2{
+
+    color:#ffe082;
+
+    margin-bottom:15px;
+
+}
+
+.pesan p{
+
+    font-size:20px;
+
+    line-height:1.8;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    margin-top:60px;
+
+    background:#0d47a1;
+
+    padding:20px;
+
+    font-size:18px;
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+.hero h1{
+
+    font-size:42px;
+
+}
+
+.hero h2{
+
+    font-size:30px;
+
+}
+
+.hero h3{
+
+    font-size:20px;
+
+}
+
+.box{
+
+    width:140px;
+
+}
+
+.box span{
+
+    font-size:48px;
+
+}
+
+.box small{
+
+    font-size:18px;
+
+}
+
+.jadwal h1{
+
+    font-size:34px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+header h2{
+
+    font-size:26px;
+
+}
+
+.hero h1{
+
+    font-size:34px;
+
+}
+
+.hero h2{
+
+    font-size:24px;
+
+}
+
+.hero h3{
+
+    font-size:18px;
+
+}
+
+.box{
+
+    width:120px;
+
+    padding:20px;
+
+}
+
+.box span{
+
+    font-size:40px;
+
+}
 
 }
