@@ -371,4 +371,101 @@
     "pelaksana": "Panitia Pilkades",
     "keterangan": ""
   },
-  
+    {
+    "id": 40,
+    "tahap": "Pencalonan",
+    "tanggal": "21-22 November 2026",
+    "jangka_waktu": "2 hari kalender",
+    "kegiatan": "Pendistribusian surat suara, kotak suara, bilik suara, alas coblos, bantalan dan tinta dari Kecamatan ke Desa.",
+    "pelaksana": "Tim Fasilitasi Kecamatan",
+    "keterangan": ""
+  },
+  {
+    "id": 41,
+    "tahap": "Pencalonan",
+    "tanggal": "21-22 November 2026",
+    "jangka_waktu": "2 hari kalender",
+    "kegiatan": "Penataan layout Tempat Pemungutan Suara (TPS).",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 42,
+    "tahap": "Pemungutan Suara",
+    "tanggal": "23 November 2026",
+    "jangka_waktu": "1 hari kerja",
+    "kegiatan": "Hari pelaksanaan pemungutan suara, penghitungan suara, penetapan calon Kepala Desa terpilih, dan penetapan melalui Keputusan Panitia Pilkades.",
+    "pelaksana": "Panitia Pilkades dan KPPS",
+    "keterangan": {
+      "sub_kegiatan": [
+        "Pelaksanaan pemungutan suara.",
+        "Penghitungan suara.",
+        "Penetapan calon Kepala Desa terpilih.",
+        "Penetapan calon Kepala Desa terpilih dengan Keputusan Panitia Pilkades."
+      ]
+    }
+  },
+  {
+    "id": 43,
+    "tahap": "Pemungutan Suara",
+    "tanggal": "24-26 November 2026",
+    "jangka_waktu": "3 hari kerja",
+    "kegiatan": "Calon Kepala Desa dapat mengajukan keberatan atas penetapan calon Kepala Desa terpilih oleh Panitia Pilkades disertai saksi, keterangan, dan bukti pendukung.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 44,
+    "tahap": "Penetapan",
+    "tanggal": "24 November - 2 Desember 2026",
+    "jangka_waktu": "7 hari kerja",
+    "kegiatan": "Panitia Pilkades menyampaikan laporan nama calon Kepala Desa terpilih beserta dokumen pendukung kepada Badan Permusyawaratan Desa.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 45,
+    "tahap": "Penetapan",
+    "tanggal": "3-11 Desember 2026",
+    "jangka_waktu": "7 hari kerja",
+    "kegiatan": "Badan Permusyawaratan Desa menyampaikan laporan kepada Bupati melalui Camat dengan tembusan kepada Kepala Desa mengenai calon Kepala Desa terpilih.",
+    "pelaksana": "Badan Permusyawaratan Desa",
+    "keterangan": ""
+  },
+  {
+    "id": 46,
+    "tahap": "Penetapan",
+    "tanggal": "11 Desember 2026 - 25 Januari 2027",
+    "jangka_waktu": "30 hari kerja",
+    "kegiatan": "Dalam hal terjadi perselisihan hasil Pilkades, Bupati wajib menyelesaikan perselisihan paling lama 30 (tiga puluh) hari sejak diterimanya laporan dari BPD.",
+    "pelaksana": "DESK Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 47,
+    "tahap": "Penetapan",
+    "tanggal": "28 Desember 2026",
+    "jangka_waktu": "30 hari kerja",
+    "kegiatan": "Bupati menetapkan pengesahan dan pengangkatan calon Kepala Desa terpilih menjadi Kepala Desa dengan Keputusan Bupati.",
+    "pelaksana": "DESK Pilkades Kabupaten Blitar dan Bupati",
+    "keterangan": ""
+  },
+  {
+    "id": 48,
+    "tahap": "Penetapan",
+    "tanggal": "28 Desember 2026",
+    "jangka_waktu": "30 hari kerja",
+    "kegiatan": "Pelantikan calon Kepala Desa terpilih oleh Bupati atau pejabat yang ditunjuk.",
+    "pelaksana": "Bupati",
+    "keterangan": ""
+  },
+  {
+    "id": 49,
+    "tahap": "Penetapan",
+    "tanggal": "",
+    "jangka_waktu": "",
+    "kegiatan": "Serah terima jabatan dilakukan setelah pelantikan calon Kepala Desa terpilih.",
+    "pelaksana": "",
+    "keterangan": ""
+  }
+]
