@@ -952,7 +952,7 @@ function observeSection(){
 
                 if(entry.isIntersecting){
 
-                    entry.classList.add("visible");
+                    entry.target.classList.add("visible");
 
                 }
 
