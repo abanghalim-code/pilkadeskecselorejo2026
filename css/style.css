@@ -1114,3 +1114,464 @@ strong{
     color:#0F4C81;
 
 }
+/* =====================================================
+   STYLE.CSS FINAL V3.0
+   BAGIAN 3
+   Countdown
+   Profil
+   Desa
+   Statistik
+=====================================================*/
+
+
+/*=====================================================
+  COUNTDOWN
+=====================================================*/
+
+.countdown-section{
+
+    background:linear-gradient(
+        135deg,
+        #f8fbff,
+        #eef5fb
+    );
+
+}
+
+.countdown-wrapper{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+    margin:60px 0;
+
+}
+
+.count-box{
+
+    background:#ffffff;
+
+    border-radius:24px;
+
+    padding:35px 20px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    border-top:6px solid var(--primary);
+
+    transition:var(--transition);
+
+}
+
+.count-box:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.count-box span{
+
+    display:block;
+
+    font-size:3.4rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+    line-height:1;
+
+    margin-bottom:15px;
+
+}
+
+.count-box small{
+
+    font-size:1rem;
+
+    color:var(--gray);
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+.jadwal{
+
+    margin:0 auto;
+
+    max-width:760px;
+
+    padding:22px 30px;
+
+    background:#ffffff;
+
+    border-left:6px solid var(--accent);
+
+    border-radius:16px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow-sm);
+
+    font-size:1.05rem;
+
+}
+
+.jadwal i{
+
+    color:var(--accent-dark);
+
+    margin-right:10px;
+
+}
+
+
+/*=====================================================
+  PROFIL PILKADES
+=====================================================*/
+
+.profil-section{
+
+    background:#ffffff;
+
+}
+
+.profil-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+.profil-card{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
+}
+
+.profil-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.profil-card i{
+
+    width:80px;
+
+    height:80px;
+
+    margin:auto;
+
+    margin-bottom:20px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-light)
+    );
+
+    color:#ffffff;
+
+    font-size:2rem;
+
+}
+
+.profil-card h3{
+
+    margin-bottom:15px;
+
+    color:var(--primary);
+
+}
+
+.profil-card p{
+
+    margin:0;
+
+}
+
+
+/*=====================================================
+  DESA
+=====================================================*/
+
+.desa-section{
+
+    background:#f7f9fc;
+
+}
+
+.desa-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:30px;
+
+}
+
+.desa-item{
+
+    background:#ffffff;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
+}
+
+.desa-item:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.desa-image{
+
+    overflow:hidden;
+
+    height:220px;
+
+}
+
+.desa-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.desa-item:hover .desa-image img{
+
+    transform:scale(1.08);
+
+}
+
+.desa-content{
+
+    padding:28px;
+
+}
+
+.desa-content h3{
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+}
+
+.desa-content p{
+
+    margin-bottom:20px;
+
+}
+
+.desa-meta{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+    color:var(--gray);
+
+    font-size:.95rem;
+
+}
+
+.desa-meta span{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.desa-meta i{
+
+    color:var(--accent-dark);
+
+}
+
+
+/*=====================================================
+  STATISTIK
+=====================================================*/
+
+.statistik{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-light)
+    );
+
+    color:#ffffff;
+
+}
+
+.stat-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+.stat-item{
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:20px;
+
+    padding:35px 20px;
+
+    text-align:center;
+
+    transition:var(--transition);
+
+}
+
+.stat-item:hover{
+
+    transform:translateY(-8px);
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.stat-item h2{
+
+    font-size:3rem;
+
+    color:#FFD54F;
+
+    margin-bottom:10px;
+
+}
+
+.stat-item span{
+
+    color:#ffffff;
+
+    font-weight:500;
+
+    letter-spacing:.5px;
+
+}
+
+
+/*=====================================================
+  RESPONSIVE SUPPORT (SECTION ONLY)
+=====================================================*/
+
+@media(max-width:992px){
+
+    .countdown-wrapper{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .profil-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .stat-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .countdown-wrapper{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .stat-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .jadwal{
+
+        padding:18px;
+
+        font-size:.95rem;
+
+    }
+
+    .count-box span{
+
+        font-size:2.8rem;
+
+    }
+
+}
