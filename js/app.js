@@ -1570,3 +1570,98 @@ performanceInfo(){
     );
 
 }
+/*============================================================
+    FORMAT DATE
+============================================================*/
+
+formatDate(date){
+
+    if(!date) return "-";
+
+    return new Date(date).toLocaleDateString(
+
+        "id-ID",
+
+        {
+
+            day:"2-digit",
+
+            month:"long",
+
+            year:"numeric"
+
+        }
+
+    );
+
+}
+
+
+/*============================================================
+    FORMAT NUMBER
+============================================================*/
+
+formatNumber(value){
+
+    return Number(value)
+
+    .toLocaleString("id-ID");
+
+}
+
+
+/*============================================================
+    ESCAPE HTML
+============================================================*/
+
+escapeHTML(text){
+
+    const div=document.createElement("div");
+
+    div.textContent=text??"";
+
+    return div.innerHTML;
+
+}
+
+
+/*============================================================
+    CREATE BADGE
+============================================================*/
+
+createBadge(text,type="primary"){
+
+    return `
+
+    <span class="badge badge-${type}">
+
+        ${this.escapeHTML(text)}
+
+    </span>
+
+    `;
+
+}
+
+
+/*============================================================
+    CREATE BUTTON
+============================================================*/
+
+createButton(label,link="#",style="primary"){
+
+    return `
+
+    <a
+
+        href="${link}"
+
+        class="btn btn-${style}">
+
+        ${this.escapeHTML(label)}
+
+    </a>
+
+    `;
+
+}
