@@ -11,7 +11,28 @@
 }
 
 body{
+/* Background Website */
 
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(13,71,161,0.96),
+            rgba(25,118,210,0.93),
+            rgba(66,165,245,0.90)
+        ),
+        url("../images/kantor-kecamatan.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    position: relative;
+}
     background:linear-gradient(135deg,#0b2c66,#0f4c81,#1976d2);
 
     color:white;
