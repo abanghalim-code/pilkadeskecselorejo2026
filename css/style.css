@@ -549,7 +549,17 @@ strong{
    Running Information
    Hero Section
 =====================================================*/
+.hero-image{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
+.hero-image img{
+    width:100%;
+    max-width:380px;
+    height:auto;
+}
 
 /*=====================================================
   NAVBAR
