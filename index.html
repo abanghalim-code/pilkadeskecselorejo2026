@@ -1333,24 +1333,4 @@ JAVASCRIPT
 </body>
 
 </html>
-async function loadTahapan(){
 
-    const response = await fetch("data/tahapan.json");
-
-    const data = await response.json();
-
-    const aktif = getTahapanAktif(data);
-
-    if(aktif){
-
-        document.getElementById("runningText").innerHTML =
-        "📢 Tahapan Saat Ini : " +
-        aktif.title +
-        " | " +
-        aktif.description;
-
-    }
-
-}
-
-loadTahapan();
