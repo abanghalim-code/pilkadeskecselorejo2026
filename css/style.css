@@ -173,3 +173,146 @@ HERO
     background-position:center;
 
 }
+/* ===========================
+   HERO LAYOUT
+=========================== */
+
+.hero-container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:60px;
+}
+
+.hero-left{
+    flex:1;
+}
+
+.hero-right{
+    flex:1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+}
+
+.hero-subtitle{
+
+    font-size:18px;
+
+    color:#ffffff;
+
+    margin-bottom:15px;
+
+}
+
+.hero h1{
+
+    font-size:90px;
+
+    line-height:1;
+
+    font-weight:900;
+
+    margin-bottom:20px;
+
+}
+
+.putih{
+
+    display:block;
+
+    color:white;
+
+}
+
+.kuning{
+
+    display:block;
+
+    color:#ffb300;
+
+}
+
+.hero h2{
+
+    font-size:40px;
+
+    margin-bottom:20px;
+
+}
+
+.hero-text{
+
+    font-size:22px;
+
+    margin-bottom:15px;
+
+}
+
+.hero-slogan{
+
+    font-size:24px;
+
+    color:#ffcc33;
+
+}
+
+.ballot-box{
+
+    width:360px;
+
+    filter:drop-shadow(0 20px 30px rgba(0,0,0,.4));
+
+}
+
+.desa-card{
+
+    position:absolute;
+
+    right:0;
+
+    top:20px;
+
+    width:280px;
+
+    background:rgba(255,255,255,.92);
+
+    color:#222;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.30);
+
+}
+
+.desa-card h2{
+
+    color:#0b4ea2;
+
+    margin-bottom:10px;
+
+}
+
+.desa-card ul{
+
+    margin-top:15px;
+
+    padding-left:20px;
+
+}
+
+.desa-card li{
+
+    margin-bottom:10px;
+
+}
