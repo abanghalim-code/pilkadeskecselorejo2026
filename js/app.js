@@ -304,3 +304,164 @@ window.addEventListener(
     }
 
 );
+/* ==========================================
+   STICKY HEADER
+========================================== */
+
+stickyHeader() {
+
+    const header = document.getElementById('header');
+
+    if (!header) return;
+
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+
+        const currentScroll = window.pageYOffset;
+
+        /* Shadow ketika discroll */
+
+        if (currentScroll > 50) {
+
+            header.classList.add('scrolled');
+
+        } else {
+
+            header.classList.remove('scrolled');
+
+        }
+
+        /* Hide ketika scroll turun */
+
+        if (
+            currentScroll > lastScroll &&
+            currentScroll > 120
+        ) {
+
+            header.classList.remove('show');
+            header.classList.add('hide');
+
+        } else {
+
+            header.classList.remove('hide');
+            header.classList.add('show');
+
+        }
+
+        lastScroll = currentScroll;
+
+    });
+
+},
+
+
+
+/* ==========================================
+   SMOOTH SCROLL
+========================================== */
+
+smoothScroll() {
+
+    const links = document.querySelectorAll(
+        'a[href^="#"]'
+    );
+
+    links.forEach(link => {
+
+        link.addEventListener('click', e => {
+
+            const href = link.getAttribute('href');
+
+            if (
+                href === '#' ||
+                href.length < 2
+            ) return;
+
+            const target = document.querySelector(href);
+
+            if (!target) return;
+
+            e.preventDefault();
+
+            const header = document.getElementById('header');
+
+            const offset = header
+                ? header.offsetHeight
+                : 80;
+
+            const top =
+                target.offsetTop - offset;
+
+            window.scrollTo({
+
+                top,
+
+                behavior: 'smooth'
+
+            });
+
+        });
+
+    });
+
+},
+
+
+
+/* ==========================================
+   ACTIVE MENU
+========================================== */
+
+activeNavigation() {
+
+    const sections =
+        document.querySelectorAll('section[id]');
+
+    const navLinks =
+        document.querySelectorAll(
+            '#navbar a[href^="#"], #mobileMenu a[href^="#"]'
+        );
+
+    if (!sections.length) return;
+
+    window.addEventListener('scroll', () => {
+
+        const scrollY =
+            window.pageYOffset + 140;
+
+        sections.forEach(section => {
+
+            const top = section.offsetTop;
+
+            const height = section.offsetHeight;
+
+            if (
+                scrollY >= top &&
+                scrollY < top + height
+            ) {
+
+                const id = section.getAttribute('id');
+
+                navLinks.forEach(link => {
+
+                    link.classList.remove('active');
+
+                    if (
+                        link.getAttribute('href') ===
+                        `#${id}`
+                    ) {
+
+                        link.classList.add('active');
+
+                    }
+
+                });
+
+            }
+
+        });
+
+    });
+
+},
