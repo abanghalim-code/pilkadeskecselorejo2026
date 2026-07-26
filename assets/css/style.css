@@ -1723,3 +1723,506 @@ html:focus-within{
     }
 
 }
+/* ==========================================================
+   PART 1D
+   STATISTIK • PROFIL • DESA
+========================================================== */
+
+/* ==========================================================
+   SECTION HEADER
+========================================================== */
+
+.section-header{
+    text-align:center;
+    max-width:760px;
+    margin:0 auto 4rem;
+}
+
+.section-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    padding:.55rem 1.2rem;
+    margin-bottom:1rem;
+    border-radius:999px;
+    background:#eaf3ff;
+    color:var(--primary);
+    font-weight:600;
+    font-size:.9rem;
+}
+
+.section-title{
+    margin-bottom:1rem;
+    color:var(--dark);
+}
+
+.section-description{
+    color:var(--gray);
+    max-width:700px;
+    margin:auto;
+}
+
+/* ==========================================================
+   STATISTIK
+========================================================== */
+
+.statistics{
+    background:#ffffff;
+}
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:1.5rem;
+
+}
+
+.stat-card{
+
+    background:#ffffff;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:2rem;
+
+    text-align:center;
+
+    transition:.35s;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.stat-icon{
+
+    width:70px;
+    height:70px;
+
+    margin:auto auto 1.2rem;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--gradient-primary);
+
+    color:#ffffff;
+
+    font-size:1.8rem;
+
+}
+
+.stat-number{
+
+    font-size:2.6rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+    margin-bottom:.4rem;
+
+}
+
+.stat-title{
+
+    font-weight:600;
+
+    color:var(--dark);
+
+    margin-bottom:.4rem;
+
+}
+
+.stat-desc{
+
+    font-size:.92rem;
+
+    color:var(--gray);
+
+}
+
+/* ==========================================================
+   PROFIL PILKADES
+========================================================== */
+
+.profile{
+
+    background:var(--light);
+
+}
+
+.profile-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:3rem;
+
+    align-items:center;
+
+}
+
+.profile-image{
+
+    position:relative;
+
+}
+
+.profile-image img{
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.profile-content h3{
+
+    margin-bottom:1rem;
+
+}
+
+.profile-content p{
+
+    margin-bottom:1rem;
+
+}
+
+.profile-list{
+
+    margin-top:2rem;
+
+    display:grid;
+
+    gap:1rem;
+
+}
+
+.profile-list li{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:1rem;
+
+}
+
+.profile-list i{
+
+    color:var(--primary);
+
+    font-size:1.2rem;
+
+    margin-top:3px;
+
+}
+
+/* ==========================================================
+   LUBER JURDIL
+========================================================== */
+
+.principles{
+
+    margin-top:4rem;
+
+}
+
+.principles-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(6,1fr);
+
+    gap:1rem;
+
+}
+
+.principle-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:1.5rem;
+
+    text-align:center;
+
+    transition:.3s;
+
+    border:1px solid var(--border);
+
+}
+
+.principle-card:hover{
+
+    background:var(--primary);
+
+    color:#ffffff;
+
+    transform:translateY(-6px);
+
+}
+
+.principle-card:hover h4,
+.principle-card:hover p{
+
+    color:#ffffff;
+
+}
+
+.principle-icon{
+
+    width:58px;
+    height:58px;
+
+    margin:auto auto 1rem;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#eef5ff;
+
+    color:var(--primary);
+
+    font-size:1.4rem;
+
+}
+
+.principle-card:hover .principle-icon{
+
+    background:#ffffff;
+
+}
+
+/* ==========================================================
+   DESA PESERTA
+========================================================== */
+
+.villages{
+
+    background:#ffffff;
+
+}
+
+.village-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:2rem;
+
+}
+
+.village-card{
+
+    overflow:hidden;
+
+    border-radius:22px;
+
+    background:#ffffff;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.35s;
+
+}
+
+.village-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.village-image{
+
+    overflow:hidden;
+
+}
+
+.village-image img{
+
+    width:100%;
+
+    height:240px;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.village-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.village-content{
+
+    padding:1.8rem;
+
+}
+
+.village-name{
+
+    margin-bottom:.8rem;
+
+}
+
+.village-meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:.6rem;
+
+    margin:1rem 0;
+
+}
+
+.meta-badge{
+
+    padding:.45rem .9rem;
+
+    border-radius:999px;
+
+    background:#eef5ff;
+
+    color:var(--primary);
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+}
+
+.village-content p{
+
+    margin-bottom:1rem;
+
+}
+
+.village-link{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:.5rem;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+.village-link:hover{
+
+    gap:.8rem;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .profile-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .principles-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+    .village-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .section-header{
+
+        margin-bottom:3rem;
+
+    }
+
+    .principles-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .principles-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .stat-card,
+    .principle-card,
+    .village-content{
+
+        padding:1.5rem;
+
+    }
+
+    .profile-image img{
+
+        border-radius:18px;
+
+    }
+
+}
