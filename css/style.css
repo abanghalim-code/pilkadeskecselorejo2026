@@ -2732,3 +2732,8 @@ strong{
     transition:.5s;
 
 }
+.back-top:active{
+
+    transform:scale(.95);
+
+}
