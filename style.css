@@ -350,3 +350,10 @@ header h2{
     width:240px;
     height:auto;
 }
+.card{
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
