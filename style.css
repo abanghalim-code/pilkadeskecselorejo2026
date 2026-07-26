@@ -668,3 +668,28 @@ font-size:16px;
 }
 
 }
+body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background: url("../images/kantor-kecamatan.jpg") center center/cover no-repeat;
+
+    opacity: 0.05;      /* 5% */
+    z-index: -2;
+}
+
+body::after{
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background: linear-gradient(
+        135deg,
+        rgba(13,71,161,0.92),
+        rgba(25,118,210,0.88),
+        rgba(66,165,245,0.82)
+    );
+
+    z-index: -1;
+}
