@@ -1,1 +1,32 @@
-
+[
+  {
+    "id": 1,
+    "nama": "Desa Sidomulyo",
+    "deskripsi": "Desa Sidomulyo merupakan salah satu desa di Kecamatan Selorejo yang melaksanakan Pemilihan Kepala Desa Serentak Tahun 2026. Desa ini memiliki potensi di bidang pertanian, perkebunan, dan pemberdayaan masyarakat.",
+    "gambar": "images/desa/sidomulyo.jpg",
+    "link": "#",
+    "lokasi": "Kecamatan Selorejo",
+    "tps": 8,
+    "kategori": "Pelaksana Pilkades 2026"
+  },
+  {
+    "id": 2,
+    "nama": "Desa Sumberagung",
+    "deskripsi": "Desa Sumberagung memiliki wilayah yang luas dengan potensi pertanian, peternakan, dan wisata alam. Desa ini menjadi salah satu lokasi penyelenggaraan Pilkades Serentak Tahun 2026.",
+    "gambar": "images/desa/sumberagung.jpg",
+    "link": "#",
+    "lokasi": "Kecamatan Selorejo",
+    "tps": 10,
+    "kategori": "Pelaksana Pilkades 2026"
+  },
+  {
+    "id": 3,
+    "nama": "Desa Banjarsari",
+    "deskripsi": "Desa Banjarsari memiliki masyarakat yang dinamis dengan potensi pertanian, perdagangan, dan UMKM. Pada Tahun 2026 desa ini melaksanakan Pemilihan Kepala Desa Serentak.",
+    "gambar": "images/desa/banjarsari.jpg",
+    "link": "#",
+    "lokasi": "Kecamatan Selorejo",
+    "tps": 7,
+    "kategori": "Pelaksana Pilkades 2026"
+  }
+]
