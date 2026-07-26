@@ -130,3 +130,245 @@
     "pelaksana": "Pantarlih",
     "keterangan": ""
   },
+  {
+    "id": 14,
+    "tahap": "Persiapan",
+    "tanggal": "12-14 Agustus 2026",
+    "jangka_waktu": "3 hari kerja",
+    "kegiatan": "Mengumumkan Daftar Pemilih Tambahan.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 15,
+    "tahap": "Persiapan",
+    "tanggal": "18 Agustus 2026",
+    "jangka_waktu": "1 hari kerja",
+    "kegiatan": "Merekapitulasi Daftar Pemilih Sementara dan Daftar Pemilih Tambahan untuk disusun dan ditetapkan sebagai Daftar Pemilih Tetap.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 16,
+    "tahap": "Persiapan",
+    "tanggal": "19 Agustus - 21 Agustus 2026",
+    "jangka_waktu": "3 hari kerja",
+    "kegiatan": "Mengumumkan Daftar Pemilih Tetap.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 17,
+    "tahap": "Persiapan",
+    "tanggal": "19 Agustus 2026",
+    "jangka_waktu": "1 hari kerja",
+    "kegiatan": "Membuat salinan Daftar Pemilih Tetap untuk dipergunakan di Tempat Pemungutan Suara pada saat pemungutan suara.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 18,
+    "tahap": "Persiapan",
+    "tanggal": "19 Agustus - 21 Agustus 2026",
+    "jangka_waktu": "3 hari",
+    "kegiatan": "Pengadaan surat undangan, alat coblos, bantalan, tinta, kotak suara dan bilik suara.",
+    "pelaksana": "Tim Fasilitasi Kecamatan",
+    "keterangan": ""
+  },
+  {
+    "id": 19,
+    "tahap": "Pencalonan",
+    "tanggal": "20 Agustus - 2 September 2026",
+    "jangka_waktu": "9 hari kerja",
+    "kegiatan": "Mengumumkan adanya pendaftaran Bakal Calon Kepala Desa beserta persyaratan yang harus dipenuhi sekaligus menerima berkas pendaftaran bakal calon kepala desa lengkap sesuai ketentuan peraturan perundang-undangan (Pendaftaran Tahap Pertama).",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 20,
+    "tahap": "Pencalonan",
+    "tanggal": "3-4 September 2026",
+    "jangka_waktu": "2 hari kerja",
+    "kegiatan": "Melakukan verifikasi dan validasi berkas pendaftaran bakal calon kepala desa, kemudian menyampaikan hasil verifikasi dan validasi kepada bakal calon Kepala Desa.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 21,
+    "tahap": "Pencalonan",
+    "tanggal": "7-18 September 2026",
+    "jangka_waktu": "10 hari kerja",
+    "kegiatan": "Bakal Calon Kepala Desa menyampaikan dokumen pendukung hasil verifikasi dan validasi berkas pendaftaran kepada Panitia Pilkades.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 22,
+    "tahap": "Pencalonan",
+    "tanggal": "21-24 September 2026",
+    "jangka_waktu": "4 hari kerja",
+    "kegiatan": "Melaksanakan verifikasi dan validasi akhir terhadap berkas pendaftaran bakal calon kepala desa beserta dokumen pendukung, kemudian menyampaikan hasilnya kepada Bakal Calon Kepala Desa.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 23,
+    "tahap": "Pencalonan",
+    "tanggal": "25 September - 15 Oktober 2026",
+    "jangka_waktu": "15 hari kerja",
+    "kegiatan": "Memperpanjang waktu pendaftaran apabila bakal calon Kepala Desa yang memenuhi persyaratan kurang dari 2 (dua) orang (Pendaftaran Tahap Kedua).",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 24,
+    "tahap": "Pencalonan",
+    "tanggal": "25 September - 15 Oktober 2026",
+    "jangka_waktu": "15 hari kerja",
+    "kegiatan": "Bakal Calon Kepala Desa melengkapi persyaratan yang harus dipenuhi selama Pendaftaran Tahap Kedua.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 25,
+    "tahap": "Pencalonan",
+    "tanggal": "25 September - 15 Oktober 2026",
+    "jangka_waktu": "15 hari kerja",
+    "kegiatan": "Melaksanakan verifikasi dan validasi kelengkapan persyaratan administrasi bakal calon Kepala Desa selama Pendaftaran Tahap Kedua.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 26,
+    "tahap": "Pencalonan",
+    "tanggal": "16-29 Oktober 2026",
+    "jangka_waktu": "10 hari kerja",
+    "kegiatan": "Memperpanjang waktu pendaftaran apabila bakal calon Kepala Desa yang memenuhi persyaratan kurang dari 2 (dua) orang (Pendaftaran Tahap Ketiga).",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+    {
+    "id": 27,
+    "tahap": "Pencalonan",
+    "tanggal": "16-29 Oktober 2026",
+    "jangka_waktu": "10 hari kerja",
+    "kegiatan": "Bakal Calon Kepala Desa melengkapi persyaratan yang harus dicukupi dalam waktu 10 (sepuluh) hari sejak Pendaftaran Tahap Ketiga dibuka.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 28,
+    "tahap": "Pencalonan",
+    "tanggal": "16-29 Oktober 2026",
+    "jangka_waktu": "10 hari kerja",
+    "kegiatan": "Melaksanakan verifikasi dan validasi kelengkapan persyaratan administrasi bakal calon Kepala Desa dalam jangka waktu 10 (sepuluh) hari sejak Pendaftaran Tahap Ketiga dibuka.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 29,
+    "tahap": "Pencalonan",
+    "tanggal": "30 Oktober 2026",
+    "jangka_waktu": "1 hari kerja",
+    "kegiatan": "Melaksanakan seleksi tambahan apabila bakal calon Kepala Desa yang memenuhi persyaratan lebih dari 5 (lima) orang.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": "Nilai hasil seleksi tambahan dari masing-masing bakal calon Kepala Desa diumumkan secara terbuka melalui media informasi yang ada di desa."
+  },
+  {
+    "id": 30,
+    "tahap": "Pencalonan",
+    "tanggal": "2 November 2026",
+    "jangka_waktu": "1 hari kerja",
+    "kegiatan": "Penetapan calon Kepala Desa disertai penentuan nomor urut melalui undian secara terbuka yang dihadiri para calon atau kuasanya.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": {
+      "utama": "Jumlah calon yang ditetapkan paling sedikit 2 (dua) orang dan paling banyak 5 (lima) orang.",
+      "tambahan": "Nomor urut dan nama calon Kepala Desa dituangkan dalam berita acara dan ditetapkan dengan Keputusan Panitia Pilkades."
+    }
+  },
+  {
+    "id": 31,
+    "tahap": "Pencalonan",
+    "tanggal": "29 Oktober 2026",
+    "jangka_waktu": "1 hari kerja",
+    "kegiatan": "Apabila Pendaftaran Tahap Ketiga berakhir dan hanya terdapat 1 (satu) calon Kepala Desa terdaftar, Panitia Pilkades menyampaikan laporan kepada Badan Permusyawaratan Desa.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 32,
+    "tahap": "Pencalonan",
+    "tanggal": "30 Oktober 2026",
+    "jangka_waktu": "1 hari kerja",
+    "kegiatan": "Panitia Pilkades bersama Badan Permusyawaratan Desa melaksanakan musyawarah untuk menetapkan calon Kepala Desa terdaftar yang akan dipilih pada tahapan pemungutan suara secara musyawarah mufakat.",
+    "pelaksana": "Panitia Pilkades dan Badan Permusyawaratan Desa",
+    "keterangan": {
+      "jika_mufakat": "Tahapan pemungutan suara dilanjutkan dengan 1 (satu) calon Kepala Desa.",
+      "jika_tidak_mufakat": "Pilkades dianggap batal.",
+      "pelaporan": "BPD menyampaikan laporan kepada Bupati melalui Camat dengan tembusan kepada Kepala Desa paling lambat 1 (satu) hari setelah musyawarah."
+    }
+  },
+  {
+    "id": 33,
+    "tahap": "Pencalonan",
+    "tanggal": "2-20 November 2026",
+    "jangka_waktu": "15 hari kerja",
+    "kegiatan": "Bupati menindaklanjuti laporan Badan Permusyawaratan Desa mengenai pembatalan pelaksanaan Pilkades.",
+    "pelaksana": "DESK Pilkades Kabupaten Blitar dan Bupati",
+    "keterangan": "Apabila masa jabatan Kepala Desa telah berakhir, Bupati mengangkat Penjabat Kepala Desa sampai ditetapkannya Kepala Desa definitif."
+  },
+  {
+    "id": 34,
+    "tahap": "Pencalonan",
+    "tanggal": "2-10 November 2026",
+    "jangka_waktu": "7 hari kerja",
+    "kegiatan": "Panitia Pilkades mengumumkan melalui media massa dan/atau papan pengumuman mengenai nama calon Kepala Desa yang telah ditetapkan.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 35,
+    "tahap": "Pencalonan",
+    "tanggal": "3-10 November 2026",
+    "jangka_waktu": "6 hari kerja",
+    "kegiatan": "Pengadaan surat suara.",
+    "pelaksana": "Tim Fasilitasi Kecamatan",
+    "keterangan": ""
+  },
+  {
+    "id": 36,
+    "tahap": "Pencalonan",
+    "tanggal": "11-16 November 2026",
+    "jangka_waktu": "4 hari kerja",
+    "kegiatan": "Penandatanganan surat suara dan pelipatan surat suara.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 37,
+    "tahap": "Pencalonan",
+    "tanggal": "12-16 November 2025",
+    "jangka_waktu": "3 hari kerja",
+    "kegiatan": "Penyampaian undangan pemungutan suara kepada pemilih.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 38,
+    "tahap": "Pencalonan",
+    "tanggal": "17-19 November 2026",
+    "jangka_waktu": "3 hari kalender",
+    "kegiatan": "Pelaksanaan kampanye.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 39,
+    "tahap": "Pencalonan",
+    "tanggal": "20-22 November 2026",
+    "jangka_waktu": "3 hari kalender",
+    "kegiatan": "Masa tenang.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  
