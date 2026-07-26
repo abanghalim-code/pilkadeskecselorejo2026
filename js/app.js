@@ -465,3 +465,202 @@ activeNavigation() {
     });
 
 },
+/* ==========================================
+   MOBILE MENU
+========================================== */
+
+mobileMenu() {
+
+    const menu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('mobileOverlay');
+
+    const openBtn = document.getElementById('mobileMenuButton');
+    const closeBtn = document.getElementById('closeMobileMenu');
+
+    if (!menu || !openBtn) return;
+
+    const openMenu = () => {
+
+        menu.classList.add('active');
+
+        overlay?.classList.add('active');
+
+        document.body.classList.add('menu-open');
+
+        openBtn.setAttribute(
+            'aria-expanded',
+            'true'
+        );
+
+    };
+
+    const closeMenu = () => {
+
+        menu.classList.remove('active');
+
+        overlay?.classList.remove('active');
+
+        document.body.classList.remove('menu-open');
+
+        openBtn.setAttribute(
+            'aria-expanded',
+            'false'
+        );
+
+    };
+
+    openBtn.addEventListener('click', openMenu);
+
+    closeBtn?.addEventListener('click', closeMenu);
+
+    overlay?.addEventListener('click', closeMenu);
+
+    menu.querySelectorAll('a').forEach(link => {
+
+        link.addEventListener('click', closeMenu);
+
+    });
+
+    document.addEventListener('keydown', e => {
+
+        if (e.key === 'Escape') {
+
+            closeMenu();
+
+        }
+
+    });
+
+},
+
+
+
+/* ==========================================
+   SEARCH MODAL
+========================================== */
+
+searchModal() {
+
+    const modal = document.getElementById('searchModal');
+
+    const button = document.getElementById('searchButton');
+
+    if (!modal || !button) return;
+
+    const input = modal.querySelector('input');
+
+    const openSearch = () => {
+
+        modal.classList.add('active');
+
+        input?.focus();
+
+    };
+
+    const closeSearch = () => {
+
+        modal.classList.remove('active');
+
+    };
+
+    button.addEventListener('click', openSearch);
+
+    modal.addEventListener('click', e => {
+
+        if (e.target === modal) {
+
+            closeSearch();
+
+        }
+
+    });
+
+    document.addEventListener('keydown', e => {
+
+        if (e.key === 'Escape') {
+
+            closeSearch();
+
+        }
+
+    });
+
+},
+
+
+
+/* ==========================================
+   SCROLL PROGRESS
+========================================== */
+
+scrollProgress() {
+
+    const progress = document.getElementById(
+        'scroll-progress-bar'
+    );
+
+    if (!progress) return;
+
+    window.addEventListener('scroll', () => {
+
+        const total =
+
+            document.documentElement.scrollHeight -
+
+            window.innerHeight;
+
+        const current = window.pageYOffset;
+
+        const percent =
+
+            (current / total) * 100;
+
+        progress.style.width =
+
+            `${percent}%`;
+
+    });
+
+},
+
+
+
+/* ==========================================
+   BACK TO TOP
+========================================== */
+
+backToTop() {
+
+    const button =
+
+        document.getElementById('backToTop');
+
+    if (!button) return;
+
+    window.addEventListener('scroll', () => {
+
+        if (window.pageYOffset > 500) {
+
+            button.classList.add('show');
+
+        } else {
+
+            button.classList.remove('show');
+
+        }
+
+    });
+
+    button.addEventListener('click', () => {
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: 'smooth'
+
+        });
+
+    });
+
+},
