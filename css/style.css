@@ -1,6 +1,14 @@
-/* ==========================================
+/* =====================================================
+   PORTAL PILKADES SERENTAK 2026
+   KECAMATAN SELOREJO
+   STYLE.CSS FINAL
+   BAGIAN 1
+===================================================== */
+
+
+/* ==========================
    RESET
-========================================== */
+========================== */
 
 *{
     margin:0;
@@ -14,35 +22,125 @@ html{
 
 body{
 
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Poppins',sans-serif;
 
-    background:#0b3d91;
+    color:#2c3e50;
 
-    color:#ffffff;
+    background:#f4f7fb;
+
+    line-height:1.7;
 
     overflow-x:hidden;
 
 }
 
+img{
 
-/* ==========================================
-CONTAINER
-========================================== */
+    max-width:100%;
+
+    display:block;
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+section{
+
+    padding:90px 0;
+
+}
+
+
+/* ==========================
+   ROOT COLOR
+========================== */
+
+:root{
+
+    --primary:#0d6efd;
+
+    --secondary:#1f4e79;
+
+    --accent:#00bcd4;
+
+    --light:#ffffff;
+
+    --dark:#243447;
+
+    --gray:#6c757d;
+
+    --border:#e6eaf0;
+
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+
+    --radius:18px;
+
+}
+
+
+/* ==========================
+   CONTAINER
+========================== */
 
 .container{
 
     width:90%;
 
-    max-width:1400px;
+    max-width:1200px;
 
     margin:auto;
 
 }
 
 
-/* ==========================================
-NAVBAR
-========================================== */
+/* ==========================
+   SECTION TITLE
+========================== */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.section-title h2{
+
+    font-size:38px;
+
+    color:var(--secondary);
+
+    margin-bottom:15px;
+
+    font-weight:700;
+
+}
+
+.section-title p{
+
+    color:var(--gray);
+
+    max-width:760px;
+
+    margin:auto;
+
+}
+
+
+/* ==========================
+   NAVBAR
+========================== */
 
 .navbar{
 
@@ -50,19 +148,21 @@ NAVBAR
 
     top:0;
 
+    left:0;
+
     width:100%;
 
     z-index:999;
 
-    background:rgba(5,28,80,.90);
+    background:rgba(13,110,253,.92);
 
-    backdrop-filter:blur(8px);
+    backdrop-filter:blur(10px);
 
-    box-shadow:0 5px 15px rgba(0,0,0,.30);
+    box-shadow:var(--shadow);
 
 }
 
-.navbar .container{
+.nav-container{
 
     display:flex;
 
@@ -70,10 +170,9 @@ NAVBAR
 
     align-items:center;
 
-    padding:18px 0;
+    height:80px;
 
 }
-
 
 .logo{
 
@@ -81,33 +180,39 @@ NAVBAR
 
     align-items:center;
 
-    gap:15px;
-
-    color:white;
-
-    text-decoration:none;
+    color:#fff;
 
 }
 
 .logo img{
 
-    width:60px;
+    width:55px;
+
+    margin-right:15px;
+
+}
+
+.logo-text small{
+
+    font-size:11px;
+
+    letter-spacing:1px;
 
 }
 
 .logo-text h2{
 
-    font-size:32px;
+    font-size:19px;
 
-    color:white;
+    font-weight:700;
 
 }
 
 .logo-text span{
 
-    color:#d9d9d9;
+    font-size:12px;
 
-    font-size:14px;
+    opacity:.9;
 
 }
 
@@ -115,19 +220,17 @@ nav ul{
 
     display:flex;
 
-    list-style:none;
-
-    gap:25px;
+    gap:30px;
 
 }
 
 nav ul li a{
 
-    color:white;
+    color:#fff;
 
-    text-decoration:none;
+    font-size:15px;
 
-    font-weight:bold;
+    font-weight:500;
 
     transition:.3s;
 
@@ -135,16 +238,18 @@ nav ul li a{
 
 nav ul li a:hover{
 
-    color:#ffb300;
+    color:#ffe082;
 
 }
 
 
-/* ==========================================
-HERO
-========================================== */
+/* ==========================
+   HERO
+========================== */
 
 .hero{
+
+    position:relative;
 
     min-height:100vh;
 
@@ -152,167 +257,356 @@ HERO
 
     align-items:center;
 
-    position:relative;
-
-    padding-top:120px;
-
     background:
 
-    linear-gradient(
+        linear-gradient(
 
-    rgba(0,45,120,.85),
+            rgba(13,110,253,.85),
 
-    rgba(0,65,150,.82)
+            rgba(31,78,121,.88)
 
-    ),
+        ),
 
-    url("../images/kecamatan.png");
+        url("../images/kecamatan.png");
 
     background-size:cover;
 
     background-position:center;
 
+    background-attachment:fixed;
+
 }
-/* ===========================
-   HERO LAYOUT
-=========================== */
 
-.hero-container{
-    width:90%;
-    max-width:1400px;
-    margin:auto;
+.hero-overlay{
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.15);
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
 
     gap:60px;
+
+    align-items:center;
+
 }
 
 .hero-left{
-    flex:1;
+
+    color:#fff;
+
 }
 
-.hero-right{
-    flex:1;
+.badge{
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display:inline-block;
 
-    position:relative;
+    background:#fff;
+
+    color:var(--primary);
+
+    padding:10px 22px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:25px;
+
 }
 
-.hero-subtitle{
+.hero-left h1{
+
+    font-size:64px;
+
+    line-height:1.1;
+
+    margin-bottom:10px;
+
+    font-weight:800;
+
+}
+
+.hero-left h1 span{
+
+    color:#ffe082;
+
+}
+
+.hero-left h2{
+
+    font-size:34px;
+
+    margin-bottom:20px;
+
+    font-weight:600;
+
+}
+
+.hero-left p{
 
     font-size:18px;
 
-    color:#ffffff;
+    max-width:550px;
 
-    margin-bottom:15px;
-
-}
-
-.hero h1{
-
-    font-size:90px;
-
-    line-height:1;
-
-    font-weight:900;
-
-    margin-bottom:20px;
+    margin-bottom:35px;
 
 }
 
-.putih{
+.hero-button{
 
-    display:block;
+    display:flex;
 
-    color:white;
+    gap:20px;
 
-}
-
-.kuning{
-
-    display:block;
-
-    color:#ffb300;
+    flex-wrap:wrap;
 
 }
 
-.hero h2{
 
-    font-size:40px;
+/* ==========================
+   BUTTON
+========================== */
 
-    margin-bottom:20px;
+.btn-primary{
+
+    background:#fff;
+
+    color:var(--primary);
+
+    padding:15px 34px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:var(--shadow);
 
 }
 
-.hero-text{
+.btn-primary:hover{
 
-    font-size:22px;
-
-    margin-bottom:15px;
+    transform:translateY(-4px);
 
 }
 
-.hero-slogan{
+.btn-secondary{
 
-    font-size:24px;
+    border:2px solid #fff;
 
-    color:#ffcc33;
+    color:#fff;
+
+    padding:15px 34px;
+
+    border-radius:50px;
+
+    transition:.3s;
 
 }
 
-.ballot-box{
+.btn-secondary:hover{
 
-    width:360px;
+    background:#fff;
 
-    filter:drop-shadow(0 20px 30px rgba(0,0,0,.4));
+    color:var(--primary);
+
+}
+
+
+/* ==========================
+   HERO RIGHT
+========================== */
+
+.hero-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.ballot-image{
+
+    width:330px;
+
+    animation:float 5s ease-in-out infinite;
 
 }
 
 .desa-card{
 
-    position:absolute;
+    margin-top:35px;
 
-    right:0;
+    background:rgba(255,255,255,.15);
 
-    top:20px;
+    backdrop-filter:blur(18px);
 
-    width:280px;
-
-    background:rgba(255,255,255,.92);
-
-    color:#222;
+    padding:30px;
 
     border-radius:20px;
 
-    padding:25px;
+    color:#fff;
 
-    box-shadow:0 20px 40px rgba(0,0,0,.30);
+    width:100%;
+
+    max-width:360px;
+
+    box-shadow:var(--shadow);
 
 }
 
-.desa-card h2{
+.desa-card h3{
 
-    color:#0b4ea2;
+    font-size:36px;
 
     margin-bottom:10px;
 
 }
 
-.desa-card ul{
+.desa-card p{
 
-    margin-top:15px;
-
-    padding-left:20px;
+    margin-bottom:18px;
 
 }
 
-.desa-card li{
+.desa-card ul li{
 
-    margin-bottom:10px;
+    padding:8px 0;
+
+}
+
+
+/* ==========================
+   COUNTDOWN
+========================== */
+
+.countdown-section{
+
+    background:#fff;
+
+}
+
+.countdown-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.count-box{
+
+    width:170px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #0d6efd,
+
+        #1f4e79
+
+    );
+
+    color:#fff;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.count-box span{
+
+    display:block;
+
+    font-size:52px;
+
+    font-weight:700;
+
+}
+
+.count-box small{
+
+    font-size:18px;
+
+    opacity:.9;
+
+}
+
+.jadwal{
+
+    text-align:center;
+
+    margin-top:45px;
+
+    font-size:22px;
+
+    color:var(--secondary);
+
+}
+
+.jadwal strong{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-size:28px;
+
+    color:var(--primary);
+
+}
+
+
+/* ==========================
+   ANIMATION
+========================== */
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-15px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
 
 }
