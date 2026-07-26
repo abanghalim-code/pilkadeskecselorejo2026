@@ -1,175 +1,188 @@
 /* =====================================================
    PORTAL PILKADES SERENTAK 2026
-   KECAMATAN SELOREJO
-   COUNTDOWN.JS FINAL
-===================================================== */
+   Kecamatan Selorejo Kabupaten Blitar
+   countdown.js Final v3.0
 
-document.addEventListener("DOMContentLoaded", function () {
+   BAGIAN 1
+   --------------------------------------------
+   ✓ Konfigurasi
+   ✓ DOM Element
+   ✓ Helper Function
+   ✓ Format Indonesia
+   ✓ Jam Digital
+=====================================================*/
 
-    /* ==========================
-       TARGET TANGGAL
-    ========================== */
+"use strict";
 
-    // 23 November 2026
-    // Jam 07.00 WIB
+/*=====================================================
+  KONFIGURASI
+=====================================================*/
 
-    const targetDate = new Date(
-        "2026-11-23T07:00:00+07:00"
-    ).getTime();
+// Waktu pelaksanaan Pilkades
+const TARGET_DATE = new Date("2026-11-23T07:00:00");
 
+// Awal perhitungan progress
+const START_DATE = new Date("2026-01-01T00:00:00");
 
 
-    /* ==========================
-       ELEMENT HTML
-    ========================== */
+/*=====================================================
+  DOM ELEMENT
+=====================================================*/
 
-    const dayElement = document.getElementById("days");
+const dayElement = document.getElementById("days");
+const hourElement = document.getElementById("hours");
+const minuteElement = document.getElementById("minutes");
+const secondElement = document.getElementById("seconds");
 
-    const hourElement = document.getElementById("hours");
+const digitalClock = document.getElementById("digitalClock");
+const todayDate = document.getElementById("todayDate");
 
-    const minuteElement = document.getElementById("minutes");
+const countdownStatus = document.getElementById("countdownStatus");
 
-    const secondElement = document.getElementById("seconds");
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
 
 
+/*=====================================================
+  NAMA HARI & BULAN
+=====================================================*/
 
-    /* ==========================
-       FORMAT ANGKA
-    ========================== */
+const DAY_NAMES = [
+    "Minggu",
+    "Senin",
+    "Selasa",
+    "Rabu",
+    "Kamis",
+    "Jumat",
+    "Sabtu"
+];
 
-    function twoDigit(number){
+const MONTH_NAMES = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+];
 
-        return number.toString().padStart(2,"0");
 
-    }
+/*=====================================================
+  HELPER FUNCTION
+=====================================================*/
 
+function pad(value) {
+    return String(value).padStart(2, "0");
+}
 
+function setText(element, value) {
 
-    /* ==========================
-       UPDATE COUNTDOWN
-    ========================== */
+    if (!element) return;
 
-    function updateCountdown(){
+    element.textContent = value;
 
-        const now = new Date().getTime();
+}
 
-        const distance = targetDate - now;
+function setHTML(element, value) {
 
+    if (!element) return;
 
+    element.innerHTML = value;
 
-        /* ==========================
-           WAKTU HABIS
-        ========================== */
+}
 
-        if(distance <= 0){
 
-            dayElement.innerHTML="000";
+/*=====================================================
+  FORMAT TANGGAL INDONESIA
+=====================================================*/
 
-            hourElement.innerHTML="00";
+function formatDateIndonesia(date){
 
-            minuteElement.innerHTML="00";
+    const hari = DAY_NAMES[date.getDay()];
 
-            secondElement.innerHTML="00";
+    const tanggal = date.getDate();
 
-            const jadwal=document.querySelector(".jadwal");
+    const bulan = MONTH_NAMES[date.getMonth()];
 
-            if(jadwal){
+    const tahun = date.getFullYear();
 
-                jadwal.innerHTML=`
-                    <i class="fa-solid fa-check-circle"></i>
-                    <strong>
-                    Hari Pemungutan Suara Telah Tiba
-                    </strong>
-                `;
+    return `${hari}, ${tanggal} ${bulan} ${tahun}`;
 
-            }
+}
 
-            clearInterval(timer);
 
-            return;
+/*=====================================================
+  JAM DIGITAL
+=====================================================*/
 
-        }
+function updateDigitalClock(){
 
+    const now = new Date();
 
+    const jam = pad(now.getHours());
 
-        /* ==========================
-           PERHITUNGAN
-        ========================== */
+    const menit = pad(now.getMinutes());
 
-        const days=Math.floor(
+    const detik = pad(now.getSeconds());
 
-            distance/(1000*60*60*24)
-
-        );
-
-
-
-        const hours=Math.floor(
-
-            (distance%(1000*60*60*24))
-
-            /(1000*60*60)
-
-        );
-
-
-
-        const minutes=Math.floor(
-
-            (distance%(1000*60*60))
-
-            /(1000*60)
-
-        );
-
-
-
-        const seconds=Math.floor(
-
-            (distance%(1000*60))
-
-            /1000
-
-        );
-
-
-
-        /* ==========================
-           TAMPILKAN
-        ========================== */
-
-        dayElement.innerHTML=days;
-
-        hourElement.innerHTML=twoDigit(hours);
-
-        minuteElement.innerHTML=twoDigit(minutes);
-
-        secondElement.innerHTML=twoDigit(seconds);
-
-    }
-
-
-
-    /* ==========================
-       UPDATE PERTAMA
-    ========================== */
-
-    updateCountdown();
-
-
-
-    /* ==========================
-       UPDATE TIAP DETIK
-    ========================== */
-
-    const timer=setInterval(
-
-        updateCountdown,
-
-        1000
-
+    setText(
+        digitalClock,
+        `${jam}:${menit}:${detik} WIB`
     );
 
+    setText(
+        todayDate,
+        formatDateIndonesia(now)
+    );
+
+}
 
 
-});
+/*=====================================================
+  UPDATE SETIAP DETIK
+=====================================================*/
+
+setInterval(updateDigitalClock,1000);
+
+// tampil pertama kali
+updateDigitalClock();
+
+
+/*=====================================================
+  ANIMASI ANGKA
+=====================================================*/
+
+function animateNumber(element){
+
+    if(!element) return;
+
+    element.classList.remove("number-pop");
+
+    void element.offsetWidth;
+
+    element.classList.add("number-pop");
+
+}
+
+
+/*=====================================================
+  FUNGSI BANTU
+=====================================================*/
+
+function getNow(){
+
+    return new Date();
+
+}
+
+function millisecondsBetween(start,end){
+
+    return end - start;
+
+}
