@@ -2737,3 +2737,11 @@ strong{
     transform:scale(.95);
 
 }
+button:focus,
+a:focus{
+
+    outline:3px solid var(--accent);
+
+    outline-offset:3px;
+
+}
