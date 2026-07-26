@@ -1,419 +1,145 @@
 /* =====================================================
-   RESPONSIVE.CSS FINAL
-   PORTAL PILKADES 2026
-   KECAMATAN SELOREJO
+   PORTAL PILKADES SERENTAK 2026
+   Kecamatan Selorejo
+   responsive.css Final v3.0
 =====================================================*/
 
 
-
-/* =====================================================
-   DESKTOP BESAR
-   > 1400px
+/*=====================================================
+  DESKTOP LARGE
 =====================================================*/
 
-@media (min-width:1400px){
+@media (max-width:1400px){
 
 .container{
-
-max-width:1320px;
-
-}
-
-.hero-left h1{
-
-font-size:76px;
-
-}
-
-.hero-left h2{
-
-font-size:42px;
-
-}
-
-.ballot-image{
-
-width:420px;
-
-}
-
-.section-title h2{
-
-font-size:48px;
-
-}
-
-}
-
-
-
-/* =====================================================
-   DESKTOP
-   1200 - 1399
-=====================================================*/
-
-@media (min-width:1200px) and (max-width:1399px){
-
-.container{
-
-max-width:1140px;
-
+    width:min(94%,1200px);
 }
 
 .hero-content{
-
-gap:60px;
-
-}
-
-.ballot-image{
-
-width:360px;
-
+    gap:50px;
 }
 
 }
 
 
 
-/* =====================================================
-   LAPTOP
-   992 - 1199
+/*=====================================================
+  LAPTOP
 =====================================================*/
 
-@media (min-width:992px) and (max-width:1199px){
-
-.container{
-
-width:94%;
-
-}
-
-.hero-content{
-
-gap:45px;
-
-}
+@media (max-width:1200px){
 
 .hero-left h1{
-
-font-size:54px;
-
+    font-size:3.5rem;
 }
 
 .hero-left h2{
-
-font-size:30px;
-
+    font-size:1.8rem;
 }
 
 .ballot-image{
-
-width:300px;
-
-}
-
-nav ul{
-
-gap:18px;
-
-}
-
-nav ul li a{
-
-font-size:14px;
-
+    width:300px;
 }
 
 .footer-grid{
-
-grid-template-columns:2fr 1fr 1fr;
-
+    grid-template-columns:2fr 1fr 1fr;
 }
 
 }
 
 
 
-/* =====================================================
-   TABLET LANDSCAPE
-   768 - 991
+/*=====================================================
+  TABLET
 =====================================================*/
 
-@media (min-width:768px) and (max-width:991px){
+@media (max-width:992px){
+
+section{
+    padding:70px 0;
+}
 
 .nav-container{
 
-flex-direction:column;
-
-height:auto;
-
-padding:18px 0;
-
-}
-
-nav{
-
-margin-top:20px;
-
-}
-
-nav ul{
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-gap:16px;
+    height:75px;
 
 }
 
 .hero{
 
-padding-top:160px;
+    min-height:auto;
 
-background-attachment:scroll;
+    padding:120px 0 70px;
 
 }
 
 .hero-content{
 
-grid-template-columns:1fr;
+    grid-template-columns:1fr;
 
-text-align:center;
+    text-align:center;
 
-}
-
-.hero-left{
-
-order:2;
-
-}
-
-.hero-right{
-
-order:1;
-
-margin-bottom:40px;
+    gap:50px;
 
 }
 
 .hero-left p{
 
-margin:auto;
-
-margin-bottom:35px;
+    margin:auto;
 
 }
 
 .hero-button{
 
-justify-content:center;
+    justify-content:center;
+
+}
+
+.hero-right{
+
+    order:-1;
 
 }
 
 .ballot-image{
 
-width:260px;
+    width:260px;
 
 }
 
 .desa-card{
 
-margin:auto;
+    max-width:420px;
 
 }
 
 .countdown-wrapper{
 
-gap:15px;
+    grid-template-columns:repeat(2,1fr);
 
 }
 
-.count-box{
+.profil-grid{
 
-width:150px;
-
-}
-
-.timeline{
-
-padding-left:15px;
+    grid-template-columns:1fr;
 
 }
 
-.timeline::before{
+.stat-grid{
 
-left:12px;
+    grid-template-columns:repeat(2,1fr);
 
 }
 
 .footer-grid{
 
-grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr 1fr;
 
 }
 
-.social{
-
-justify-content:flex-start;
-
-}
-
-}
-
-
-
-/* =====================================================
-   TABLET PORTRAIT
-   577 - 767
-=====================================================*/
-
-@media (min-width:577px) and (max-width:767px){
-
-.nav-container{
-
-flex-direction:column;
-
-height:auto;
-
-padding:20px;
-
-}
-
-nav{
-
-margin-top:15px;
-
-width:100%;
-
-}
-
-nav ul{
-
-justify-content:center;
-
-flex-wrap:wrap;
-
-gap:12px;
-
-}
-
-.hero{
-
-padding-top:170px;
-
-background-attachment:scroll;
-
-}
-
-.hero-content{
-
-grid-template-columns:1fr;
-
-text-align:center;
-
-}
-
-.hero-left{
-
-order:2;
-
-}
-
-.hero-right{
-
-order:1;
-
-}
-
-.hero-left h1{
-
-font-size:42px;
-
-}
-
-.hero-left h2{
-
-font-size:26px;
-
-}
-
-.hero-left p{
-
-font-size:17px;
-
-margin:auto;
-
-margin-bottom:30px;
-
-}
-
-.hero-button{
-
-justify-content:center;
-
-}
-
-.ballot-image{
-
-width:230px;
-
-}
-
-.desa-card{
-
-margin:auto;
-
-}
-
-.section-title h2{
-
-font-size:30px;
-
-}
-
-.count-box{
-
-width:135px;
-
-padding:24px;
-
-}
-
-.count-box span{
-
-font-size:40px;
-
-}
-
-.profil-grid,
-.desa-grid,
-.berita-grid,
-.regulasi-grid,
 .contact-grid{
 
-grid-template-columns:1fr;
-
-}
-
-.footer-grid{
-
-grid-template-columns:1fr;
-
-text-align:center;
-
-}
-
-.social{
-
-justify-content:center;
-
-}
-
-.maps-box iframe{
-
-height:320px;
+    grid-template-columns:repeat(2,1fr);
 
 }
 
@@ -421,310 +147,237 @@ height:320px;
 
 
 
-/* =====================================================
-   MOBILE
-   <=576
+/*=====================================================
+  MOBILE
 =====================================================*/
 
-@media (max-width:576px){
-
-.container{
-
-width:95%;
-
-}
+@media (max-width:768px){
 
 .navbar{
 
-position:relative;
+    padding:10px 0;
 
 }
 
 .nav-container{
 
-flex-direction:column;
+    flex-wrap:wrap;
 
-padding:15px;
-
-height:auto;
+    height:auto;
 
 }
 
 .logo{
 
-flex-direction:column;
+    width:100%;
 
-text-align:center;
+    justify-content:center;
+
+    margin-bottom:15px;
 
 }
 
-.logo img{
+.navbar nav{
 
-margin:0 0 12px;
+    width:100%;
 
-width:60px;
+}
+
+.navbar nav ul{
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:14px;
 
 }
 
 .logo-text h2{
 
-font-size:18px;
+    font-size:1rem;
 
 }
 
 .logo-text span{
 
-font-size:11px;
+    font-size:.75rem;
 
 }
 
-nav{
+.running-news{
 
-width:100%;
+    flex-direction:column;
 
-margin-top:15px;
-
-}
-
-nav ul{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:10px;
+    align-items:stretch;
 
 }
 
-nav ul li a{
+.running-label{
 
-display:block;
+    width:100%;
 
-padding:10px;
+    min-width:100%;
 
-background:rgba(255,255,255,.10);
+}
 
-border-radius:8px;
+.running-content{
 
-font-size:14px;
-
-text-align:center;
+    padding:10px;
 
 }
 
 .hero{
 
-padding:60px 0;
-
-min-height:auto;
-
-background-attachment:scroll;
-
-}
-
-.hero-content{
-
-grid-template-columns:1fr;
-
-text-align:center;
-
-}
-
-.hero-left{
-
-order:2;
-
-}
-
-.hero-right{
-
-order:1;
-
-margin-bottom:25px;
-
-}
-
-.badge{
-
-font-size:12px;
+    padding-top:150px;
 
 }
 
 .hero-left h1{
 
-font-size:34px;
+    font-size:2.6rem;
 
 }
 
 .hero-left h2{
 
-font-size:22px;
+    font-size:1.5rem;
 
 }
 
 .hero-left p{
 
-font-size:16px;
-
-margin-bottom:25px;
+    font-size:1rem;
 
 }
 
 .hero-button{
 
-flex-direction:column;
+    flex-direction:column;
 
 }
 
-.btn-primary,
-.btn-secondary{
+.hero-button a{
 
-width:100%;
+    width:100%;
 
 }
 
 .ballot-image{
 
-width:180px;
+    width:220px;
 
 }
 
-.desa-card{
+.countdown-wrapper{
 
-margin:auto;
-
-padding:20px;
-
-}
-
-.section-title{
-
-margin-bottom:40px;
-
-}
-
-.section-title h2{
-
-font-size:26px;
-
-}
-
-section{
-
-padding:60px 0;
+    grid-template-columns:1fr;
 
 }
 
 .count-box{
 
-width:120px;
-
-padding:20px;
+    padding:28px;
 
 }
 
-.count-box span{
+.profil-grid{
 
-font-size:34px;
-
-}
-
-.jadwal{
-
-font-size:18px;
+    grid-template-columns:1fr;
 
 }
 
-.jadwal strong{
+.desa-grid{
 
-font-size:22px;
-
-}
-
-.timeline{
-
-padding-left:0;
+    grid-template-columns:1fr;
 
 }
 
-.timeline::before{
+.stat-grid{
 
-display:none;
-
-}
-
-.timeline-item{
-
-flex-direction:column;
-
-align-items:center;
-
-text-align:center;
+    grid-template-columns:1fr;
 
 }
 
-.timeline-content{
+.berita-grid{
 
-width:100%;
+    grid-template-columns:1fr;
 
 }
 
-.profil-grid,
-.desa-grid,
-.berita-grid,
-.regulasi-grid,
-.contact-grid,
+.regulasi-grid{
+
+    grid-template-columns:1fr;
+
+}
+
 .galeri-grid{
 
-grid-template-columns:1fr;
+    grid-template-columns:1fr;
 
 }
 
-.desa-item img,
-.berita-card img,
-.galeri-item img{
+.contact-grid{
 
-height:220px;
+    grid-template-columns:1fr;
 
 }
 
 .footer-grid{
 
-grid-template-columns:1fr;
+    grid-template-columns:1fr;
 
-text-align:center;
-
-}
-
-.footer-item img{
-
-margin:auto auto 20px;
+    text-align:center;
 
 }
 
 .social{
 
-justify-content:center;
+    justify-content:center;
 
 }
 
 .maps-box iframe{
 
-height:280px;
+    height:320px;
+
+}
+
+.timeline{
+
+    padding-left:0;
+
+}
+
+.timeline::before{
+
+    display:none;
+
+}
+
+.timeline-icon{
+
+    position:relative;
+
+    left:0;
+
+    top:0;
+
+    margin-bottom:15px;
+
+}
+
+.timeline-content:hover{
+
+    transform:none;
 
 }
 
 .back-top{
 
-width:48px;
+    right:15px;
 
-height:48px;
-
-right:15px;
-
-bottom:15px;
-
-font-size:18px;
+    bottom:15px;
 
 }
 
@@ -732,53 +385,151 @@ font-size:18px;
 
 
 
-/* =====================================================
-   EXTRA SMALL
+/*=====================================================
+  SMALL MOBILE
 =====================================================*/
 
-@media (max-width:360px){
+@media (max-width:576px){
+
+body{
+
+    font-size:15px;
+
+}
+
+section{
+
+    padding:60px 0;
+
+}
 
 .hero-left h1{
 
-font-size:28px;
+    font-size:2.2rem;
 
 }
 
 .hero-left h2{
 
-font-size:18px;
+    font-size:1.25rem;
 
 }
 
 .hero-left p{
 
-font-size:15px;
-
-}
-
-.count-box{
-
-width:100px;
-
-padding:16px;
+    font-size:.95rem;
 
 }
 
 .count-box span{
 
-font-size:28px;
+    font-size:2.5rem;
+
+}
+
+.section-title h2{
+
+    font-size:2rem;
+
+}
+
+.cta-box{
+
+    padding:35px 20px;
+
+}
+
+.contact-card{
+
+    padding:25px 18px;
+
+}
+
+.desa-content{
+
+    padding:22px;
+
+}
+
+.berita-content{
+
+    padding:22px;
+
+}
+
+.regulasi-card{
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.footer{
+
+    padding:60px 0 20px;
+
+}
+
+}
+
+
+
+/*=====================================================
+  EXTRA SMALL
+=====================================================*/
+
+@media (max-width:400px){
+
+.hero-left h1{
+
+    font-size:1.9rem;
+
+}
+
+.hero-left h2{
+
+    font-size:1.1rem;
+
+}
+
+.logo img{
+
+    width:45px;
 
 }
 
 .logo-text h2{
 
-font-size:16px;
+    font-size:.9rem;
+
+}
+
+.logo-text small{
+
+    font-size:.65rem;
 
 }
 
 .logo-text span{
 
-font-size:10px;
+    font-size:.65rem;
+
+}
+
+.navbar nav ul{
+
+    gap:10px;
+
+    font-size:.85rem;
+
+}
+
+.count-box{
+
+    padding:22px;
 
 }
 
