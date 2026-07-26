@@ -33,19 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const App = {
 
-    init(){
+init(){
 
-        this.cacheDOM();
+    this.cacheDOM();
 
-        this.bindEvents();
+    this.bindEvents();
 
-        this.hideLoader();
+    this.hideLoader();
 
-        this.updateActiveMenu();
+    this.updateActiveMenu();
 
-    },
+    loadWebsiteData();
 
-
+}
 
 /*=====================================================
     CACHE DOM
