@@ -1,12 +1,132 @@
 [
   {
     "id": 1,
-    "title": "Pembentukan DESK Pilkades",
-    "start": "2026-06-25",
-    "end": "2026-07-29",
-    "status": "upcoming",
-    "category": "Persiapan",
-    "description": "Pembentukan DESK Pilkades Kabupaten Blitar Tahun 2026.",
-    "organizer": "DINDAMADE"
-  }
-]
+    "tahap": "Pra Persiapan",
+    "tanggal": "25 Juni - 29 Juli 2026",
+    "jangka_waktu": "2 hari kerja",
+    "kegiatan": "Pembentukan DESK Pilkades Kabupaten Blitar Tahun 2026, Penetapan Nama Desa yang melaksanakan Pilkades, Tahapan Pilkades ditetapkan dengan Keputusan Bupati",
+    "pelaksana": "dindamade",
+    "keterangan": ""
+  },
+  {
+    "id": 2,
+    "tahap": "Persiapan",
+    "tanggal": "29 Juni - 3 Juli 2026",
+    "jangka_waktu": "2 hari kerja",
+    "kegiatan": "Pemberitahuan BPD kepada Kepala Desa tentang akhir masa jabatan yang disampaikan 6 (enam) bulan sebelum berakhir masa jabatan Kepala Desa",
+    "pelaksana": "Badan Permusyawaratan Desa",
+    "keterangan": ""
+  },
+  {
+    "id": 3,
+    "tahap": "Persiapan",
+    "tanggal": "6 Juli - 14 Agustus 2026",
+    "jangka_waktu": "30 hari kerja",
+    "kegiatan": "Laporan akhir masa jabatan Kepala Desa kepada Bupati disampaikan dalam jangka waktu 30 (tiga puluh) hari setelah pemberitahuan akhir masa jabatan.",
+    "pelaksana": "Kepala Desa",
+    "keterangan": ""
+  },
+  {
+    "id": 4,
+    "tahap": "Persiapan",
+    "tanggal": "6-17 Juli 2026",
+    "jangka_waktu": "10 hari kerja",
+    "kegiatan": "Pembentukan Panitia Pemilihan Kepala Desa oleh BPD",
+    "pelaksana": "Badan Permusyawaratan Desa",
+    "keterangan": {
+      "utama": "Pembentukan Panitia Pilkades disampaikan secara tertulis oleh BPD kepada Bupati melalui Camat.",
+      "susunan_panitia": [
+        "Ketua merangkap anggota",
+        "Wakil Ketua merangkap anggota",
+        "Sekretaris merangkap anggota",
+        "Empat Ketua Seksi merangkap anggota"
+      ],
+      "seksi": [
+        "Seksi Sosialisasi, Pendaftaran Pemilih, Penetapan Pemilih, Penjaringan dan Penyaringan Bakal Calon Kepala Desa",
+        "Seksi Logistik dan Tata Cara Kampanye",
+        "Seksi Tata Cara Pelaksanaan Pemilihan Kepala Desa, Pemungutan Suara dan Rekapitulasi Penghitungan Suara",
+        "Seksi Perencanaan, Pengawasan, Evaluasi dan Pelaporan"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "tahap": "Persiapan",
+    "tanggal": "13-24 Juli 2026",
+    "jangka_waktu": "10 hari kerja",
+    "kegiatan": "Membentuk Petugas Pendaftaran Pemilih (Pantarlih) dan Komisi Penyelenggara Pemungutan Suara (KPPS), ditetapkan dengan Keputusan Kepala Desa atas usul Panitia Pilkades",
+    "pelaksana": "Panitia Pilkades dan Kepala Desa",
+    "keterangan": ""
+  },
+  {
+    "id": 6,
+    "tahap": "Persiapan",
+    "tanggal": "27 Juli - 8 September 2026",
+    "jangka_waktu": "30 hari kerja",
+    "kegiatan": "Panitia Pilkades menyusun rencana kebutuhan barang dan biaya Pilkades yang bersumber dari APBD dan diajukan kepada Bupati melalui Kepala Desa dan Camat paling lama 30 (tiga puluh) hari setelah terbentuknya Panitia Pilkades untuk memperoleh persetujuan Bupati.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": "Rencana kebutuhan barang dan biaya Pilkades yang bersumber dari APBD melekat pada DPA Kecamatan dan dikelola oleh Satuan Kerja Kecamatan."
+  },
+  {
+    "id": 7,
+    "tahap": "Persiapan",
+    "tanggal": "27 Juli - 8 September 2026",
+    "jangka_waktu": "30 hari kerja",
+    "kegiatan": "Bupati menyetujui rencana kebutuhan barang dan biaya Pilkades dalam waktu paling lama 30 (tiga puluh) hari sejak diterima dari Panitia Pilkades.",
+    "pelaksana": "DESK Pilkades Kabupaten Blitar",
+    "keterangan": ""
+  },
+  {
+    "id": 8,
+    "tahap": "Persiapan",
+    "tanggal": "27 Juli - 8 September 2026",
+    "jangka_waktu": "30 hari kerja",
+    "kegiatan": "Panitia Pilkades menyusun rencana biaya Pilkades yang bersumber dari APBDesa dan diajukan kepada Kepala Desa paling lama 30 (tiga puluh) hari setelah terbentuknya Panitia Pilkades untuk memperoleh persetujuan Kepala Desa.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": "Rencana kebutuhan barang dan biaya Pilkades yang bersumber dari APBDesa dikelola oleh Pemerintah Desa."
+  },
+  {
+    "id": 9,
+    "tahap": "Persiapan",
+    "tanggal": "27 Juli - 8 September 2026",
+    "jangka_waktu": "30 hari kerja",
+    "kegiatan": "Kepala Desa menyetujui rencana biaya Pilkades dalam waktu paling lama 30 (tiga puluh) hari sejak diterima dari Panitia Pilkades.",
+    "pelaksana": "Kepala Desa",
+    "keterangan": ""
+  },
+  {
+    "id": 10,
+    "tahap": "Persiapan",
+    "tanggal": "29-31 Juli 2026",
+    "jangka_waktu": "3 hari kerja",
+    "kegiatan": "Melaksanakan pemutakhiran dan validasi data pemilih dengan mendatangi langsung ke tempat tinggal pemilih.",
+    "pelaksana": "Pantarlih",
+    "keterangan": ""
+  },
+  {
+    "id": 11,
+    "tahap": "Persiapan",
+    "tanggal": "3 Agustus 2026",
+    "jangka_waktu": "1 hari kerja",
+    "kegiatan": "Menyusun dan menetapkan Daftar Pemilih Sementara.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 12,
+    "tahap": "Persiapan",
+    "tanggal": "4-6 Agustus 2026",
+    "jangka_waktu": "3 hari kerja",
+    "kegiatan": "Mengumumkan Daftar Pemilih Sementara dan perbaikan data pemilih.",
+    "pelaksana": "Panitia Pilkades",
+    "keterangan": ""
+  },
+  {
+    "id": 13,
+    "tahap": "Persiapan",
+    "tanggal": "7-11 Agustus 2026",
+    "jangka_waktu": "3 hari kerja",
+    "kegiatan": "Melakukan pendaftaran dan pencatatan Data Pemilih Tambahan.",
+    "pelaksana": "Pantarlih",
+    "keterangan": ""
+  },
