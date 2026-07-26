@@ -1,1 +1,76 @@
-
+[
+  {
+    "id": 1,
+    "judul": "Sosialisasi Pilkades Serentak Tahun 2026",
+    "tanggal": "2026-07-15",
+    "ringkasan": "Kecamatan Selorejo melaksanakan sosialisasi tahapan Pilkades Serentak Tahun 2026 kepada pemerintah desa, BPD, dan unsur masyarakat.",
+    "gambar": "images/berita/sosialisasi.jpg",
+    "link": "#",
+    "kategori": "Sosialisasi",
+    "penulis": "Admin Kecamatan"
+  },
+  {
+    "id": 2,
+    "judul": "Pembentukan Panitia Pemilihan Tingkat Desa",
+    "tanggal": "2026-08-05",
+    "ringkasan": "Pemerintah Desa bersama BPD membentuk Panitia Pemilihan Kepala Desa sesuai jadwal yang telah ditetapkan.",
+    "gambar": "images/berita/panitia.jpg",
+    "link": "#",
+    "kategori": "Tahapan",
+    "penulis": "Admin Kecamatan"
+  },
+  {
+    "id": 3,
+    "judul": "Pendaftaran Bakal Calon Kepala Desa Dibuka",
+    "tanggal": "2026-09-10",
+    "ringkasan": "Panitia membuka pendaftaran bakal calon Kepala Desa sesuai ketentuan Peraturan Bupati Blitar.",
+    "gambar": "images/berita/pendaftaran.jpg",
+    "link": "#",
+    "kategori": "Pengumuman",
+    "penulis": "Admin Kecamatan"
+  },
+  {
+    "id": 4,
+    "judul": "Penetapan Daftar Pemilih Tetap (DPT)",
+    "tanggal": "2026-10-20",
+    "ringkasan": "Daftar Pemilih Tetap telah ditetapkan sebagai dasar pelaksanaan pemungutan suara Pilkades Serentak Tahun 2026.",
+    "gambar": "images/berita/dpt.jpg",
+    "link": "#",
+    "kategori": "Informasi",
+    "penulis": "Admin Kecamatan"
+  },
+  {
+    "id": 5,
+    "judul": "Pemungutan Suara Pilkades Dilaksanakan 23 November 2026",
+    "tanggal": "2026-11-23",
+    "ringkasan": "Pelaksanaan pemungutan suara Pilkades Serentak berlangsung di Desa Sidomulyo, Sumberagung, dan Banjarsari secara langsung, umum, bebas, rahasia, jujur, dan adil.",
+    "gambar": "images/berita/pemungutan.jpg",
+    "link": "#",
+    "kategori": "Pelaksanaan",
+    "penulis": "Admin Kecamatan"
+  },
+  {
+    "id": 6,
+    "judul": "Rekapitulasi Hasil Penghitungan Suara",
+    "tanggal": "2026-11-24",
+    "ringkasan": "Panitia Pemilihan melaksanakan rekapitulasi hasil penghitungan suara secara terbuka dan transparan.",
+    "gambar": "images/berita/rekapitulasi.jpg",
+    "link": "#",
+    "kategori": "Hasil",
+    "penulis": "Admin Kecamatan"
+  }
+]
+{
+  "id": 1,
+  "judul": "...",
+  "slug": "sosialisasi-pilkades-2026",
+  "tanggal": "2026-07-15",
+  "kategori": "Sosialisasi",
+  "ringkasan": "...",
+  "isi": "...",
+  "gambar": "images/berita/sosialisasi.jpg",
+  "link": "berita/sosialisasi-pilkades-2026.html",
+  "penulis": "Admin Kecamatan",
+  "views": 0,
+  "featured": true
+}
