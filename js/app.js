@@ -1,316 +1,39 @@
-/* =====================================================
+/* ============================================================
    PORTAL PILKADES SERENTAK 2026
    Kecamatan Selorejo Kabupaten Blitar
-   app.js Final v3.0
 
-   BAGIAN 1
-   --------------------------------------------
+   app.js Final v4.0
+   BAGIAN 1A
+
+   ✓ Configuration
    ✓ DOM Ready
-   ✓ Sticky Navbar
-   ✓ Active Menu
-   ✓ Smooth Scroll
-   ✓ Back To Top
-   ✓ Mobile Menu
-   ✓ Loading Screen
-=====================================================*/
+   ✓ App Class
+   ✓ Cache DOM
+   ✓ Utility
+============================================================ */
 
 "use strict";
 
-/*=====================================================
-    DOM READY
-=====================================================*/
+/*============================================================
+    CONFIGURATION
+============================================================*/
 
-document.addEventListener("DOMContentLoaded", () => {
+const CONFIG = {
 
-    App.init();
+    headerOffset: 80,
 
-});
+    backTopOffset: 500,
 
+    activeOffset: 150,
 
-/*=====================================================
-    APP OBJECT
-=====================================================*/
-
-const App = {
-
-init(){
-
-    this.cacheDOM();
-
-    this.bindEvents();
-
-    this.hideLoader();
-
-    this.updateActiveMenu();
-
-    loadWebsiteData();
-
-}
-
-/*=====================================================
-    CACHE DOM
-=====================================================*/
-
-    cacheDOM(){
-
-        this.navbar = document.querySelector(".navbar");
-
-        this.backTop = document.querySelector(".back-top");
-
-        this.navLinks = document.querySelectorAll(".nav-link");
-
-        this.sections = document.querySelectorAll("section[id]");
-
-        this.mobileButton = document.querySelector(".mobile-toggle");
-
-        this.mobileMenu = document.querySelector(".navbar nav");
-
-        this.loader = document.querySelector(".loading");
-
-    },
-
-
-/*=====================================================
-    EVENTS
-=====================================================*/
-
-    bindEvents(){
-
-        window.addEventListener("scroll", () => {
-
-            this.onScroll();
-
-        });
-
-
-        window.addEventListener("resize", () => {
-
-            this.closeMobileMenu();
-
-        });
-
-
-        this.navLinks.forEach(link=>{
-
-            link.addEventListener("click",(e)=>{
-
-                this.smoothScroll(e);
-
-            });
-
-        });
-
-
-        if(this.mobileButton){
-
-            this.mobileButton.addEventListener("click",()=>{
-
-                this.toggleMobileMenu();
-
-            });
-
-        }
-
-
-        if(this.backTop){
-
-            this.backTop.addEventListener("click",()=>{
-
-                window.scrollTo({
-
-                    top:0,
-
-                    behavior:"smooth"
-
-                });
-
-            });
-
-        }
-
-    },
-
-
-/*=====================================================
-    SCROLL
-=====================================================*/
-
-    onScroll(){
-
-        this.stickyNavbar();
-
-        this.showBackTop();
-
-        this.updateActiveMenu();
-
-    },
-
-
-/*=====================================================
-    STICKY NAVBAR
-=====================================================*/
-
-    stickyNavbar(){
-
-        if(!this.navbar) return;
-
-        if(window.scrollY > 80){
-
-            this.navbar.classList.add("scrolled");
-
-        }
-
-        else{
-
-            this.navbar.classList.remove("scrolled");
-
-        }
-
-    },
-
-
-/*=====================================================
-    ACTIVE MENU
-=====================================================*/
-
-    updateActiveMenu(){
-
-        let current = "";
-
-        this.sections.forEach(section=>{
-
-            const top = section.offsetTop - 150;
-
-            const height = section.offsetHeight;
-
-            if(window.scrollY >= top){
-
-                current = section.getAttribute("id");
-
-            }
-
-        });
-
-
-        this.navLinks.forEach(link=>{
-
-            link.classList.remove("active");
-
-            if(link.getAttribute("href")==="#" + current){
-
-                link.classList.add("active");
-
-            }
-
-        });
-
-    },
-
-
-/*=====================================================
-    SMOOTH SCROLL
-=====================================================*/
-
-    smoothScroll(e){
-
-        const href = e.currentTarget.getAttribute("href");
-
-        if(!href.startsWith("#")) return;
-
-        const target = document.querySelector(href);
-
-        if(!target) return;
-
-        e.preventDefault();
-
-        window.scrollTo({
-
-            top:target.offsetTop - 70,
-
-            behavior:"smooth"
-
-        });
-
-        this.closeMobileMenu();
-
-    },
-
-
-/*=====================================================
-    MOBILE MENU
-=====================================================*/
-
-    toggleMobileMenu(){
-
-        if(!this.mobileMenu) return;
-
-        this.mobileMenu.classList.toggle("show");
-
-    },
-
-
-    closeMobileMenu(){
-
-        if(!this.mobileMenu) return;
-
-        this.mobileMenu.classList.remove("show");
-
-    },
-
-
-/*=====================================================
-    BACK TO TOP
-=====================================================*/
-
-    showBackTop(){
-
-        if(!this.backTop) return;
-
-        if(window.scrollY > 500){
-
-            this.backTop.classList.add("show");
-
-        }
-
-        else{
-
-            this.backTop.classList.remove("show");
-
-        }
-
-    },
-
-
-/*=====================================================
-    LOADING
-=====================================================*/
-
-    hideLoader(){
-
-        if(!this.loader) return;
-
-        window.addEventListener("load",()=>{
-
-            this.loader.classList.add("hide");
-
-        });
-
-    }
+    animationDuration: 400
 
 };
-/* =====================================================
-   APP.JS FINAL V3.0
-
-   BAGIAN 2
-
-   Dynamic JSON Loader
-
-=====================================================*/
 
 
-/*=====================================================
-    JSON CONFIG
-=====================================================*/
+/*============================================================
+    DATA PATH
+============================================================*/
 
 const DATA = {
 
@@ -327,248 +50,865 @@ const DATA = {
 };
 
 
-/*=====================================================
-    FETCH JSON
-=====================================================*/
+/*============================================================
+    DOM READY
+============================================================*/
 
-async function fetchJSON(url){
+document.addEventListener("DOMContentLoaded", () => {
 
-    try{
+    window.Pilkades = new PilkadesApp();
 
-        const response = await fetch(url);
+    window.Pilkades.init();
 
-        if(!response.ok){
+});
 
-            throw new Error("Gagal mengambil data : " + url);
+
+/*============================================================
+    APP CLASS
+============================================================*/
+
+class PilkadesApp{
+
+    constructor(){
+
+        this.dom = {};
+
+        this.state = {
+
+            loaded:false,
+
+            mobileOpen:false,
+
+            currentSection:""
+
+        };
+
+    }
+
+
+/*============================================================
+    INITIALIZATION
+============================================================*/
+
+    async init(){
+
+        this.cacheDOM();
+
+        this.bindEvents();
+
+        this.hideLoader();
+
+        this.updateNavbar();
+
+        this.updateActiveMenu();
+
+    }
+
+
+/*============================================================
+    CACHE DOM
+============================================================*/
+
+    cacheDOM(){
+
+        this.dom.body =
+            document.body;
+
+        this.dom.navbar =
+            document.querySelector(".navbar");
+
+        this.dom.navLinks =
+            document.querySelectorAll(".nav-link");
+
+        this.dom.sections =
+            document.querySelectorAll("section[id]");
+
+        this.dom.backTop =
+            document.querySelector(".back-top");
+
+        this.dom.mobileButton =
+            document.querySelector(".mobile-toggle");
+
+        this.dom.mobileMenu =
+            document.querySelector(".navbar nav");
+
+        this.dom.loader =
+            document.querySelector(".loading");
+
+        this.dom.running =
+            document.getElementById("runningText");
+
+        this.dom.desa =
+            document.getElementById("desaContainer");
+
+        this.dom.timeline =
+            document.getElementById("timelineContainer");
+
+        this.dom.berita =
+            document.getElementById("beritaContainer");
+
+        this.dom.regulasi =
+            document.getElementById("regulasiContainer");
+
+        this.dom.galeri =
+            document.getElementById("galeriContainer");
+
+    }
+
+
+/*============================================================
+    UTILITY
+============================================================*/
+
+    qs(selector){
+
+        return document.querySelector(selector);
+
+    }
+
+
+    qsa(selector){
+
+        return document.querySelectorAll(selector);
+
+    }
+
+
+    byId(id){
+
+        return document.getElementById(id);
+
+    }
+
+
+    create(tag){
+
+        return document.createElement(tag);
+
+    }
+
+
+    hasElement(element){
+
+        return element !== null;
+
+    }
+
+
+    isArray(data){
+
+        return Array.isArray(data);
+
+    }
+
+
+    log(message){
+
+        console.log(
+
+            "%c[PILKADES]",
+
+            "color:#005baa;font-weight:bold",
+
+            message
+
+        );
+
+    }
+
+
+    error(message){
+
+        console.error(
+
+            "%c[PILKADES ERROR]",
+
+            "color:red;font-weight:bold",
+
+            message
+
+        );
+
+    }
+
+}
+/*============================================================
+    EVENT BINDING
+============================================================*/
+
+    bindEvents(){
+
+        /* Scroll */
+
+        window.addEventListener("scroll", () => {
+
+            this.handleScroll();
+
+        });
+
+
+        /* Resize */
+
+        window.addEventListener("resize", () => {
+
+            this.handleResize();
+
+        });
+
+
+        /* Navigation */
+
+        this.dom.navLinks.forEach(link => {
+
+            link.addEventListener("click", (event) => {
+
+                this.smoothScroll(event);
+
+            });
+
+        });
+
+
+        /* Mobile Menu */
+
+        if(this.hasElement(this.dom.mobileButton)){
+
+            this.dom.mobileButton.addEventListener("click", () => {
+
+                this.toggleMobileMenu();
+
+            });
 
         }
 
-        return await response.json();
+
+        /* Back To Top */
+
+        if(this.hasElement(this.dom.backTop)){
+
+            this.dom.backTop.addEventListener("click", () => {
+
+                window.scrollTo({
+
+                    top:0,
+
+                    behavior:"smooth"
+
+                });
+
+            });
+
+        }
 
     }
 
-    catch(error){
 
-        console.error(error);
+/*============================================================
+    HANDLE SCROLL
+============================================================*/
 
-        return [];
+    handleScroll(){
+
+        this.updateNavbar();
+
+        this.updateBackTop();
+
+        this.updateActiveMenu();
+
+    }
+
+
+/*============================================================
+    HANDLE RESIZE
+============================================================*/
+
+    handleResize(){
+
+        if(window.innerWidth > 992){
+
+            this.closeMobileMenu();
+
+        }
+
+    }
+
+
+/*============================================================
+    STICKY NAVBAR
+============================================================*/
+
+    updateNavbar(){
+
+        if(!this.hasElement(this.dom.navbar)) return;
+
+        if(window.scrollY > 60){
+
+            this.dom.navbar.classList.add("scrolled");
+
+        }
+
+        else{
+
+            this.dom.navbar.classList.remove("scrolled");
+
+        }
+
+    }
+/*============================================================
+    ACTIVE MENU
+============================================================*/
+
+    updateActiveMenu(){
+
+        if(!this.dom.sections.length) return;
+
+        let current = "";
+
+        this.dom.sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop - CONFIG.activeOffset;
+
+            const sectionHeight =
+                section.offsetHeight;
+
+            if(
+                window.scrollY >= sectionTop &&
+                window.scrollY <
+                sectionTop + sectionHeight
+            ){
+
+                current = section.id;
+
+            }
+
+        });
+
+        this.state.currentSection = current;
+
+        this.dom.navLinks.forEach(link => {
+
+            link.classList.remove("active");
+
+            const target =
+                link.getAttribute("href");
+
+            if(target === "#" + current){
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+
+/*============================================================
+    SMOOTH SCROLL
+============================================================*/
+
+    smoothScroll(event){
+
+        const href =
+            event.currentTarget.getAttribute("href");
+
+        if(
+            !href ||
+            !href.startsWith("#")
+        ){
+
+            return;
+
+        }
+
+        const target =
+            document.querySelector(href);
+
+        if(!target){
+
+            return;
+
+        }
+
+        event.preventDefault();
+
+        const destination =
+            target.offsetTop -
+            CONFIG.headerOffset;
+
+        window.scrollTo({
+
+            top: destination,
+
+            behavior: "smooth"
+
+        });
+
+        this.closeMobileMenu();
+
+    }
+/*============================================================
+    MOBILE MENU
+============================================================*/
+
+    toggleMobileMenu(){
+
+        if(!this.hasElement(this.dom.mobileMenu)) return;
+
+        this.state.mobileOpen = !this.state.mobileOpen;
+
+        this.dom.mobileMenu.classList.toggle(
+            "show",
+            this.state.mobileOpen
+        );
+
+        if(this.hasElement(this.dom.mobileButton)){
+
+            this.dom.mobileButton.classList.toggle(
+                "active",
+                this.state.mobileOpen
+            );
+
+        }
+
+    }
+
+
+/*============================================================
+    CLOSE MOBILE MENU
+============================================================*/
+
+    closeMobileMenu(){
+
+        if(!this.hasElement(this.dom.mobileMenu)) return;
+
+        this.state.mobileOpen = false;
+
+        this.dom.mobileMenu.classList.remove("show");
+
+        if(this.hasElement(this.dom.mobileButton)){
+
+            this.dom.mobileButton.classList.remove("active");
+
+        }
+
+    }
+
+
+/*============================================================
+    BACK TO TOP
+============================================================*/
+
+    updateBackTop(){
+
+        if(!this.hasElement(this.dom.backTop)) return;
+
+        if(window.scrollY >= CONFIG.backTopOffset){
+
+            this.dom.backTop.classList.add("show");
+
+        }
+
+        else{
+
+            this.dom.backTop.classList.remove("show");
+
+        }
+
+    }
+
+
+/*============================================================
+    LOADING SCREEN
+============================================================*/
+
+    hideLoader(){
+
+        if(!this.hasElement(this.dom.loader)) return;
+
+        window.addEventListener("load", () => {
+
+            this.dom.loader.classList.add("hide");
+
+            setTimeout(() => {
+
+                this.dom.loader.style.display = "none";
+
+            },300);
+
+        });
+
+    }
+
+
+/*============================================================
+    SCROLL TO TOP
+============================================================*/
+
+    scrollTop(){
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+    }
+
+
+/*============================================================
+    REFRESH ACTIVE COMPONENT
+============================================================*/
+
+    refresh(){
+
+        this.updateNavbar();
+
+        this.updateBackTop();
+
+        this.updateActiveMenu();
 
     }
 
 }
+/*============================================================
+    LOAD WEBSITE
+============================================================*/
+
+    async loadWebsite(){
+
+        const tasks = [];
+
+        if(this.hasElement(this.dom.desa))
+            tasks.push(this.loadDesa());
+
+        if(this.hasElement(this.dom.timeline))
+            tasks.push(this.loadTahapan());
+
+        if(this.hasElement(this.dom.berita))
+            tasks.push(this.loadBerita());
+
+        if(this.hasElement(this.dom.regulasi))
+            tasks.push(this.loadRegulasi());
+
+        if(this.hasElement(this.dom.galeri))
+            tasks.push(this.loadGaleri());
+
+        await Promise.all(tasks);
+
+    }
 
 
-/*=====================================================
+/*============================================================
+    FETCH JSON
+============================================================*/
+
+    async fetchJSON(path){
+
+        try{
+
+            const response = await fetch(path,{
+
+                cache:"no-cache"
+
+            });
+
+            if(!response.ok){
+
+                throw new Error(
+
+                    `Gagal memuat ${path}
+                    (${response.status})`
+
+                );
+
+            }
+
+            return await response.json();
+
+        }
+
+        catch(error){
+
+            this.error(error);
+
+            return [];
+
+        }
+
+    }
+
+
+/*============================================================
     LOAD DESA
-=====================================================*/
+============================================================*/
 
-async function loadDesa(){
+    async loadDesa(){
 
-    const data = await fetchJSON(DATA.desa);
+        const data = await this.fetchJSON(DATA.desa);
 
-    const container = document.getElementById("desaContainer");
+        if(!this.isArray(data)){
 
-    if(!container) return;
+            this.dom.desa.innerHTML =
 
-    container.innerHTML="";
+            `<p class="text-center">
+                Data desa tidak tersedia.
+            </p>`;
 
-    data.forEach(desa=>{
+            return;
 
-        container.innerHTML += `
+        }
 
-        <div class="desa-card">
+        let html = "";
 
-            <img src="${desa.gambar}" alt="${desa.nama}">
+        data.forEach(desa=>{
 
-            <div class="desa-content">
+            html += `
 
-                <h3>${desa.nama}</h3>
+            <article class="desa-card">
 
-                <p>${desa.deskripsi}</p>
+                <div class="desa-image">
 
-                <a href="${desa.link}" class="btn-primary">
+                    <img
+                        src="${desa.gambar}"
+                        alt="${desa.nama}"
+                        loading="lazy">
 
-                    Selengkapnya
+                </div>
 
-                </a>
+                <div class="desa-content">
 
-            </div>
+                    <h3>${desa.nama}</h3>
 
-        </div>
+                    <p>${desa.deskripsi}</p>
 
-        `;
+                    <div class="desa-meta">
 
-    });
+                        <span>
+                            📍 ${desa.lokasi}
+                        </span>
 
-}
+                        <span>
+                            🗳 ${desa.kategori}
+                        </span>
 
+                    </div>
 
-/*=====================================================
+                    <a
+                        href="${desa.link}"
+                        class="btn-primary">
+
+                        Selengkapnya
+
+                    </a>
+
+                </div>
+
+            </article>
+
+            `;
+
+        });
+
+        this.dom.desa.innerHTML = html;
+
+        this.log(
+
+            `${data.length} desa berhasil dimuat.`
+
+        );
+
+    }
+/*============================================================
     LOAD TAHAPAN
-=====================================================*/
+============================================================*/
 
-async function loadTahapan(){
+async loadTahapan(){
 
-    const data = await fetchJSON(DATA.tahapan);
+    const data = await this.fetchJSON(DATA.tahapan);
 
-    const timeline = document.getElementById("timelineContainer");
+    if(!this.isArray(data) || !this.hasElement(this.dom.timeline)){
 
-    if(!timeline) return;
+        this.dom.timeline.innerHTML =
+        `<p class="text-center">
+            Data tahapan belum tersedia.
+        </p>`;
 
-    timeline.innerHTML="";
+        return;
 
-    data.forEach(item=>{
+    }
 
-        timeline.innerHTML += `
+    let html = "";
 
-        <div class="timeline-item">
+    const today = new Date();
 
-            <div class="timeline-date">
+    data.forEach((item,index)=>{
 
-                ${item.tanggal}
+        const startDate = new Date(item.mulai);
+        const endDate   = new Date(item.selesai);
+
+        let status = "Akan Datang";
+        let badge  = "badge-upcoming";
+
+        if(today > endDate){
+
+            status = "Selesai";
+            badge = "badge-success";
+
+        }else if(today >= startDate && today <= endDate){
+
+            status = "Berlangsung";
+            badge = "badge-active";
+
+        }
+
+        html += `
+
+        <article class="timeline-item">
+
+            <div class="timeline-number">
+
+                ${index + 1}
 
             </div>
 
             <div class="timeline-content">
 
-                <span class="badge">
+                <h3>${item.nama}</h3>
 
-                    ${item.tahap}
+                <p>${item.deskripsi}</p>
+
+                <div class="timeline-date">
+
+                    📅 ${item.mulai}
+                    &mdash;
+                    ${item.selesai}
+
+                </div>
+
+                <span class="timeline-status ${badge}">
+
+                    ${status}
 
                 </span>
 
-                <h3>
-
-                    ${item.kegiatan}
-
-                </h3>
-
-                <p>
-
-                    <strong>Pelaksana :</strong>
-
-                    ${item.pelaksana}
-
-                </p>
-
             </div>
 
-        </div>
+        </article>
 
         `;
 
     });
 
+    this.dom.timeline.innerHTML = html;
+
+    this.updateRunningInfo(data);
+
+    this.log(`${data.length} tahapan berhasil dimuat.`);
+
 }
 
 
-/*=====================================================
+/*============================================================
     RUNNING INFORMATION
-=====================================================*/
+============================================================*/
 
-async function loadRunningInfo(){
+updateRunningInfo(data){
 
-    const berita = await fetchJSON(DATA.berita);
+    if(!this.hasElement(this.dom.running)) return;
 
-    const running = document.getElementById("runningText");
+    if(!this.isArray(data)) return;
 
-    if(!running) return;
+    const today = new Date();
 
-    if(berita.length===0){
+    const current = data.find(item=>{
 
-        running.innerHTML="Belum ada informasi terbaru.";
+        const mulai = new Date(item.mulai);
+
+        const selesai = new Date(item.selesai);
+
+        return today >= mulai && today <= selesai;
+
+    });
+
+    if(current){
+
+        this.dom.running.innerHTML =
+
+        `🔴 Tahapan saat ini :
+        <strong>${current.nama}</strong>`;
 
         return;
 
     }
 
-    let text="";
+    const next = data.find(item=>{
 
-    berita.forEach(item=>{
-
-        text += "📢 " + item.judul + " &nbsp;&nbsp;&nbsp;&nbsp;";
+        return new Date(item.mulai) > today;
 
     });
 
-    running.innerHTML=text;
+    if(next){
+
+        this.dom.running.innerHTML =
+
+        `🟢 Tahapan berikutnya :
+        <strong>${next.nama}</strong>`;
+
+        return;
+
+    }
+
+    this.dom.running.innerHTML =
+
+    `✅ Seluruh tahapan Pilkades telah selesai.`;
 
 }
-
-
-/*=====================================================
-    LOAD SEMUA DATA
-=====================================================*/
-
-async function loadWebsiteData(){
-
-    await Promise.all([
-
-        loadDesa(),
-
-        loadTahapan(),
-
-        loadRunningInfo()
-
-    ]);
-
-}
-/* =====================================================
-   APP.JS FINAL V3.0
-
-   BAGIAN 3
-
-   BERITA
-   REGULASI
-   GALERI
-
-=====================================================*/
-
-
-/*=====================================================
+/*============================================================
     LOAD BERITA
-=====================================================*/
+============================================================*/
 
-async function loadBerita(){
+async loadBerita(){
 
-    const data = await fetchJSON(DATA.berita);
+    const data = await this.fetchJSON(DATA.berita);
 
-    const container = document.getElementById("beritaContainer");
+    if(!this.isArray(data) || !this.hasElement(this.dom.berita)){
 
-    if(!container) return;
-
-    container.innerHTML = "";
-
-    if(data.length === 0){
-
-        container.innerHTML = `
-            <div class="empty-data">
-
+        this.dom.berita.innerHTML = `
+            <p class="text-center">
                 Belum ada berita.
-
-            </div>
+            </p>
         `;
 
         return;
 
     }
+
+    let html = "";
 
     data.forEach(item=>{
 
-        container.innerHTML += `
+        html += `
 
-        <article class="berita-card">
+        <article class="news-card">
 
-            <img
-                src="${item.gambar}"
-                alt="${item.judul}"
-                loading="lazy"
-            >
+            <div class="news-image">
 
-            <div class="berita-content">
+                <img
+                    src="${item.gambar}"
+                    alt="${item.judul}"
+                    loading="lazy">
 
-                <span class="berita-date">
+            </div>
 
-                    📅 ${item.tanggal}
+            <div class="news-content">
+
+                <span class="news-category">
+
+                    ${item.kategori}
 
                 </span>
 
@@ -578,6 +918,12 @@ async function loadBerita(){
 
                 </h3>
 
+                <small>
+
+                    📅 ${item.tanggal}
+
+                </small>
+
                 <p>
 
                     ${item.ringkasan}
@@ -586,9 +932,9 @@ async function loadBerita(){
 
                 <a
                     href="${item.link}"
-                    class="btn-outline"
                     target="_blank"
-                >
+                    rel="noopener"
+                    class="btn-primary">
 
                     Baca Selengkapnya
 
@@ -602,135 +948,124 @@ async function loadBerita(){
 
     });
 
+    this.dom.berita.innerHTML = html;
+
+    this.log(`${data.length} berita dimuat.`);
+
 }
 
 
-
-/*=====================================================
+/*============================================================
     LOAD REGULASI
-=====================================================*/
+============================================================*/
 
-async function loadRegulasi(){
+async loadRegulasi(){
 
-    const data = await fetchJSON(DATA.regulasi);
+    const data = await this.fetchJSON(DATA.regulasi);
 
-    const container = document.getElementById("regulasiContainer");
+    if(!this.isArray(data) || !this.hasElement(this.dom.regulasi)){
 
-    if(!container) return;
-
-    container.innerHTML = "";
-
-    if(data.length===0){
-
-        container.innerHTML = `
-            <div class="empty-data">
-
+        this.dom.regulasi.innerHTML = `
+            <p class="text-center">
                 Belum ada regulasi.
-
-            </div>
+            </p>
         `;
 
         return;
 
     }
 
+    let html = "";
+
     data.forEach(item=>{
 
-        container.innerHTML += `
+        html += `
 
-        <div class="regulasi-card">
+        <article class="reg-card">
 
-            <div>
+            <h3>
 
-                <h3>
+                ${item.judul}
 
-                    📄 ${item.judul}
+            </h3>
 
-                </h3>
+            <small>
 
-                <p>
+                ${item.tahun}
 
-                    ${item.deskripsi}
+            </small>
 
-                </p>
+            <p>
 
-            </div>
+                ${item.deskripsi}
+
+            </p>
 
             <a
-
                 href="${item.file}"
-
                 target="_blank"
+                rel="noopener"
+                class="btn-secondary">
 
-                class="btn-primary"
-
-            >
-
-                Download
+                📄 Download
 
             </a>
 
-        </div>
+        </article>
 
         `;
 
     });
 
+    this.dom.regulasi.innerHTML = html;
+
+    this.log(`${data.length} regulasi dimuat.`);
+
 }
 
 
-
-/*=====================================================
+/*============================================================
     LOAD GALERI
-=====================================================*/
+============================================================*/
 
-async function loadGaleri(){
+async loadGaleri(){
 
-    const data = await fetchJSON(DATA.galeri);
+    const data = await this.fetchJSON(DATA.galeri);
 
-    const container = document.getElementById("galeriContainer");
+    if(!this.isArray(data) || !this.hasElement(this.dom.galeri)){
 
-    if(!container) return;
-
-    container.innerHTML = "";
-
-    if(data.length===0){
-
-        container.innerHTML = `
-            <div class="empty-data">
-
+        this.dom.galeri.innerHTML = `
+            <p class="text-center">
                 Galeri belum tersedia.
-
-            </div>
+            </p>
         `;
 
         return;
 
     }
 
+    let html = "";
+
     data.forEach(item=>{
 
-        container.innerHTML += `
+        html += `
 
-        <div class="galeri-item">
+        <figure class="gallery-item">
 
             <img
-
                 src="${item.gambar}"
-
                 alt="${item.judul}"
+                loading="lazy">
 
-                loading="lazy"
+            <figcaption>
 
-            >
-
-            <div class="galeri-overlay">
-
-                <h4>
+                <strong>
 
                     ${item.judul}
 
-                </h4>
+                </strong>
+
+                <br>
 
                 <small>
 
@@ -738,326 +1073,16 @@ async function loadGaleri(){
 
                 </small>
 
-            </div>
+            </figcaption>
 
-        </div>
+        </figure>
 
         `;
 
     });
 
-}
+    this.dom.galeri.innerHTML = html;
 
-
-
-/*=====================================================
-    LAZY IMAGE
-=====================================================*/
-
-function lazyImage(){
-
-    const images = document.querySelectorAll("img");
-
-    images.forEach(img=>{
-
-        img.loading = "lazy";
-
-    });
+    this.log(`${data.length} foto dimuat.`);
 
 }
-
-
-
-/*=====================================================
-    REFRESH WEBSITE
-=====================================================*/
-
-async function refreshContent(){
-
-    await Promise.all([
-
-        loadBerita(),
-
-        loadRegulasi(),
-
-        loadGaleri()
-
-    ]);
-
-    lazyImage();
-
-}
-/* =====================================================
-   PORTAL PILKADES SERENTAK 2026
-   Kecamatan Selorejo Kabupaten Blitar
-
-   app.js Final v3.0
-
-   BAGIAN 4
-
-   ✓ Scroll Reveal
-   ✓ Intersection Observer
-   ✓ Counter Animation
-   ✓ Image Fade
-   ✓ Performance
-   ✓ Final Initialization
-=====================================================*/
-
-
-/*=====================================================
-    SCROLL REVEAL
-=====================================================*/
-
-function revealElements(){
-
-    const elements = document.querySelectorAll(
-
-        ".reveal"
-
-    );
-
-    const observer = new IntersectionObserver(
-
-        (entries)=>{
-
-            entries.forEach(entry=>{
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add("show");
-
-                }
-
-            });
-
-        },
-
-        {
-
-            threshold:0.15
-
-        }
-
-    );
-
-    elements.forEach(el=>{
-
-        observer.observe(el);
-
-    });
-
-}
-
-
-
-/*=====================================================
-    COUNTER ANIMATION
-=====================================================*/
-
-function animateCounter(){
-
-    const counters = document.querySelectorAll(
-
-        "[data-counter]"
-
-    );
-
-    counters.forEach(counter=>{
-
-        const target = Number(
-
-            counter.dataset.counter
-
-        );
-
-        const speed = 50;
-
-        let value = 0;
-
-        function update(){
-
-            const increment =
-
-                Math.ceil(target / speed);
-
-            value += increment;
-
-            if(value > target){
-
-                value = target;
-
-            }
-
-            counter.textContent = value;
-
-            if(value < target){
-
-                requestAnimationFrame(update);
-
-            }
-
-        }
-
-        update();
-
-    });
-
-}
-
-
-
-/*=====================================================
-    IMAGE FADE
-=====================================================*/
-
-function imageFade(){
-
-    const images = document.querySelectorAll(
-
-        "img"
-
-    );
-
-    images.forEach(img=>{
-
-        img.addEventListener("load",()=>{
-
-            img.classList.add("loaded");
-
-        });
-
-    });
-
-}
-
-
-
-/*=====================================================
-    OBSERVE SECTION
-=====================================================*/
-
-function observeSection(){
-
-    const sections = document.querySelectorAll(
-
-        "section"
-
-    );
-
-    const observer = new IntersectionObserver(
-
-        (entries)=>{
-
-            entries.forEach(entry=>{
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add("visible");
-
-                }
-
-            });
-
-        },
-
-        {
-
-            threshold:.25
-
-        }
-
-    );
-
-    sections.forEach(section=>{
-
-        observer.observe(section);
-
-    });
-
-}
-
-
-
-/*=====================================================
-    PERFORMANCE
-=====================================================*/
-
-function optimizeWebsite(){
-
-    document.querySelectorAll("a").forEach(link=>{
-
-        if(
-
-            link.hostname===location.hostname
-
-        ){
-
-            link.setAttribute(
-
-                "draggable",
-
-                "false"
-
-            );
-
-        }
-
-    });
-
-}
-
-
-
-/*=====================================================
-    PRELOAD IMAGE
-=====================================================*/
-
-function preloadHero(){
-
-    const hero = new Image();
-
-    hero.src="images/hero.png";
-
-}
-
-
-
-/*=====================================================
-    INITIALIZATION
-=====================================================*/
-
-    revealElements();
-
-    animateCounter();
-
-    imageFade();
-
-    observeSection();
-
-    optimizeWebsite();
-
-    preloadHero();
-
-});
-
-
-
-/*=====================================================
-    WEBSITE READY
-=====================================================*/
-
-console.log(
-
-    "%cPortal Pilkades Kecamatan Selorejo",
-
-    "color:#005baa;font-size:16px;font-weight:bold;"
-
-);
-
-console.log(
-
-    "%cVersion 3.0 Loaded",
-
-    "color:green;font-size:14px;"
-
-);
