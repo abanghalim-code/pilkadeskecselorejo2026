@@ -4240,3 +4240,26 @@ html:focus-within{
    THE END
    Style.css Final 3.0
 ========================================================== */
+.flip{
+
+    animation:flip .45s ease;
+
+}
+
+@keyframes flip{
+
+    0%{
+
+        transform:translateY(-6px);
+        opacity:.5;
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+        opacity:1;
+
+    }
+
+}
