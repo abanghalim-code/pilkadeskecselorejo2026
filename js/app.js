@@ -1086,3 +1086,487 @@ async loadGaleri(){
     this.log(`${data.length} foto dimuat.`);
 
 }
+/*============================================================
+    INITIALIZE ANIMATION
+============================================================*/
+
+initAnimation(){
+
+    this.observeElements();
+
+    this.animateCounter();
+
+    this.preloadHero();
+
+}
+
+
+/*============================================================
+    INTERSECTION OBSERVER
+============================================================*/
+
+observeElements(){
+
+    const elements = document.querySelectorAll(
+
+        ".reveal,.card,.desa-card,.timeline-item,.news-card,.gallery-item,.reg-card"
+
+    );
+
+    if(!elements.length) return;
+
+    const observer = new IntersectionObserver(
+
+        (entries)=>{
+
+            entries.forEach(entry=>{
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("show");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+
+            threshold:0.15,
+
+            rootMargin:"0px 0px -50px 0px"
+
+        }
+
+    );
+
+    elements.forEach(el=>{
+
+        observer.observe(el);
+
+    });
+
+}
+
+
+/*============================================================
+    COUNTER ANIMATION
+============================================================*/
+
+animateCounter(){
+
+    const counters = document.querySelectorAll("[data-counter]");
+
+    if(!counters.length) return;
+
+    const observer = new IntersectionObserver(
+
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(!entry.isIntersecting) return;
+
+                const counter = entry.target;
+
+                const target = Number(
+
+                    counter.dataset.counter
+
+                );
+
+                let current = 0;
+
+                const increment = Math.max(
+
+                    1,
+
+                    Math.ceil(target/100)
+
+                );
+
+                const timer = setInterval(()=>{
+
+                    current += increment;
+
+                    if(current >= target){
+
+                        current = target;
+
+                        clearInterval(timer);
+
+                    }
+
+                    counter.textContent = current.toLocaleString("id-ID");
+
+                },20);
+
+                observer.unobserve(counter);
+
+            });
+
+        },
+
+        {
+
+            threshold:0.5
+
+        }
+
+    );
+
+    counters.forEach(counter=>{
+
+        observer.observe(counter);
+
+    });
+
+}
+
+
+/*============================================================
+    PRELOAD HERO IMAGE
+============================================================*/
+
+preloadHero(){
+
+    const hero = document.querySelector(".hero img");
+
+    if(!hero) return;
+
+    const image = new Image();
+
+    image.src = hero.src;
+
+}
+
+
+/*============================================================
+    EXTRA LAZY LOADING
+============================================================*/
+
+lazyLoadImages(){
+
+    const images = document.querySelectorAll(
+
+        "img[data-src]"
+
+    );
+
+    if(!images.length) return;
+
+    const observer = new IntersectionObserver(
+
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(!entry.isIntersecting) return;
+
+                const img = entry.target;
+
+                img.src = img.dataset.src;
+
+                img.removeAttribute("data-src");
+
+                observer.unobserve(img);
+
+            });
+
+        },
+
+        {
+
+            threshold:0.1
+
+        }
+
+    );
+
+    images.forEach(img=>{
+
+        observer.observe(img);
+
+    });
+
+}
+
+
+/*============================================================
+    DEBOUNCE
+============================================================*/
+
+debounce(callback,delay=200){
+
+    let timer;
+
+    return (...args)=>{
+
+        clearTimeout(timer);
+
+        timer = setTimeout(()=>{
+
+            callback.apply(this,args);
+
+        },delay);
+
+    };
+
+}
+
+
+/*============================================================
+    THROTTLE
+============================================================*/
+
+throttle(callback,limit=100){
+
+    let waiting=false;
+
+    return (...args)=>{
+
+        if(waiting) return;
+
+        callback.apply(this,args);
+
+        waiting=true;
+
+        setTimeout(()=>{
+
+            waiting=false;
+
+        },limit);
+
+    };
+
+}
+
+
+/*============================================================
+    PERFORMANCE OPTIMIZATION
+============================================================*/
+
+optimizePerformance(){
+
+    window.addEventListener(
+
+        "scroll",
+
+        this.throttle(()=>{
+
+            this.handleScroll();
+
+        },50),
+
+        {
+
+            passive:true
+
+        }
+
+    );
+
+    window.addEventListener(
+
+        "resize",
+
+        this.debounce(()=>{
+
+            this.handleResize();
+
+        },200)
+
+    );
+
+}
+
+
+/*============================================================
+    START UI ENGINE
+============================================================*/
+
+startUI(){
+
+    this.initAnimation();
+
+    this.lazyLoadImages();
+
+    this.optimizePerformance();
+
+    this.fixBrokenImages();
+
+    this.preloadAssets();
+
+    this.performanceInfo();
+
+}
+/*============================================================
+    SKELETON LOADING
+============================================================*/
+
+showSkeleton(container,count=3){
+
+    if(!this.hasElement(container)) return;
+
+    let html="";
+
+    for(let i=0;i<count;i++){
+
+        html+=`
+
+        <div class="skeleton-card">
+
+            <div class="skeleton-image"></div>
+
+            <div class="skeleton-title"></div>
+
+            <div class="skeleton-text"></div>
+
+            <div class="skeleton-text short"></div>
+
+        </div>
+
+        `;
+
+    }
+
+    container.innerHTML=html;
+
+}
+
+
+/*============================================================
+    EMPTY STATE
+============================================================*/
+
+showEmpty(container,message){
+
+    if(!this.hasElement(container)) return;
+
+    container.innerHTML=`
+
+    <div class="empty-state">
+
+        <i class="fas fa-folder-open"></i>
+
+        <h3>Belum Ada Data</h3>
+
+        <p>${message}</p>
+
+    </div>
+
+    `;
+
+}
+
+
+/*============================================================
+    ERROR STATE
+============================================================*/
+
+showError(container,message){
+
+    if(!this.hasElement(container)) return;
+
+    container.innerHTML=`
+
+    <div class="error-state">
+
+        <i class="fas fa-circle-exclamation"></i>
+
+        <h3>Terjadi Kesalahan</h3>
+
+        <p>${message}</p>
+
+    </div>
+
+    `;
+
+}
+
+
+/*============================================================
+    IMAGE FALLBACK
+============================================================*/
+
+fixBrokenImages(){
+
+    document.querySelectorAll("img").forEach(img=>{
+
+        img.onerror=()=>{
+
+            img.src="images/no-image.webp";
+
+        };
+
+    });
+
+}
+
+
+/*============================================================
+    PRELOAD IMPORTANT FILES
+============================================================*/
+
+preloadAssets(){
+
+    [
+
+        "css/style.css",
+
+        "css/responsive.css",
+
+        "images/logo.png"
+
+    ].forEach(file=>{
+
+        const link=document.createElement("link");
+
+        link.rel="preload";
+
+        link.as=file.endsWith(".css")?"style":"image";
+
+        link.href=file;
+
+        document.head.appendChild(link);
+
+    });
+
+}
+
+
+/*============================================================
+    MEMORY CLEANUP
+============================================================*/
+
+cleanup(){
+
+    window.removeEventListener("scroll",this.handleScroll);
+
+    window.removeEventListener("resize",this.handleResize);
+
+}
+
+
+/*============================================================
+    PERFORMANCE INFO
+============================================================*/
+
+performanceInfo(){
+
+    if(!window.performance) return;
+
+    const load=
+
+        performance.now().toFixed(0);
+
+    this.log(
+
+        `Website loaded in ${load} ms`
+
+    );
+
+}
