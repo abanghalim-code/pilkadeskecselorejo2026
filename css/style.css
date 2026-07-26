@@ -1575,3 +1575,528 @@ strong{
     }
 
 }
+/* =====================================================
+   STYLE.CSS FINAL V3.0
+   BAGIAN 4
+   Tahapan
+   Berita
+   Regulasi
+   Galeri
+=====================================================*/
+
+
+/*=====================================================
+  TAHAPAN PILKADES
+=====================================================*/
+
+.tahapan-section{
+
+    background:#ffffff;
+
+}
+
+.timeline{
+
+    position:relative;
+
+    max-width:900px;
+
+    margin:0 auto;
+
+    padding-left:35px;
+
+}
+
+.timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:18px;
+
+    top:0;
+
+    width:4px;
+
+    height:100%;
+
+    background:linear-gradient(
+        var(--primary),
+        var(--primary-light)
+    );
+
+    border-radius:20px;
+
+}
+
+.timeline-item{
+
+    position:relative;
+
+    margin-bottom:45px;
+
+}
+
+.timeline-item:last-child{
+
+    margin-bottom:0;
+
+}
+
+.timeline-icon{
+
+    position:absolute;
+
+    left:-35px;
+
+    top:12px;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    color:#222;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:1.15rem;
+
+    box-shadow:var(--shadow);
+
+}
+
+.timeline-content{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:28px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
+}
+
+.timeline-content:hover{
+
+    transform:translateX(8px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.timeline-date{
+
+    display:inline-block;
+
+    background:var(--primary);
+
+    color:#ffffff;
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    font-size:.85rem;
+
+    margin-bottom:15px;
+
+}
+
+.timeline-content h3{
+
+    color:var(--primary);
+
+    margin-bottom:12px;
+
+}
+
+
+/*=====================================================
+  BERITA
+=====================================================*/
+
+.berita-section{
+
+    background:#f7f9fc;
+
+}
+
+.berita-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+
+    gap:30px;
+
+}
+
+.berita-card{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
+}
+
+.berita-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.berita-image{
+
+    height:220px;
+
+    overflow:hidden;
+
+}
+
+.berita-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.berita-card:hover .berita-image img{
+
+    transform:scale(1.08);
+
+}
+
+.berita-content{
+
+    padding:28px;
+
+}
+
+.berita-date{
+
+    color:var(--primary);
+
+    font-size:.90rem;
+
+    font-weight:600;
+
+    margin-bottom:12px;
+
+}
+
+.berita-content h3{
+
+    margin-bottom:15px;
+
+    color:var(--black);
+
+}
+
+.berita-content p{
+
+    margin-bottom:22px;
+
+}
+
+.berita-content .btn-outline{
+
+    width:100%;
+
+}
+
+
+/*=====================================================
+  REGULASI
+=====================================================*/
+
+.regulasi-section{
+
+    background:#ffffff;
+
+}
+
+.regulasi-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:28px;
+
+}
+
+.regulasi-card{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:26px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
+}
+
+.regulasi-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.regulasi-icon{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-light)
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#ffffff;
+
+    font-size:1.6rem;
+
+    flex-shrink:0;
+
+}
+
+.regulasi-content h3{
+
+    color:var(--primary);
+
+    margin-bottom:10px;
+
+}
+
+.regulasi-content p{
+
+    margin-bottom:18px;
+
+}
+
+.regulasi-content a{
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+.regulasi-content a:hover{
+
+    color:var(--primary-dark);
+
+}
+
+
+/*=====================================================
+  GALERI
+=====================================================*/
+
+.galeri-section{
+
+    background:#f7f9fc;
+
+}
+
+.galeri-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:24px;
+
+}
+
+.galeri-item{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow-sm);
+
+    cursor:pointer;
+
+}
+
+.galeri-item img{
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+
+    transition:.45s;
+
+}
+
+.galeri-item:hover img{
+
+    transform:scale(1.10);
+
+}
+
+.galeri-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        transparent,
+        rgba(0,0,0,.70)
+    );
+
+    display:flex;
+
+    align-items:flex-end;
+
+    padding:20px;
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.galeri-item:hover .galeri-overlay{
+
+    opacity:1;
+
+}
+
+.galeri-overlay h4{
+
+    color:#ffffff;
+
+    font-size:1rem;
+
+}
+
+
+/*=====================================================
+  RESPONSIVE SUPPORT
+=====================================================*/
+
+@media(max-width:992px){
+
+    .timeline{
+
+        padding-left:25px;
+
+    }
+
+    .timeline::before{
+
+        left:12px;
+
+    }
+
+    .timeline-icon{
+
+        left:-40px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .timeline{
+
+        padding-left:0;
+
+    }
+
+    .timeline::before{
+
+        display:none;
+
+    }
+
+    .timeline-item{
+
+        margin-bottom:30px;
+
+    }
+
+    .timeline-icon{
+
+        position:relative;
+
+        left:0;
+
+        top:0;
+
+        margin-bottom:15px;
+
+    }
+
+    .timeline-content:hover{
+
+        transform:none;
+
+    }
+
+    .berita-grid,
+
+    .regulasi-grid,
+
+    .galeri-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
