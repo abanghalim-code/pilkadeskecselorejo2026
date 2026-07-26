@@ -480,3 +480,40 @@ header h2{
     border-radius:30px;
     font-size:13px;
 }
+.tahapan-banner{
+
+    max-width:1100px;
+
+    margin:60px auto;
+
+    text-align:center;
+
+}
+
+.tahapan-banner h2{
+
+    color:#fff;
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.tahapan-banner p{
+
+    color:#d9e8ff;
+
+    margin-bottom:25px;
+
+}
+
+.tahapan-banner img{
+
+    width:100%;
+
+    border-radius:18px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+
+}
