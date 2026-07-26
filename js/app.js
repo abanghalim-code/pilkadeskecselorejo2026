@@ -859,3 +859,239 @@ applyFont(size) {
     );
 
 },
+/* ==========================================
+   COUNTER ANIMATION
+========================================== */
+
+counterAnimation() {
+
+    const counters = document.querySelectorAll('[data-counter]');
+
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            const counter = entry.target;
+
+            const target = Number(
+                counter.dataset.counter
+            );
+
+            const duration = 2000;
+
+            const step = target / (duration / 16);
+
+            let current = 0;
+
+            const timer = setInterval(() => {
+
+                current += step;
+
+                if (current >= target) {
+
+                    current = target;
+
+                    clearInterval(timer);
+
+                }
+
+                counter.textContent =
+                    Math.floor(current).toLocaleString('id-ID');
+
+            }, 16);
+
+            observer.unobserve(counter);
+
+        });
+
+    }, {
+
+        threshold: 0.4
+
+    });
+
+    counters.forEach(item => observer.observe(item));
+
+},
+
+
+
+/* ==========================================
+   AOS INITIALIZATION
+========================================== */
+
+initAOS() {
+
+    if (typeof AOS === 'undefined') return;
+
+    AOS.init({
+
+        duration: 800,
+
+        easing: 'ease-out-cubic',
+
+        once: true,
+
+        offset: 80,
+
+        mirror: false
+
+    });
+
+},
+
+
+
+/* ==========================================
+   SWIPER INITIALIZATION
+========================================== */
+
+initSwiper() {
+
+    if (typeof Swiper === 'undefined') return;
+
+    document.querySelectorAll('.swiper').forEach(swiper => {
+
+        new Swiper(swiper, {
+
+            loop: true,
+
+            speed: 700,
+
+            spaceBetween: 24,
+
+            autoplay: {
+
+                delay: 5000,
+
+                disableOnInteraction: false
+
+            },
+
+            pagination: {
+
+                el: swiper.querySelector('.swiper-pagination'),
+
+                clickable: true
+
+            },
+
+            navigation: {
+
+                nextEl: swiper.querySelector('.swiper-button-next'),
+
+                prevEl: swiper.querySelector('.swiper-button-prev')
+
+            },
+
+            breakpoints: {
+
+                0: {
+
+                    slidesPerView: 1
+
+                },
+
+                768: {
+
+                    slidesPerView: 2
+
+                },
+
+                1200: {
+
+                    slidesPerView: 3
+
+                }
+
+            }
+
+        });
+
+    });
+
+},
+
+
+
+/* ==========================================
+   GLIGHTBOX
+========================================== */
+
+initLightbox() {
+
+    if (typeof GLightbox === 'undefined') return;
+
+    GLightbox({
+
+        selector: '.glightbox',
+
+        touchNavigation: true,
+
+        loop: true,
+
+        autoplayVideos: true
+
+    });
+
+},
+
+
+
+/* ==========================================
+   LAZY IMAGE
+========================================== */
+
+lazyImages() {
+
+    const images = document.querySelectorAll(
+        'img[loading="lazy"]'
+    );
+
+    if (!images.length) return;
+
+    images.forEach(image => {
+
+        image.decoding = 'async';
+
+    });
+
+},
+
+
+
+/* ==========================================
+   FINAL STARTUP
+========================================== */
+
+startupReport() {
+
+    console.group(
+
+        'Pilkades Kecamatan Selorejo 2026'
+
+    );
+
+    console.log('✓ DOM Ready');
+
+    console.log('✓ Navigation');
+
+    console.log('✓ Accessibility');
+
+    console.log('✓ Counter');
+
+    console.log('✓ Swiper');
+
+    console.log('✓ AOS');
+
+    console.log('✓ Lightbox');
+
+    console.log('✓ Lazy Images');
+
+    console.groupEnd();
+
+},
