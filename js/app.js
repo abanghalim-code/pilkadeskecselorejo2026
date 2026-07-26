@@ -380,3 +380,5 @@ async function loadTahapan(){
 }
 
 loadTahapan();
+document.getElementById("runningText").innerHTML =
+"📢 Selamat datang di Portal Pilkades Kecamatan Selorejo Tahun 2026.";
