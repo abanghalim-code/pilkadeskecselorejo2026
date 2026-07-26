@@ -337,3 +337,46 @@ document.addEventListener("DOMContentLoaded", () => {
     activeMenu();
 
 });
+// =============================
+// 4. Tahapan Pilkades
+// =============================
+
+function getTahapanAktif(data){
+
+    const today = new Date();
+
+    return data.find(item=>{
+
+        const start = new Date(item.start);
+        const end = new Date(item.end);
+
+        return today >= start && today <= end;
+
+    });
+
+}
+});
+// =============================
+// 5. Membaca tahapan.json
+// =============================
+async function loadTahapan(){
+
+    try{
+
+        const response = await fetch("data/tahapan.json");
+
+        const data = await response.json();
+
+        const aktif = getTahapanAktif(data);
+
+        console.log(aktif);
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+loadTahapan();
