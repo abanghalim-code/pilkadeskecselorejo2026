@@ -1,1 +1,175 @@
+/* ==========================================
+   RESET
+========================================== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:#0b3d91;
+
+    color:#ffffff;
+
+    overflow-x:hidden;
+
+}
+
+
+/* ==========================================
+CONTAINER
+========================================== */
+
+.container{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+}
+
+
+/* ==========================================
+NAVBAR
+========================================== */
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+
+    width:100%;
+
+    z-index:999;
+
+    background:rgba(5,28,80,.90);
+
+    backdrop-filter:blur(8px);
+
+    box-shadow:0 5px 15px rgba(0,0,0,.30);
+
+}
+
+.navbar .container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+}
+
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    color:white;
+
+    text-decoration:none;
+
+}
+
+.logo img{
+
+    width:60px;
+
+}
+
+.logo-text h2{
+
+    font-size:32px;
+
+    color:white;
+
+}
+
+.logo-text span{
+
+    color:#d9d9d9;
+
+    font-size:14px;
+
+}
+
+nav ul{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:25px;
+
+}
+
+nav ul li a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+nav ul li a:hover{
+
+    color:#ffb300;
+
+}
+
+
+/* ==========================================
+HERO
+========================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    position:relative;
+
+    padding-top:120px;
+
+    background:
+
+    linear-gradient(
+
+    rgba(0,45,120,.85),
+
+    rgba(0,65,150,.82)
+
+    ),
+
+    url("../images/kecamatan.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+}
