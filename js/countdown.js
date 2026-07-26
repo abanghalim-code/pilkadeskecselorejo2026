@@ -186,3 +186,269 @@ function millisecondsBetween(start,end){
     return end - start;
 
 }
+/* =====================================================
+   countdown.js Final v3.0
+
+   BAGIAN 2
+   --------------------------------------------
+   ✓ Countdown Engine
+   ✓ Update Hari/Jam/Menit/Detik
+   ✓ Animasi Angka
+=====================================================*/
+
+
+/*=====================================================
+  MENYIMPAN NILAI SEBELUMNYA
+=====================================================*/
+
+let previousCountdown = {
+
+    days: null,
+
+    hours: null,
+
+    minutes: null,
+
+    seconds: null
+
+};
+
+
+/*=====================================================
+  UPDATE SATU ANGKA
+=====================================================*/
+
+function updateNumber(element, value, previousValue){
+
+    if(!element) return;
+
+    if(previousValue !== value){
+
+        setText(element, pad(value));
+
+        animateNumber(element);
+
+    }
+
+}
+
+
+/*=====================================================
+  HITUNG COUNTDOWN
+=====================================================*/
+
+function calculateCountdown(){
+
+    const now = getNow();
+
+    const distance = TARGET_DATE - now;
+
+    // Jika waktu sudah habis
+    if(distance <= 0){
+
+        return{
+
+            finished:true,
+
+            days:0,
+
+            hours:0,
+
+            minutes:0,
+
+            seconds:0
+
+        };
+
+    }
+
+    const days = Math.floor(
+
+        distance / (1000 * 60 * 60 * 24)
+
+    );
+
+    const hours = Math.floor(
+
+        (distance % (1000 * 60 * 60 * 24))
+
+        / (1000 * 60 * 60)
+
+    );
+
+    const minutes = Math.floor(
+
+        (distance % (1000 * 60 * 60))
+
+        / (1000 * 60)
+
+    );
+
+    const seconds = Math.floor(
+
+        (distance % (1000 * 60))
+
+        / 1000
+
+    );
+
+    return{
+
+        finished:false,
+
+        days,
+
+        hours,
+
+        minutes,
+
+        seconds
+
+    };
+
+}
+
+
+/*=====================================================
+  UPDATE TAMPILAN COUNTDOWN
+=====================================================*/
+
+function renderCountdown(){
+
+    const countdown = calculateCountdown();
+
+    updateNumber(
+        dayElement,
+        countdown.days,
+        previousCountdown.days
+    );
+
+    updateNumber(
+        hourElement,
+        countdown.hours,
+        previousCountdown.hours
+    );
+
+    updateNumber(
+        minuteElement,
+        countdown.minutes,
+        previousCountdown.minutes
+    );
+
+    updateNumber(
+        secondElement,
+        countdown.seconds,
+        previousCountdown.seconds
+    );
+
+    previousCountdown.days = countdown.days;
+
+    previousCountdown.hours = countdown.hours;
+
+    previousCountdown.minutes = countdown.minutes;
+
+    previousCountdown.seconds = countdown.seconds;
+
+}
+
+
+/*=====================================================
+  STATUS COUNTDOWN
+=====================================================*/
+
+function updateCountdownStatus(){
+
+    if(!countdownStatus) return;
+
+    const now = getNow();
+
+    const distance = TARGET_DATE - now;
+
+    if(distance <= 0){
+
+        countdownStatus.innerHTML = `
+            <strong>
+                🗳️ PILKADES SEDANG BERLANGSUNG
+            </strong>
+        `;
+
+        return;
+
+    }
+
+    const daysLeft = Math.floor(
+
+        distance / (1000 * 60 * 60 * 24)
+
+    );
+
+    if(daysLeft > 180){
+
+        countdownStatus.innerHTML =
+            "Tahap Persiapan Pilkades";
+
+    }
+
+    else if(daysLeft > 90){
+
+        countdownStatus.innerHTML =
+            "Tahap Pembentukan Panitia";
+
+    }
+
+    else if(daysLeft > 60){
+
+        countdownStatus.innerHTML =
+            "Tahap Pendaftaran Bakal Calon";
+
+    }
+
+    else if(daysLeft > 30){
+
+        countdownStatus.innerHTML =
+            "Tahap Penetapan Calon";
+
+    }
+
+    else if(daysLeft > 7){
+
+        countdownStatus.innerHTML =
+            "Tahap Kampanye";
+
+    }
+
+    else{
+
+        countdownStatus.innerHTML =
+            "Menuju Hari Pemungutan Suara";
+
+    }
+
+}
+
+
+/*=====================================================
+  UPDATE COUNTDOWN
+=====================================================*/
+
+function updateCountdown(){
+
+    renderCountdown();
+
+    updateCountdownStatus();
+
+}
+
+
+/*=====================================================
+  JALANKAN PERTAMA KALI
+=====================================================*/
+
+updateCountdown();
+
+
+/*=====================================================
+  UPDATE SETIAP DETIK
+=====================================================*/
+
+setInterval(updateCountdown,1000);
