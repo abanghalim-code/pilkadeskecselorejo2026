@@ -1026,8 +1026,6 @@ function preloadHero(){
     INITIALIZATION
 =====================================================*/
 
-window.addEventListener("load",()=>{
-
     revealElements();
 
     animateCounter();
