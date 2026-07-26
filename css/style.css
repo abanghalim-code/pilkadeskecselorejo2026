@@ -150,7 +150,7 @@ body{
 
 section{
 
-    padding:90px 0;
+    padding:var(--section-space) 0;
 
     position:relative;
 
