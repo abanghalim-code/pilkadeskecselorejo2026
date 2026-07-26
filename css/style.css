@@ -610,3 +610,403 @@ nav ul li a:hover{
     }
 
 }
+/* =====================================================
+   STYLE.CSS FINAL
+   BAGIAN 2
+   PROFIL • DESA • STATISTIK
+===================================================== */
+
+
+/* ==========================
+   PROFIL
+========================== */
+
+.profil-section{
+
+    background:#f8fbff;
+
+}
+
+.profil-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.profil-card{
+
+    background:#fff;
+
+    padding:40px 30px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s ease;
+
+    border:1px solid var(--border);
+
+}
+
+.profil-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
+
+}
+
+.profil-card i{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#0d6efd,#1f4e79);
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:34px;
+
+    margin-bottom:25px;
+
+}
+
+.profil-card h3{
+
+    font-size:24px;
+
+    color:var(--secondary);
+
+    margin-bottom:15px;
+
+}
+
+.profil-card p{
+
+    color:var(--gray);
+
+    font-size:15px;
+
+}
+
+
+
+/* ==========================
+   DESA
+========================== */
+
+.desa-section{
+
+    background:#ffffff;
+
+}
+
+.desa-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:35px;
+
+}
+
+.desa-item{
+
+    background:#fff;
+
+    overflow:hidden;
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+    border:1px solid var(--border);
+
+}
+
+.desa-item:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 22px 55px rgba(0,0,0,.15);
+
+}
+
+.desa-item img{
+
+    width:100%;
+
+    height:240px;
+
+    object-fit:cover;
+
+    transition:.4s;
+
+}
+
+.desa-item:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.desa-content{
+
+    padding:28px;
+
+}
+
+.desa-content h3{
+
+    color:var(--secondary);
+
+    font-size:28px;
+
+    margin-bottom:15px;
+
+}
+
+.desa-content p{
+
+    color:var(--gray);
+
+    margin-bottom:20px;
+
+}
+
+.desa-content ul{
+
+    margin-bottom:25px;
+
+}
+
+.desa-content ul li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:10px 0;
+
+    color:#555;
+
+    border-bottom:1px dashed #e8e8e8;
+
+}
+
+.desa-content ul li:last-child{
+
+    border-bottom:none;
+
+}
+
+.desa-content i{
+
+    color:var(--primary);
+
+    font-size:18px;
+
+}
+
+
+
+/* ==========================
+   BUTTON DESA
+========================== */
+
+.btn-desa{
+
+    display:inline-block;
+
+    background:linear-gradient(
+        135deg,
+        #0d6efd,
+        #1f4e79
+    );
+
+    color:#fff;
+
+    padding:14px 30px;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-desa:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 30px rgba(13,110,253,.35);
+
+}
+
+
+
+/* ==========================
+   STATISTIK
+========================== */
+
+.statistik{
+
+    background:linear-gradient(
+        135deg,
+        #0d6efd,
+        #1f4e79
+    );
+
+    color:#fff;
+
+}
+
+.stat-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:30px;
+
+}
+
+.stat-item{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:20px;
+
+    padding:40px 20px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    border:1px solid rgba(255,255,255,.18);
+
+}
+
+.stat-item:hover{
+
+    transform:translateY(-10px);
+
+    background:rgba(255,255,255,.20);
+
+}
+
+.stat-item h2{
+
+    font-size:54px;
+
+    margin-bottom:12px;
+
+    font-weight:700;
+
+}
+
+.stat-item span{
+
+    font-size:18px;
+
+    letter-spacing:.5px;
+
+}
+
+
+
+/* ==========================
+   CARD SHADOW
+========================== */
+
+.profil-card,
+.desa-item,
+.stat-item{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.profil-card::before,
+.desa-item::before,
+.stat-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+
+    top:0;
+
+    width:60%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.28),
+
+        transparent
+
+    );
+
+    transition:.8s;
+
+}
+
+.profil-card:hover::before,
+.desa-item:hover::before,
+.stat-item:hover::before{
+
+    left:130%;
+
+}
+
+
+
+/* ==========================
+   SMOOTH TRANSITION
+========================== */
+
+.profil-card,
+.desa-item,
+.btn-desa,
+.stat-item,
+.desa-item img{
+
+    transition:all .35s ease;
+
+}
