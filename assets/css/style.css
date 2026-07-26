@@ -1,123 +1,149 @@
-/* ===================================================================
-   STYLE.CSS (MASTER)
-   WEBSITE PILKADES SERENTAK 2026
-   KECAMATAN SELOREJO
-   -------------------------------------------------------------------
-   Author  : Kecamatan Selorejo
-   Version : 1.0 Final
-=================================================================== */
+/*====================================================================
+  STYLE.CSS FINAL
+  PORTAL PILKADES SERENTAK 2026
+  KECAMATAN SELOREJO
+  Kabupaten Blitar
+======================================================================*/
 
-
-/* ===================================================================
-   GOOGLE FONTS
-=================================================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-
-/* ===================================================================
-   CSS MODULES
-=================================================================== */
-
-@import url("navbar.css");
-@import url("hero.css");
-@import url("timeline.css");
-@import url("news.css");
-@import url("regulation.css");
-@import url("gallery.css");
-@import url("faq.css");
-@import url("contact.css");
-@import url("footer.css");
-@import url("responsive.css");
-
-
-/* ===================================================================
-   ROOT VARIABLES
-=================================================================== */
+/*====================================================================
+  PART 1A
+  ROOT VARIABLES
+======================================================================*/
 
 :root{
 
-    /* ===== Primary Color ===== */
+    /* ==========================================================
+       COLOR PALETTE
+    ========================================================== */
 
-    --primary:#0D47A1;
-    --primary-light:#1565C0;
-    --primary-dark:#08306B;
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --primary-light:#3b82f6;
 
-    /* ===== Secondary ===== */
+    --secondary:#0f172a;
+    --secondary-light:#1e293b;
 
-    --secondary:#FFC107;
-    --secondary-dark:#E0A800;
+    --accent:#f59e0b;
+    --accent-light:#fbbf24;
 
-    /* ===== Success ===== */
+    --success:#16a34a;
+    --warning:#f59e0b;
+    --danger:#dc2626;
+    --info:#0ea5e9;
 
-    --success:#2E7D32;
+    --white:#ffffff;
+    --black:#000000;
 
-    /* ===== Danger ===== */
-
-    --danger:#D32F2F;
-
-    /* ===== White ===== */
-
-    --white:#FFFFFF;
-
-    /* ===== Black ===== */
-
-    --black:#111827;
-
-    /* ===== Gray ===== */
-
-    --gray-50:#F8FAFC;
-    --gray-100:#F1F5F9;
-    --gray-200:#E2E8F0;
-    --gray-300:#CBD5E1;
-    --gray-400:#94A3B8;
-    --gray-500:#64748B;
+    --gray-50:#f8fafc;
+    --gray-100:#f1f5f9;
+    --gray-200:#e2e8f0;
+    --gray-300:#cbd5e1;
+    --gray-400:#94a3b8;
+    --gray-500:#64748b;
     --gray-600:#475569;
     --gray-700:#334155;
-    --gray-800:#1E293B;
-    --gray-900:#0F172A;
+    --gray-800:#1e293b;
+    --gray-900:#0f172a;
 
-    /* ===== Gradient ===== */
+    /* ==========================================================
+       TEXT
+    ========================================================== */
 
-    --gradient-primary:
-    linear-gradient(135deg,#0D47A1,#1565C0);
+    --text-dark:#1e293b;
+    --text-body:#475569;
+    --text-light:#64748b;
+    --text-white:#ffffff;
 
-    --gradient-secondary:
-    linear-gradient(135deg,#FFC107,#FFD54F);
+    /* ==========================================================
+       BACKGROUND
+    ========================================================== */
 
-    /* ===== Shadow ===== */
+    --bg-body:#f8fafc;
+    --bg-section:#ffffff;
+    --bg-soft:#f1f5f9;
+
+    --hero-gradient:
+        linear-gradient(
+        135deg,
+        #2563eb 0%,
+        #1d4ed8 55%,
+        #0f4db8 100%
+    );
+
+    /* ==========================================================
+       BORDER
+    ========================================================== */
+
+    --border-color:#e5e7eb;
+    --border-soft:#eef2f7;
+
+    /* ==========================================================
+       SHADOW
+    ========================================================== */
+
+    --shadow-xs:
+        0 2px 6px rgba(0,0,0,.05);
 
     --shadow-sm:
-    0 5px 15px rgba(0,0,0,.08);
+        0 6px 18px rgba(15,23,42,.08);
 
     --shadow-md:
-    0 15px 35px rgba(0,0,0,.10);
+        0 12px 30px rgba(15,23,42,.10);
 
     --shadow-lg:
-    0 25px 60px rgba(0,0,0,.15);
+        0 25px 60px rgba(15,23,42,.12);
 
-    /* ===== Radius ===== */
+    --shadow-xl:
+        0 40px 80px rgba(15,23,42,.18);
 
-    --radius-sm:8px;
-    --radius-md:15px;
-    --radius-lg:25px;
-    --radius-xl:40px;
+    /* ==========================================================
+       BORDER RADIUS
+    ========================================================== */
 
-    /* ===== Transition ===== */
+    --radius-xs:6px;
+    --radius-sm:10px;
+    --radius-md:16px;
+    --radius-lg:22px;
+    --radius-xl:30px;
+    --radius-full:999px;
 
-    --transition:.35s ease;
+    /* ==========================================================
+       TRANSITION
+    ========================================================== */
 
-    /* ===== Layout ===== */
+    --transition:
+        all .35s ease;
+
+    --transition-fast:
+        all .20s ease;
+
+    /* ==========================================================
+       CONTAINER
+    ========================================================== */
 
     --container-width:1200px;
-    --header-height:80px;
+
+    /* ==========================================================
+       HEADER
+    ========================================================== */
+
+    --header-height:82px;
+
+    /* ==========================================================
+       Z-INDEX
+    ========================================================== */
+
+    --z-preloader:99999;
+    --z-modal:9999;
+    --z-header:999;
+    --z-dropdown:100;
+    --z-fixed:90;
 
 }
 
-
-/* ===================================================================
-   RESET
-=================================================================== */
+/*====================================================================
+  CSS RESET
+======================================================================*/
 
 *,
 *::before,
@@ -129,94 +155,85 @@
 
 }
 
-
-/* ===================================================================
-   HTML
-=================================================================== */
-
 html{
 
     scroll-behavior:smooth;
     scroll-padding-top:90px;
+    -webkit-text-size-adjust:100%;
 
 }
-
-
-/* ===================================================================
-   BODY
-=================================================================== */
 
 body{
 
-    font-family:'Inter',sans-serif;
-
-    background:var(--white);
-
-    color:var(--black);
-
+    font-family:"Poppins",sans-serif;
+    font-size:16px;
     line-height:1.7;
+    font-weight:400;
+
+    color:var(--text-body);
+
+    background:var(--bg-body);
 
     overflow-x:hidden;
 
+    text-rendering:optimizeLegibility;
     -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
 
 }
 
+/*====================================================================
+  BASE HTML
+======================================================================*/
 
-/* ===================================================================
-   TYPOGRAPHY
-=================================================================== */
+html,
+body{
 
-h1,h2,h3,h4,h5,h6{
-
-    font-weight:700;
-    line-height:1.2;
-    color:var(--primary-dark);
-
-}
-
-p{
-
-    color:var(--gray-600);
+    width:100%;
+    min-height:100%;
 
 }
 
-small{
+main{
 
-    color:var(--gray-500);
+    display:block;
 
 }
 
+section{
 
-/* ===================================================================
-   IMAGE
-=================================================================== */
+    position:relative;
+    width:100%;
+    padding:90px 0;
+
+}
 
 img{
 
     display:block;
     max-width:100%;
     height:auto;
+    border:none;
 
 }
 
+picture{
 
-/* ===================================================================
-   LINK
-=================================================================== */
-
-a{
-
-    color:inherit;
-    text-decoration:none;
-    transition:var(--transition);
+    display:block;
 
 }
 
+svg{
 
-/* ===================================================================
-   LIST
-=================================================================== */
+    display:block;
+
+}
+
+figure{
+
+    margin:0;
+
+}
 
 ul,
 ol{
@@ -225,274 +242,62 @@ ol{
 
 }
 
+a{
 
-/* ===================================================================
-   BUTTON
-=================================================================== */
+    text-decoration:none;
+    color:inherit;
+    transition:var(--transition);
+
+}
 
 button{
 
     border:none;
-    background:none;
+    outline:none;
     cursor:pointer;
+    background:none;
     font-family:inherit;
+    transition:var(--transition);
 
 }
-
-
-/* ===================================================================
-   FORM
-=================================================================== */
 
 input,
 textarea,
 select{
 
-    font-family:inherit;
     outline:none;
+    border:none;
+    font-family:inherit;
+    font-size:inherit;
+    background:transparent;
 
 }
 
+textarea{
 
-/* ===================================================================
-   CONTAINER
-=================================================================== */
-
-.container{
-
-    width:min(var(--container-width),92%);
-    margin:auto;
+    resize:vertical;
 
 }
 
+table{
 
-/* ===================================================================
-   SECTION
-=================================================================== */
-
-section{
-
-    padding:100px 0;
-    position:relative;
+    border-collapse:collapse;
+    border-spacing:0;
 
 }
 
+iframe{
 
-/* ===================================================================
-   SECTION HEADER
-=================================================================== */
-
-.section-header{
-
-    text-align:center;
-
-    margin-bottom:70px;
+    border:0;
 
 }
 
-.section-badge{
+::selection{
 
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    padding:8px 18px;
-
-    border-radius:50px;
-
-    background:rgba(13,71,161,.08);
-
-    color:var(--primary);
-
-    font-weight:600;
-
-    margin-bottom:18px;
-
-}
-
-.section-title{
-
-    font-size:clamp(2rem,4vw,3rem);
-
-    margin-bottom:18px;
-
-}
-
-.section-description{
-
-    max-width:760px;
-
-    margin:auto;
-
-    color:var(--gray-500);
-
-}
-
-
-/* ===================================================================
-   BUTTONS
-=================================================================== */
-
-.btn{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:10px;
-
-    padding:15px 32px;
-
-    border-radius:50px;
-
-    font-weight:600;
-
-    transition:var(--transition);
-
-}
-
-.btn-primary{
-
-    background:var(--gradient-primary);
-
+    background:var(--primary);
     color:var(--white);
 
 }
-
-.btn-primary:hover{
-
-    transform:translateY(-3px);
-
-    box-shadow:var(--shadow-md);
-
-}
-
-.btn-outline{
-
-    border:2px solid var(--primary);
-
-    color:var(--primary);
-
-}
-
-.btn-outline:hover{
-
-    background:var(--primary);
-
-    color:#fff;
-
-}
-
-
-/* ===================================================================
-   CARD
-=================================================================== */
-
-.card{
-
-    background:#fff;
-
-    border-radius:20px;
-
-    box-shadow:var(--shadow-sm);
-
-    transition:var(--transition);
-
-}
-
-.card:hover{
-
-    transform:translateY(-6px);
-
-    box-shadow:var(--shadow-lg);
-
-}
-
-
-/* ===================================================================
-   UTILITIES
-=================================================================== */
-
-.text-center{
-
-    text-align:center;
-
-}
-
-.text-left{
-
-    text-align:left;
-
-}
-
-.text-right{
-
-    text-align:right;
-
-}
-
-.d-flex{
-
-    display:flex;
-
-}
-
-.flex-column{
-
-    flex-direction:column;
-
-}
-
-.align-center{
-
-    align-items:center;
-
-}
-
-.justify-center{
-
-    justify-content:center;
-
-}
-
-.justify-between{
-
-    justify-content:space-between;
-
-}
-
-.grid{
-
-    display:grid;
-
-}
-
-.w-100{
-
-    width:100%;
-
-}
-
-.mt-1{margin-top:10px;}
-.mt-2{margin-top:20px;}
-.mt-3{margin-top:30px;}
-.mt-4{margin-top:40px;}
-.mt-5{margin-top:50px;}
-
-.mb-1{margin-bottom:10px;}
-.mb-2{margin-bottom:20px;}
-.mb-3{margin-bottom:30px;}
-.mb-4{margin-bottom:40px;}
-.mb-5{margin-bottom:50px;}
-
-
-/* ===================================================================
-   CUSTOM SCROLLBAR
-=================================================================== */
 
 ::-webkit-scrollbar{
 
@@ -502,15 +307,14 @@ section{
 
 ::-webkit-scrollbar-track{
 
-    background:#EDF2F7;
+    background:var(--gray-100);
 
 }
 
 ::-webkit-scrollbar-thumb{
 
     background:var(--primary);
-
-    border-radius:50px;
+    border-radius:999px;
 
 }
 
@@ -519,61 +323,3 @@ section{
     background:var(--primary-dark);
 
 }
-
-
-/* ===================================================================
-   TEXT SELECTION
-=================================================================== */
-
-::selection{
-
-    background:var(--primary);
-
-    color:#fff;
-
-}
-
-
-/* ===================================================================
-   PRELOADER
-=================================================================== */
-
-body.loading{
-
-    overflow:hidden;
-
-}
-
-
-/* ===================================================================
-   ANIMATION
-=================================================================== */
-
-.fade-up{
-
-    animation:fadeUp .8s ease forwards;
-
-}
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-        transform:translateY(40px);
-
-    }
-
-    to{
-
-        opacity:1;
-        transform:translateY(0);
-
-    }
-
-}
-
-
-/* ===================================================================
-   END OF FILE
-=================================================================== */
