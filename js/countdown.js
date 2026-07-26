@@ -452,3 +452,145 @@ updateCountdown();
 =====================================================*/
 
 setInterval(updateCountdown,1000);
+/* =====================================================
+   countdown.js Final v3.0
+
+   BAGIAN 3
+   --------------------------------------------
+   ✓ Progress Bar
+   ✓ Persentase Progress
+   ✓ Countdown Finished
+   ✓ Initialization
+=====================================================*/
+
+
+/*=====================================================
+  HITUNG PROGRESS
+=====================================================*/
+
+function updateProgress(){
+
+    if(!progressBar || !progressText) return;
+
+    const now = getNow();
+
+    const totalDuration = TARGET_DATE - START_DATE;
+
+    const elapsed = now - START_DATE;
+
+    let percent = (elapsed / totalDuration) * 100;
+
+    percent = Math.max(0, Math.min(percent,100));
+
+    progressBar.style.width = percent.toFixed(2) + "%";
+
+    progressText.textContent =
+        percent.toFixed(1) + "% Persiapan Menuju Pilkades";
+
+}
+
+
+/*=====================================================
+  EVENT SAAT COUNTDOWN SELESAI
+=====================================================*/
+
+function countdownFinished(){
+
+    if(dayElement) dayElement.textContent = "00";
+    if(hourElement) hourElement.textContent = "00";
+    if(minuteElement) minuteElement.textContent = "00";
+    if(secondElement) secondElement.textContent = "00";
+
+    if(countdownStatus){
+
+        countdownStatus.innerHTML = `
+            <div class="countdown-finished">
+
+                <h2>🗳️</h2>
+
+                <h3>
+                    PEMILIHAN KEPALA DESA
+                </h3>
+
+                <p>
+
+                    Hari Pemungutan Suara
+                    Sedang Berlangsung
+
+                </p>
+
+            </div>
+        `;
+
+    }
+
+}
+
+
+/*=====================================================
+  UPDATE SELURUH KOMPONEN
+=====================================================*/
+
+function updateAll(){
+
+    const countdown = calculateCountdown();
+
+    renderCountdown();
+
+    updateCountdownStatus();
+
+    updateProgress();
+
+    if(countdown.finished){
+
+        countdownFinished();
+
+    }
+
+}
+
+
+/*=====================================================
+  REFRESH OTOMATIS
+=====================================================*/
+
+function startCountdown(){
+
+    updateDigitalClock();
+
+    updateAll();
+
+    setInterval(function(){
+
+        updateDigitalClock();
+
+        updateAll();
+
+    },1000);
+
+}
+
+
+/*=====================================================
+  DOM READY
+=====================================================*/
+
+document.addEventListener("DOMContentLoaded",function(){
+
+    startCountdown();
+
+});
+
+
+/*=====================================================
+  CONSOLE INFO
+=====================================================*/
+
+console.log(
+    "%cPortal Pilkades 2026",
+    "color:#0d6efd;font-size:16px;font-weight:bold;"
+);
+
+console.log(
+    "Countdown Engine Final v3.0 Loaded"
+);
