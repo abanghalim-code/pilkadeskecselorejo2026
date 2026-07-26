@@ -1,1 +1,573 @@
+/* ==========================================================
+   NAVBAR FINAL
+   Website Pilkades Kecamatan Selorejo 2026
+========================================================== */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    transition:
+        background .35s ease,
+        box-shadow .35s ease,
+        padding .35s ease,
+        backdrop-filter .35s ease;
+
+    background:rgba(255,255,255,.90);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+    padding:18px 0;
+}
+
+.header.scrolled{
+
+    background:rgba(255,255,255,.96);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.08);
+
+    padding:10px 0;
+}
+
+/* ==========================================================
+   NAVBAR CONTAINER
+========================================================== */
+
+.navbar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:40px;
+}
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    text-decoration:none;
+}
+
+.logo img{
+
+    width:58px;
+
+    height:58px;
+
+    object-fit:contain;
+
+    transition:.4s;
+}
+
+.logo:hover img{
+
+    transform:rotate(-5deg) scale(1.05);
+}
+
+.logo-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    line-height:1.2;
+}
+
+.logo-title{
+
+    font-size:1.18rem;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+    letter-spacing:.3px;
+}
+
+.logo-subtitle{
+
+    font-size:.82rem;
+
+    color:var(--gray-600);
+}
+
+/* ==========================================================
+   MENU
+========================================================== */
+
+.nav-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    list-style:none;
+}
+
+.nav-menu li{
+
+    position:relative;
+}
+
+.nav-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:12px 18px;
+
+    color:var(--dark);
+
+    font-weight:600;
+
+    border-radius:50px;
+
+    transition:.30s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.nav-menu a:hover{
+
+    color:var(--primary);
+
+    background:rgba(13,110,253,.07);
+}
+
+/* ==========================================================
+   ACTIVE MENU
+========================================================== */
+
+.nav-menu a.active{
+
+    color:#fff;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+
+    box-shadow:
+
+        0 8px 20px rgba(13,110,253,.30);
+}
+
+/* ==========================================================
+   HOVER EFFECT
+========================================================== */
+
+.nav-menu a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:6px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--primary);
+
+    transition:.35s;
+
+    transform:translateX(-50%);
+}
+
+.nav-menu a:hover::after{
+
+    width:65%;
+}
+
+.nav-menu a.active::after{
+
+    display:none;
+}
+
+/* ==========================================================
+   RIGHT MENU
+========================================================== */
+
+.nav-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+/* ==========================================================
+   SEARCH BUTTON
+========================================================== */
+
+.search-btn{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:var(--light);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    display:grid;
+
+    place-items:center;
+}
+
+.search-btn:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    transform:translateY(-2px);
+}
+
+/* ==========================================================
+   DARK MODE BUTTON
+========================================================== */
+
+.theme-toggle{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    border:none;
+
+    cursor:pointer;
+
+    display:grid;
+
+    place-items:center;
+
+    transition:.3s;
+}
+
+.theme-toggle:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+}
+
+/* ==========================================================
+   CTA BUTTON
+========================================================== */
+
+.nav-cta{
+
+    padding:13px 24px;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        135deg,
+        var(--secondary),
+        #ff9800
+    );
+
+    color:#fff;
+
+    font-weight:700;
+
+    transition:.35s;
+
+    box-shadow:
+        0 8px 25px rgba(255,193,7,.25);
+}
+
+.nav-cta:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 28px rgba(255,193,7,.35);
+}
+
+/* ==========================================================
+   DROPDOWN
+========================================================== */
+
+.dropdown{
+
+    position:relative;
+}
+
+.dropdown-menu{
+
+    position:absolute;
+
+    top:120%;
+
+    left:0;
+
+    min-width:230px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:12px;
+
+    box-shadow:
+
+        0 18px 40px rgba(0,0,0,.12);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(12px);
+
+    transition:.3s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:4px;
+}
+
+.dropdown:hover .dropdown-menu{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+}
+
+.dropdown-menu a{
+
+    border-radius:12px;
+
+    padding:12px 14px;
+}
+
+.dropdown-menu a:hover{
+
+    background:var(--light);
+}
+
+/* ==========================================================
+   MOBILE BUTTON
+========================================================== */
+
+.mobile-toggle{
+
+    display:none;
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:1.4rem;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+.nav-menu{
+
+    position:fixed;
+
+    top:0;
+
+    right:-100%;
+
+    width:320px;
+
+    height:100vh;
+
+    background:#fff;
+
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    align-items:flex-start;
+
+    padding:110px 30px;
+
+    transition:.35s;
+
+    box-shadow:
+        -10px 0 30px rgba(0,0,0,.12);
+
+    gap:6px;
+}
+
+.nav-menu.show{
+
+    right:0;
+}
+
+.nav-menu li{
+
+    width:100%;
+}
+
+.nav-menu a{
+
+    width:100%;
+}
+
+.mobile-toggle{
+
+    display:grid;
+
+    place-items:center;
+}
+
+.nav-actions{
+
+    display:none;
+}
+
+}
+
+/* ==========================================================
+   MOBILE SMALL
+========================================================== */
+
+@media(max-width:576px){
+
+.logo img{
+
+    width:48px;
+
+    height:48px;
+}
+
+.logo-title{
+
+    font-size:1rem;
+}
+
+.logo-subtitle{
+
+    display:none;
+}
+
+}
+
+/* ==========================================================
+   DARK MODE
+========================================================== */
+
+[data-theme="dark"] .header{
+
+    background:rgba(15,23,42,.90);
+
+    border-color:rgba(255,255,255,.08);
+}
+
+[data-theme="dark"] .header.scrolled{
+
+    background:rgba(15,23,42,.97);
+}
+
+[data-theme="dark"] .dropdown-menu{
+
+    background:#1e293b;
+}
+
+[data-theme="dark"] .nav-menu a{
+
+    color:#f1f5f9;
+}
+
+[data-theme="dark"] .logo-subtitle{
+
+    color:#cbd5e1;
+}
+
+[data-theme="dark"] .search-btn{
+
+    background:#1e293b;
+
+    color:#fff;
+}
+
+[data-theme="dark"] .theme-toggle{
+
+    background:#1e293b;
+
+    color:#fff;
+}
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+.nav-menu a:focus-visible,
+.search-btn:focus-visible,
+.theme-toggle:focus-visible,
+.mobile-toggle:focus-visible{
+
+    outline:3px solid var(--secondary);
+
+    outline-offset:4px;
+}
+
+@media(prefers-reduced-motion:reduce){
+
+*{
+
+    animation:none!important;
+
+    transition:none!important;
+
+    scroll-behavior:auto!important;
+}
+
+}
 
