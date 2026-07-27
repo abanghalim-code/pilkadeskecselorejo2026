@@ -306,3 +306,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+/* ==========================================
+   RUNNING AGENDA PILKADES
+========================================== */
+
+const agenda = [
+{
+aktif : "🔴 Tahapan Aktif : Penyusunan Rencana Kebutuhan Barang dan Biaya Pilkades (27 Juli–8 September 2026)",
+berikut : "🟢 Agenda Terdekat : Pemutakhiran dan Validasi Data Pemilih oleh Pantarlih (29–31 Juli 2026)",
+selanjutnya : "🔵 Berikutnya : Penetapan Daftar Pemilih Sementara (3 Agustus 2026)"
+}
+];
+
+const running =
+`${agenda[0].aktif}
+&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+${agenda[0].berikut}
+&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+${agenda[0].selanjutnya}
+&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+🇮🇩 Mari sukseskan Pilkades Serentak Tahun 2026 yang Aman • Damai • Demokratis • Jujur • Adil`;
+
+document.getElementById("runningAgenda").innerHTML = running;
