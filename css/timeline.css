@@ -1,1 +1,317 @@
 
+/* ==========================================================
+   TIMELINE PILKADES 2026 — INTEGRATED
+========================================================== */
+
+.tahapan { background: var(--light); }
+
+.tahapan-current{
+    margin:0 auto 30px;
+    padding:28px 30px;
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:24px;
+    box-shadow:var(--shadow-sm);
+}
+
+.tahapan-current-badge{
+    display:inline-flex;
+    padding:6px 12px;
+    border-radius:999px;
+    background:rgba(46,204,113,.12);
+    color:#208b4c;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.4px;
+}
+
+.tahapan-current h3{
+    margin:12px 0 5px;
+    color:var(--dark);
+}
+
+.tahapan-current p{
+    margin:0;
+}
+
+[data-tahapan-current-status]{
+    display:inline-block;
+    margin-top:10px;
+    padding:6px 10px;
+    border-radius:999px;
+    background:rgba(30,99,214,.09);
+    color:var(--primary);
+    font-size:10px;
+    font-weight:800;
+}
+
+.tahapan-active-item{
+    display:block;
+    margin-top:4px;
+    line-height:1.55;
+}
+
+.tahapan-active-item + .tahapan-active-item{ margin-top:8px; }
+
+.tahapan-progress{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0 0 35px;
+    padding:14px 16px;
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    overflow-x:auto;
+    box-shadow:var(--shadow-sm);
+}
+
+.tahapan-progress-item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    flex:0 0 auto;
+    color:#7a869a;
+    font-size:11px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.tahapan-progress-dot{
+    width:10px;
+    height:10px;
+    border:2px solid #aab6c6;
+    border-radius:50%;
+    background:#fff;
+}
+
+.tahapan-progress-item.is-complete{ color:#229954; }
+.tahapan-progress-item.is-complete .tahapan-progress-dot{
+    border-color:#229954;
+    background:#229954;
+}
+
+.tahapan-progress-item.is-current{ color:var(--primary); }
+.tahapan-progress-item.is-current .tahapan-progress-dot{
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(30,99,214,.10);
+}
+
+.tahapan-progress-item.is-upcoming{ color:#7a869a; }
+.tahapan-progress-item small{ font-size:9px; opacity:.7; }
+
+.tahapan-progress-line{
+    width:28px;
+    min-width:28px;
+    height:1px;
+    background:#dce5f2;
+}
+
+.timeline-stage{ margin:0 0 42px; }
+
+.timeline-stage-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:20px;
+    padding-bottom:12px;
+    border-bottom:2px solid #dce5f2;
+}
+
+.timeline-stage-title{
+    color:var(--dark);
+    font-size:24px;
+    font-weight:800;
+}
+
+.timeline-stage-count{
+    color:#7a869a;
+    font-size:12px;
+    font-weight:700;
+}
+
+.timeline-list{
+    position:relative;
+    margin-left:23px;
+    padding-left:35px;
+    border-left:2px solid #dce5f2;
+}
+
+.timeline-card{
+    position:relative;
+    margin:0 0 18px;
+    padding:20px 22px;
+    background:#fff;
+    border:1px solid #e3e9f2;
+    border-radius:16px;
+    box-shadow:0 7px 20px rgba(20,52,95,.06);
+    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+
+.timeline-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 26px rgba(20,52,95,.09);
+}
+
+.timeline-card::before{
+    content:"";
+    position:absolute;
+    left:-45px;
+    top:24px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:#fff;
+    border:3px solid #9aa8ba;
+    box-sizing:border-box;
+}
+
+.timeline-card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:12px;
+    min-height:30px;
+}
+
+.timeline-number{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:38px;
+    height:30px;
+    padding:0 9px;
+    border-radius:9px;
+    background:#eef3fa;
+    color:#17345f;
+    font-size:12px;
+    font-weight:800;
+}
+
+.timeline-status{
+    padding:5px 9px;
+    border-radius:999px;
+    background:#f1f4f8;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.3px;
+}
+
+.timeline-card h3{
+    margin:0 0 14px;
+    color:var(--dark);
+    font-size:17px;
+    line-height:1.55;
+}
+
+.timeline-meta{
+    display:grid;
+    gap:5px;
+    color:#667085;
+    font-size:12px;
+    line-height:1.55;
+}
+
+.timeline-detail{
+    margin-top:14px;
+    padding-top:12px;
+    border-top:1px solid #edf1f6;
+    color:#667085;
+    font-size:12px;
+    line-height:1.6;
+}
+
+.timeline-detail strong{ color:var(--dark); }
+.timeline-detail p{ margin:5px 0 0; }
+
+.timeline-card.status-selesai{ opacity:.82; }
+.timeline-card.status-selesai .timeline-number{
+    background:#edf7f1;
+    color:#287d4d;
+}
+.timeline-card.status-selesai::before{ border-color:#69aa82; }
+.status-selesai .timeline-status{
+    background:#edf7f1;
+    color:#229954;
+}
+
+.timeline-card.status-berlangsung{
+    border-width:2px;
+    border-color:rgba(30,99,214,.42);
+    box-shadow:0 12px 30px rgba(30,99,214,.13);
+}
+.timeline-card.status-berlangsung .timeline-number{
+    background:var(--primary);
+    color:#fff;
+}
+.status-berlangsung .timeline-status{
+    background:rgba(30,99,214,.09);
+    color:var(--primary);
+}
+.timeline-card.status-berlangsung::before{
+    border-color:var(--primary);
+    box-shadow:0 0 0 5px rgba(30,99,214,.10);
+}
+
+.timeline-card.status-mendatang{ background:#fbfcfe; }
+.timeline-card.status-mendatang .timeline-number{
+    background:#f1f4f8;
+    color:#6d7888;
+}
+.status-mendatang .timeline-status{ color:#7a869a; }
+
+.timeline-card.is-active{ position:relative; }
+.timeline-card.is-active::after{
+    content:"ANDA DI SINI";
+    position:absolute;
+    top:-11px;
+    right:18px;
+    padding:4px 9px;
+    border-radius:999px;
+    background:var(--primary);
+    color:#fff;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:.35px;
+}
+
+.timeline-loading,
+.timeline-error{
+    padding:20px;
+    background:#fff;
+    border:1px dashed #cbd6e6;
+    border-radius:14px;
+    color:#7a869a;
+    text-align:center;
+}
+
+@media (max-width:768px){
+    .timeline-stage-header{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:5px;
+    }
+    .timeline-list{
+        margin-left:12px;
+        padding-left:25px;
+    }
+    .timeline-card{ padding:18px; border-radius:14px; }
+    .timeline-card::before{ left:-35px; }
+}
+
+@media (max-width:576px){
+    .tahapan-current{ padding:22px; }
+    .tahapan-progress{ margin-bottom:24px; padding:12px; }
+    .tahapan-progress-line{ width:18px; min-width:18px; }
+    .timeline-stage-title{ font-size:19px; }
+    .timeline-card h3{ font-size:15px; }
+    .timeline-meta,.timeline-detail{ font-size:11.5px; }
+    .timeline-card.is-active::after{
+        right:12px;
+        top:-10px;
+        font-size:8px;
+    }
+    .timeline-status{ padding:4px 7px; font-size:9px; }
+}
