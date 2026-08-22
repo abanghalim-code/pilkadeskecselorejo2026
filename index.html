@@ -75,14 +75,26 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
   justify-content:center;
   align-items:center;
 }
-.bpjs-photo img{
+.bpjs-photo a{
   display:block;
   width:min(100%,430px);
+  cursor:pointer;
+}
+
+.bpjs-photo img{
+  display:block;
+  width:100%;
   max-height:190px;
   object-fit:cover;
   object-position:center;
   border-radius:18px;
   box-shadow:0 12px 28px rgba(22,67,126,.18);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.bpjs-photo a:hover img{
+  transform:scale(1.03);
+  box-shadow:0 16px 34px rgba(22,67,126,.26);
 }
 @media(max-width:800px){
   .bpjs-banner{padding:28px 20px;}
@@ -263,9 +275,15 @@ Hari H dan Jam D : Pemungutan Suara
       <p class="bpjs-message">
         <span>SETIAP TAHAPAN TANPA TERKECUALI.</span>
         <span>SETIAP PERSONEL, TAK TERLEWATKAN SATU ORANG PUN.</span>
-        <span class="bpjs-emph">SEMUANYA TERLINDUNGI OLEH BPJS KETENAGAKERJAAN.</span>
-      </p>
-      <p class="bpjs-note">Perlindungan bagi seluruh personel pelaksana Pilkades Serentak Tahun 2026 Kecamatan Selorejo.</p>
+        <span cl<div class="bpjs-photo">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdnlWOaYb75pIh4ZpVOmLh6YZdulOQK_KzDkh0S_UkX8sUusA/viewform?pli=1&pli=1"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Buka Form Pendataan BPJS Ketenagakerjaan Pilkades">
+        <img src="assets/images/bpjs-ketenagakerjaan.jpg"
+             alt="Kartu BPJS Ketenagakerjaan — klik untuk membuka Form Pendataan">
+      </a>
+    </div>i seluruh personel pelaksana Pilkades Serentak Tahun 2026 Kecamatan Selorejo.</p>
     </div>
     <div class="bpjs-photo">
       <img src="assets/images/bpjs-ketenagakerjaan.jpg" alt="Kartu BPJS Ketenagakerjaan">
