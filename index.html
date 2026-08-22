@@ -8,6 +8,7 @@
 
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="css/timeline.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +16,81 @@
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+<style id="bpjs-banner-style">
+.bpjs-banner{
+  width:100%;
+  margin:0;
+  padding:34px clamp(24px,5vw,72px);
+  box-sizing:border-box;
+  background:linear-gradient(135deg,#f7fbff 0%,#eef5ff 55%,#ffffff 100%);
+  border-top:1px solid rgba(25,92,190,.10);
+  border-bottom:1px solid rgba(25,92,190,.10);
+}
+.bpjs-banner-inner{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(280px,.75fr);
+  gap:42px;
+  align-items:center;
+}
+.bpjs-kicker{
+  display:inline-block;
+  margin-bottom:10px;
+  padding:7px 14px;
+  border-radius:999px;
+  background:#e7f0ff;
+  color:#1456b8;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+.bpjs-title{
+  margin:0 0 14px;
+  color:#1456b8;
+  font-size:clamp(26px,3vw,40px);
+  line-height:1.08;
+  font-weight:900;
+}
+.bpjs-message{
+  margin:0;
+  color:#14233a;
+  font-size:clamp(19px,1.65vw,25px);
+  line-height:1.42;
+  font-weight:800;
+}
+.bpjs-message span{display:block;}
+.bpjs-message .bpjs-emph{color:#1456b8;}
+.bpjs-note{
+  margin:16px 0 0;
+  color:#52657d;
+  font-size:16px;
+  line-height:1.5;
+  font-weight:500;
+}
+.bpjs-photo{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.bpjs-photo img{
+  display:block;
+  width:min(100%,430px);
+  max-height:190px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:18px;
+  box-shadow:0 12px 28px rgba(22,67,126,.18);
+}
+@media(max-width:800px){
+  .bpjs-banner{padding:28px 20px;}
+  .bpjs-banner-inner{grid-template-columns:1fr;gap:22px;}
+  .bpjs-photo{order:2;}
+  .bpjs-photo img{max-height:210px;}
+}
+</style>
 
 </head>
 
@@ -177,64 +253,76 @@ Hari H dan Jam D : Pemungutan Suara
 
 </section>
 
-<!-- ================= PROFIL ================= -->
 
+<!-- ================= BPJS KETENAGAKERJAAN ================= -->
+<section id="bpjs-ketenagakerjaan" class="bpjs-banner" aria-label="Perlindungan BPJS Ketenagakerjaan">
+  <div class="bpjs-banner-inner">
+    <div class="bpjs-copy">
+      <div class="bpjs-kicker">BPJS KETENAGAKERJAAN</div>
+      <h2 class="bpjs-title">Perlindungan untuk Seluruh Personel Pilkades</h2>
+      <p class="bpjs-message">
+        <span>SETIAP TAHAPAN TANPA TERKECUALI.</span>
+        <span>SETIAP PERSONEL, TAK TERLEWATKAN SATU ORANG PUN.</span>
+        <span class="bpjs-emph">SEMUANYA TERLINDUNGI OLEH BPJS KETENAGAKERJAAN.</span>
+      </p>
+      <p class="bpjs-note">Perlindungan bagi seluruh personel pelaksana Pilkades Serentak Tahun 2026 Kecamatan Selorejo.</p>
+    </div>
+    <div class="bpjs-photo">
+      <img src="assets/images/bpjs-ketenagakerjaan.jpg" alt="Kartu BPJS Ketenagakerjaan">
+    </div>
+  </div>
+</section>
+
+<!-- ================= TAHAPAN ================= -->
+
+<section id="tahapan" class="tahapan">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Tahapan Pilkades 2026</h2>
+<p>Timeline pelaksanaan Pemilihan Kepala Desa Serentak Tahun 2026 Kecamatan Selorejo.</p>
+</div>
+
+<div class="tahapan-current">
+<span class="tahapan-current-badge">ANDA DI SINI</span>
+<h3 data-tahapan-current-stage>Memuat tahapan...</h3>
+<div data-tahapan-current-activity>Memuat kegiatan aktif...</div>
+<span data-tahapan-current-status>MEMUAT</span>
+</div>
+
+<div class="tahapan-progress" data-tahapan-progress aria-label="Progress tahapan Pilkades 2026"></div>
+
+<div class="timeline" data-tahapan-list>
+<div class="timeline-loading">Memuat 49 tahapan...</div>
+</div>
+
+</div>
+</section>
+
+
+
+<!-- ================= PROFIL ================= -->
 <section id="profil" class="profil">
 
 <div class="container">
 
 <div class="section-title">
-
 <h2>Profil Pilkades</h2>
-
-<p>
-Pemilihan Kepala Desa Tahun 2026 merupakan pelaksanaan
-demokrasi desa secara langsung, umum, bebas, rahasia,
-jujur dan adil.
-Pemilihan Kepala Desa (Pilkades) Serentak Tahun 2026 
-merupakan agenda demokrasi di tingkat desa untuk memilih 
-Kepala Desa sebagai pemimpin penyelenggaraan pemerintahan 
-desa. Pilkades tahun ini memiliki arti penting karena 
-menjadi pelaksanaan pertama setelah diberlakukannya 
-kebijakan perpanjangan masa jabatan Kepala Desa dan Badan 
-Permusyawaratan Desa (BPD) sesuai dengan ketentuan 
-peraturan perundang-undangan yang berlaku. Momentum ini 
-menjadi awal bagi masyarakat untuk kembali menggunakan 
-hak pilihnya dalam menentukan arah kepemimpinan desa 
-secara demokratis. Penyelenggaraan Pilkades Serentak 
-Tahun 2026 berpedoman pada ketentuan peraturan perundang-
-undangan yang mengatur pemerintahan desa, pemilihan 
-kepala desa, serta regulasi pelaksanaannya di Kabupaten 
-Blitar. Seluruh tahapan diselenggarakan dengan menjunjung 
-tinggi prinsip transparansi, akuntabilitas, profesionalitas, 
-dan partisipasi masyarakat. Pilkades bertujuan untuk 
-memilih Kepala Desa yang memiliki integritas, kapasitas, 
-dan komitmen dalam memimpin penyelenggaraan pemerintahan 
-desa, melaksanakan pembangunan, memberikan pelayanan kepada 
-masyarakat, serta mewujudkan tata kelola pemerintahan desa 
-yang baik. Pelaksanaannya dilakukan berdasarkan asas langsung, 
-umum, bebas, rahasia, jujur, dan adil (LUBER JURDIL) sehingga 
-setiap warga desa yang memenuhi persyaratan memiliki kesempatan 
-yang sama untuk menggunakan hak pilihnya secara bertanggung 
-jawab. Pada Tahun 2026, Kecamatan Selorejo melaksanakan 
-Pemilihan Kepala Desa Serentak di tiga desa, yaitu Desa 
-Sidomulyo, Desa Sumberagung, dan Desa Banjarsari. Seluruh 
-tahapan diharapkan dapat berlangsung dengan aman, tertib, 
-lancar, dan kondusif melalui sinergi antara pemerintah, 
-penyelenggara, aparat keamanan, serta partisipasi aktif 
-masyarakat. Melalui Pemilihan Kepala Desa Serentak Tahun 
-2026, diharapkan lahir pemimpin-pemimpin desa yang amanah, 
-visioner, dan mampu membawa kemajuan bagi desanya, sehingga 
-tercipta pemerintahan desa yang profesional, transparan, 
-akuntabel, serta mampu meningkatkan kesejahteraan masyarakat 
-dan memperkuat pembangunan di Kecamatan Selorejo secara 
-berkelanjutan.
-</p>
-
 </div>
 
-</div>
+<div class="profil-content">
 
+<p><strong>Pemilihan Kepala Desa Serentak Tahun 2026 di Kecamatan Selorejo merupakan momentum demokrasi desa untuk memilih pemimpin yang amanah, kompeten, visioner, dan berkomitmen terhadap pembangunan serta kesejahteraan masyarakat.</strong></p>
+
+<p><strong>Pelaksanaannya berpedoman pada asas LUBER JURDIL dengan menjunjung transparansi, akuntabilitas, profesionalitas, partisipasi masyarakat, serta ketertiban dan keamanan. Pada Tahun 2026, Pilkades Serentak dilaksanakan di Desa Sidomulyo, Desa Sumberagung, dan Desa Banjarsari.</strong></p>
+
+<p><strong>Menjadi Kepala Desa bukanlah amanah yang ringan. Tanggung jawab dan pengorbanannya besar, namun masa jabatan yang relatif panjang juga menunjukkan adanya ruang pengabdian yang bernilai bagi desa.</strong></p>
+
+<p><strong>Karena itu, keberhasilan Kepala Desa tidak cukup diukur dari kemampuannya menyerap aspirasi, tetapi dari hasil nyata kepemimpinannya dalam pemberdayaan masyarakat, pengentasan kemiskinan, peningkatan pelayanan, serta kemandirian dan kesejahteraan masyarakat. Pilkades bukan sekadar tentang siapa yang terpilih, tetapi tentang siapa yang mampu mengubah amanah kepemimpinan menjadi hasil nyata bagi masyarakat.</strong></p>
+
+</div>
+</div>
 </section>
 
 <!-- ================= DESA ================= -->
@@ -465,8 +553,10 @@ Selengkapnya
 <i class="fa-solid fa-arrow-up"></i>
 </button>
 
+<script src="assets/js/tahapan.js"></script>
 <script src="assets/js/app.js"></script>
 
+<script>window.TAHAPAN_DATA=[{"id":1,"tahap":"Pra Persiapan","tanggal":"25 Juni - 29 Juli 2026","jangka_waktu":"2 hari kerja","kegiatan":"Pembentukan DESK Pilkades Kabupaten Blitar Tahun 2026, Penetapan Nama Desa yang melaksanakan Pilkades, Tahapan Pilkades ditetapkan dengan Keputusan Bupati","pelaksana":"dindamade","keterangan":""},{"id":2,"tahap":"Persiapan","tanggal":"29 Juni - 3 Juli 2026","jangka_waktu":"2 hari kerja","kegiatan":"Pemberitahuan BPD kepada Kepala Desa tentang akhir masa jabatan yang disampaikan 6 (enam) bulan sebelum berakhir masa jabatan Kepala Desa","pelaksana":"Badan Permusyawaratan Desa","keterangan":""},{"id":3,"tahap":"Persiapan","tanggal":"6 Juli - 14 Agustus 2026","jangka_waktu":"30 hari kerja","kegiatan":"Laporan akhir masa jabatan Kepala Desa kepada Bupati disampaikan dalam jangka waktu 30 (tiga puluh) hari setelah pemberitahuan akhir masa jabatan.","pelaksana":"Kepala Desa","keterangan":""},{"id":4,"tahap":"Persiapan","tanggal":"6-17 Juli 2026","jangka_waktu":"10 hari kerja","kegiatan":"Pembentukan Panitia Pemilihan Kepala Desa oleh BPD","pelaksana":"Badan Permusyawaratan Desa","keterangan":{"utama":"Pembentukan Panitia Pilkades disampaikan secara tertulis oleh BPD kepada Bupati melalui Camat.","susunan_panitia":["Ketua merangkap anggota","Wakil Ketua merangkap anggota","Sekretaris merangkap anggota","Empat Ketua Seksi merangkap anggota"],"seksi":["Seksi Sosialisasi, Pendaftaran Pemilih, Penetapan Pemilih, Penjaringan dan Penyaringan Bakal Calon Kepala Desa","Seksi Logistik dan Tata Cara Kampanye","Seksi Tata Cara Pelaksanaan Pemilihan Kepala Desa, Pemungutan Suara dan Rekapitulasi Penghitungan Suara","Seksi Perencanaan, Pengawasan, Evaluasi dan Pelaporan"]}},{"id":5,"tahap":"Persiapan","tanggal":"13-24 Juli 2026","jangka_waktu":"10 hari kerja","kegiatan":"Membentuk Petugas Pendaftaran Pemilih (Pantarlih) dan Komisi Penyelenggara Pemungutan Suara (KPPS), ditetapkan dengan Keputusan Kepala Desa atas usul Panitia Pilkades","pelaksana":"Panitia Pilkades dan Kepala Desa","keterangan":""},{"id":6,"tahap":"Persiapan","tanggal":"27 Juli - 8 September 2026","jangka_waktu":"30 hari kerja","kegiatan":"Panitia Pilkades menyusun rencana kebutuhan barang dan biaya Pilkades yang bersumber dari APBD dan diajukan kepada Bupati melalui Kepala Desa dan Camat paling lama 30 (tiga puluh) hari setelah terbentuknya Panitia Pilkades untuk memperoleh persetujuan Bupati.","pelaksana":"Panitia Pilkades","keterangan":"Rencana kebutuhan barang dan biaya Pilkades yang bersumber dari APBD melekat pada DPA Kecamatan dan dikelola oleh Satuan Kerja Kecamatan."},{"id":7,"tahap":"Persiapan","tanggal":"27 Juli - 8 September 2026","jangka_waktu":"30 hari kerja","kegiatan":"Bupati menyetujui rencana kebutuhan barang dan biaya Pilkades dalam waktu paling lama 30 (tiga puluh) hari sejak diterima dari Panitia Pilkades.","pelaksana":"DESK Pilkades Kabupaten Blitar","keterangan":""},{"id":8,"tahap":"Persiapan","tanggal":"27 Juli - 8 September 2026","jangka_waktu":"30 hari kerja","kegiatan":"Panitia Pilkades menyusun rencana biaya Pilkades yang bersumber dari APBDesa dan diajukan kepada Kepala Desa paling lama 30 (tiga puluh) hari setelah terbentuknya Panitia Pilkades untuk memperoleh persetujuan Kepala Desa.","pelaksana":"Panitia Pilkades","keterangan":"Rencana kebutuhan barang dan biaya Pilkades yang bersumber dari APBDesa dikelola oleh Pemerintah Desa."},{"id":9,"tahap":"Persiapan","tanggal":"27 Juli - 8 September 2026","jangka_waktu":"30 hari kerja","kegiatan":"Kepala Desa menyetujui rencana biaya Pilkades dalam waktu paling lama 30 (tiga puluh) hari sejak diterima dari Panitia Pilkades.","pelaksana":"Kepala Desa","keterangan":""},{"id":10,"tahap":"Persiapan","tanggal":"29-31 Juli 2026","jangka_waktu":"3 hari kerja","kegiatan":"Melaksanakan pemutakhiran dan validasi data pemilih dengan mendatangi langsung ke tempat tinggal pemilih.","pelaksana":"Pantarlih","keterangan":""},{"id":11,"tahap":"Persiapan","tanggal":"3 Agustus 2026","jangka_waktu":"1 hari kerja","kegiatan":"Menyusun dan menetapkan Daftar Pemilih Sementara.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":12,"tahap":"Persiapan","tanggal":"4-6 Agustus 2026","jangka_waktu":"3 hari kerja","kegiatan":"Mengumumkan Daftar Pemilih Sementara dan perbaikan data pemilih.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":13,"tahap":"Persiapan","tanggal":"7-11 Agustus 2026","jangka_waktu":"3 hari kerja","kegiatan":"Melakukan pendaftaran dan pencatatan Data Pemilih Tambahan.","pelaksana":"Pantarlih","keterangan":""},{"id":14,"tahap":"Persiapan","tanggal":"12-14 Agustus 2026","jangka_waktu":"3 hari kerja","kegiatan":"Mengumumkan Daftar Pemilih Tambahan.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":15,"tahap":"Persiapan","tanggal":"18 Agustus 2026","jangka_waktu":"1 hari kerja","kegiatan":"Merekapitulasi Daftar Pemilih Sementara dan Daftar Pemilih Tambahan untuk disusun dan ditetapkan sebagai Daftar Pemilih Tetap.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":16,"tahap":"Persiapan","tanggal":"19 Agustus - 21 Agustus 2026","jangka_waktu":"3 hari kerja","kegiatan":"Mengumumkan Daftar Pemilih Tetap.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":17,"tahap":"Persiapan","tanggal":"19 Agustus 2026","jangka_waktu":"1 hari kerja","kegiatan":"Membuat salinan Daftar Pemilih Tetap untuk dipergunakan di Tempat Pemungutan Suara pada saat pemungutan suara.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":18,"tahap":"Persiapan","tanggal":"19 Agustus - 21 Agustus 2026","jangka_waktu":"3 hari","kegiatan":"Pengadaan surat undangan, alat coblos, bantalan, tinta, kotak suara dan bilik suara.","pelaksana":"Tim Fasilitasi Kecamatan","keterangan":""},{"id":19,"tahap":"Pencalonan","tanggal":"20 Agustus - 2 September 2026","jangka_waktu":"9 hari kerja","kegiatan":"Mengumumkan adanya pendaftaran Bakal Calon Kepala Desa beserta persyaratan yang harus dipenuhi sekaligus menerima berkas pendaftaran bakal calon kepala desa lengkap sesuai ketentuan peraturan perundang-undangan (Pendaftaran Tahap Pertama).","pelaksana":"Panitia Pilkades","keterangan":""},{"id":20,"tahap":"Pencalonan","tanggal":"3-4 September 2026","jangka_waktu":"2 hari kerja","kegiatan":"Melakukan verifikasi dan validasi berkas pendaftaran bakal calon kepala desa, kemudian menyampaikan hasil verifikasi dan validasi kepada bakal calon Kepala Desa.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":21,"tahap":"Pencalonan","tanggal":"7-18 September 2026","jangka_waktu":"10 hari kerja","kegiatan":"Bakal Calon Kepala Desa menyampaikan dokumen pendukung hasil verifikasi dan validasi berkas pendaftaran kepada Panitia Pilkades.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":22,"tahap":"Pencalonan","tanggal":"21-24 September 2026","jangka_waktu":"4 hari kerja","kegiatan":"Melaksanakan verifikasi dan validasi akhir terhadap berkas pendaftaran bakal calon kepala desa beserta dokumen pendukung, kemudian menyampaikan hasilnya kepada Bakal Calon Kepala Desa.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":23,"tahap":"Pencalonan","tanggal":"25 September - 15 Oktober 2026","jangka_waktu":"15 hari kerja","kegiatan":"Memperpanjang waktu pendaftaran apabila bakal calon Kepala Desa yang memenuhi persyaratan kurang dari 2 (dua) orang (Pendaftaran Tahap Kedua).","pelaksana":"Panitia Pilkades","keterangan":""},{"id":24,"tahap":"Pencalonan","tanggal":"25 September - 15 Oktober 2026","jangka_waktu":"15 hari kerja","kegiatan":"Bakal Calon Kepala Desa melengkapi persyaratan yang harus dipenuhi selama Pendaftaran Tahap Kedua.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":25,"tahap":"Pencalonan","tanggal":"25 September - 15 Oktober 2026","jangka_waktu":"15 hari kerja","kegiatan":"Melaksanakan verifikasi dan validasi kelengkapan persyaratan administrasi bakal calon Kepala Desa selama Pendaftaran Tahap Kedua.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":26,"tahap":"Pencalonan","tanggal":"16-29 Oktober 2026","jangka_waktu":"10 hari kerja","kegiatan":"Memperpanjang waktu pendaftaran apabila bakal calon Kepala Desa yang memenuhi persyaratan kurang dari 2 (dua) orang (Pendaftaran Tahap Ketiga).","pelaksana":"Panitia Pilkades","keterangan":""},{"id":27,"tahap":"Pencalonan","tanggal":"16-29 Oktober 2026","jangka_waktu":"10 hari kerja","kegiatan":"Bakal Calon Kepala Desa melengkapi persyaratan yang harus dicukupi dalam waktu 10 (sepuluh) hari sejak Pendaftaran Tahap Ketiga dibuka.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":28,"tahap":"Pencalonan","tanggal":"16-29 Oktober 2026","jangka_waktu":"10 hari kerja","kegiatan":"Melaksanakan verifikasi dan validasi kelengkapan persyaratan administrasi bakal calon Kepala Desa dalam jangka waktu 10 (sepuluh) hari sejak Pendaftaran Tahap Ketiga dibuka.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":29,"tahap":"Pencalonan","tanggal":"30 Oktober 2026","jangka_waktu":"1 hari kerja","kegiatan":"Melaksanakan seleksi tambahan apabila bakal calon Kepala Desa yang memenuhi persyaratan lebih dari 5 (lima) orang.","pelaksana":"Panitia Pilkades","keterangan":"Nilai hasil seleksi tambahan dari masing-masing bakal calon Kepala Desa diumumkan secara terbuka melalui media informasi yang ada di desa."},{"id":30,"tahap":"Pencalonan","tanggal":"2 November 2026","jangka_waktu":"1 hari kerja","kegiatan":"Penetapan calon Kepala Desa disertai penentuan nomor urut melalui undian secara terbuka yang dihadiri para calon atau kuasanya.","pelaksana":"Panitia Pilkades","keterangan":{"utama":"Jumlah calon yang ditetapkan paling sedikit 2 (dua) orang dan paling banyak 5 (lima) orang.","tambahan":"Nomor urut dan nama calon Kepala Desa dituangkan dalam berita acara dan ditetapkan dengan Keputusan Panitia Pilkades."}},{"id":31,"tahap":"Pencalonan","tanggal":"29 Oktober 2026","jangka_waktu":"1 hari kerja","kegiatan":"Apabila Pendaftaran Tahap Ketiga berakhir dan hanya terdapat 1 (satu) calon Kepala Desa terdaftar, Panitia Pilkades menyampaikan laporan kepada Badan Permusyawaratan Desa.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":32,"tahap":"Pencalonan","tanggal":"30 Oktober 2026","jangka_waktu":"1 hari kerja","kegiatan":"Panitia Pilkades bersama Badan Permusyawaratan Desa melaksanakan musyawarah untuk menetapkan calon Kepala Desa terdaftar yang akan dipilih pada tahapan pemungutan suara secara musyawarah mufakat.","pelaksana":"Panitia Pilkades dan Badan Permusyawaratan Desa","keterangan":{"jika_mufakat":"Tahapan pemungutan suara dilanjutkan dengan 1 (satu) calon Kepala Desa.","jika_tidak_mufakat":"Pilkades dianggap batal.","pelaporan":"BPD menyampaikan laporan kepada Bupati melalui Camat dengan tembusan kepada Kepala Desa paling lambat 1 (satu) hari setelah musyawarah."}},{"id":33,"tahap":"Pencalonan","tanggal":"2-20 November 2026","jangka_waktu":"15 hari kerja","kegiatan":"Bupati menindaklanjuti laporan Badan Permusyawaratan Desa mengenai pembatalan pelaksanaan Pilkades.","pelaksana":"DESK Pilkades Kabupaten Blitar dan Bupati","keterangan":"Apabila masa jabatan Kepala Desa telah berakhir, Bupati mengangkat Penjabat Kepala Desa sampai ditetapkannya Kepala Desa definitif."},{"id":34,"tahap":"Pencalonan","tanggal":"2-10 November 2026","jangka_waktu":"7 hari kerja","kegiatan":"Panitia Pilkades mengumumkan melalui media massa dan/atau papan pengumuman mengenai nama calon Kepala Desa yang telah ditetapkan.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":35,"tahap":"Pencalonan","tanggal":"3-10 November 2026","jangka_waktu":"6 hari kerja","kegiatan":"Pengadaan surat suara.","pelaksana":"Tim Fasilitasi Kecamatan","keterangan":""},{"id":36,"tahap":"Pencalonan","tanggal":"11-16 November 2026","jangka_waktu":"4 hari kerja","kegiatan":"Penandatanganan surat suara dan pelipatan surat suara.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":37,"tahap":"Pencalonan","tanggal":"12-16 November 2025","jangka_waktu":"3 hari kerja","kegiatan":"Penyampaian undangan pemungutan suara kepada pemilih.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":38,"tahap":"Pencalonan","tanggal":"17-19 November 2026","jangka_waktu":"3 hari kalender","kegiatan":"Pelaksanaan kampanye.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":39,"tahap":"Pencalonan","tanggal":"20-22 November 2026","jangka_waktu":"3 hari kalender","kegiatan":"Masa tenang.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":40,"tahap":"Pencalonan","tanggal":"21-22 November 2026","jangka_waktu":"2 hari kalender","kegiatan":"Pendistribusian surat suara, kotak suara, bilik suara, alas coblos, bantalan dan tinta dari Kecamatan ke Desa.","pelaksana":"Tim Fasilitasi Kecamatan","keterangan":""},{"id":41,"tahap":"Pencalonan","tanggal":"21-22 November 2026","jangka_waktu":"2 hari kalender","kegiatan":"Penataan layout Tempat Pemungutan Suara (TPS).","pelaksana":"Panitia Pilkades","keterangan":""},{"id":42,"tahap":"Pemungutan Suara","tanggal":"23 November 2026","jangka_waktu":"1 hari kerja","kegiatan":"Hari pelaksanaan pemungutan suara, penghitungan suara, penetapan calon Kepala Desa terpilih, dan penetapan melalui Keputusan Panitia Pilkades.","pelaksana":"Panitia Pilkades dan KPPS","keterangan":{"sub_kegiatan":["Pelaksanaan pemungutan suara.","Penghitungan suara.","Penetapan calon Kepala Desa terpilih.","Penetapan calon Kepala Desa terpilih dengan Keputusan Panitia Pilkades."]}},{"id":43,"tahap":"Pemungutan Suara","tanggal":"24-26 November 2026","jangka_waktu":"3 hari kerja","kegiatan":"Calon Kepala Desa dapat mengajukan keberatan atas penetapan calon Kepala Desa terpilih oleh Panitia Pilkades disertai saksi, keterangan, dan bukti pendukung.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":44,"tahap":"Penetapan","tanggal":"24 November - 2 Desember 2026","jangka_waktu":"7 hari kerja","kegiatan":"Panitia Pilkades menyampaikan laporan nama calon Kepala Desa terpilih beserta dokumen pendukung kepada Badan Permusyawaratan Desa.","pelaksana":"Panitia Pilkades","keterangan":""},{"id":45,"tahap":"Penetapan","tanggal":"3-11 Desember 2026","jangka_waktu":"7 hari kerja","kegiatan":"Badan Permusyawaratan Desa menyampaikan laporan kepada Bupati melalui Camat dengan tembusan kepada Kepala Desa mengenai calon Kepala Desa terpilih.","pelaksana":"Badan Permusyawaratan Desa","keterangan":""},{"id":46,"tahap":"Penetapan","tanggal":"11 Desember 2026 - 25 Januari 2027","jangka_waktu":"30 hari kerja","kegiatan":"Dalam hal terjadi perselisihan hasil Pilkades, Bupati wajib menyelesaikan perselisihan paling lama 30 (tiga puluh) hari sejak diterimanya laporan dari BPD.","pelaksana":"DESK Pilkades","keterangan":""},{"id":47,"tahap":"Penetapan","tanggal":"28 Desember 2026","jangka_waktu":"30 hari kerja","kegiatan":"Bupati menetapkan pengesahan dan pengangkatan calon Kepala Desa terpilih menjadi Kepala Desa dengan Keputusan Bupati.","pelaksana":"DESK Pilkades Kabupaten Blitar dan Bupati","keterangan":""},{"id":48,"tahap":"Penetapan","tanggal":"28 Desember 2026","jangka_waktu":"30 hari kerja","kegiatan":"Pelantikan calon Kepala Desa terpilih oleh Bupati atau pejabat yang ditunjuk.","pelaksana":"Bupati","keterangan":""},{"id":49,"tahap":"Penetapan","tanggal":"","jangka_waktu":"","kegiatan":"Serah terima jabatan dilakukan setelah pelantikan calon Kepala Desa terpilih.","pelaksana":"","keterangan":""}];</script>
 </body>
 </html>
 <section class="running-info">
