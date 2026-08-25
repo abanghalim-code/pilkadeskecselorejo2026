@@ -10,7 +10,7 @@
 <header class="head"><div class="brand"><img src="assets/logo-sipitung.png" onerror="this.style.display='none'"><div><div class="small">SIPITUNG</div><div class="title">SIPITUNG 2026</div><div class="sub">Rekapitulasi perolehan suara Pilkades Kecamatan Selorejo</div><div id="status" class="status">Memuat data...</div></div></div><div class="clock"><div id="time" class="time">--:--:-- WIB</div><div id="date" class="date">--</div></div></header>
 <main id="grid" class="grid"></main><footer class="foot">SIPITUNG 2026 • Pilkades Kecamatan Selorejo • Data dari Google Sheets</footer></div>
 <script>
-const ID='1GWDd6GWzpfb06hL0lsqWhCDguDAggSjO5ii1eYsIfC',SHEET='dashboard_desa',ORDER=['BANJARSARI','SIDOMULYO','SUMBERAGUNG'];
+const ID='1GWDd6GWzpbfO6h0LsqWlhCDguDAggSjO5iic1eYslFc',SHEET='dashboard_desa',ORDER=['BANJARSARI','SIDOMULYO','SUMBERAGUNG'];
 const logos={BANJARSARI:'assets/desa-banjarsari.png',SIDOMULYO:'assets/desa-sidomulyo.png',SUMBERAGUNG:'assets/desa-sumberagung.png'};
 const f=n=>n===''||n==null?'—':new Intl.NumberFormat('id-ID').format(Number(n)||0);
 const p=v=>{if(v===''||v==null)return'—';let n=Number(String(v).replace('%','').replace(',','.'));if(n<=1)n*=100;return n.toLocaleString('id-ID',{minimumFractionDigits:2,maximumFractionDigits:2})+'%'};
