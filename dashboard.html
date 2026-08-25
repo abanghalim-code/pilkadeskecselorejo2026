@@ -22,15 +22,19 @@ body{padding:8px}
 .date{font-size:10px;color:#64748b}
 
 .grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.desa{background:#fff;border:1px solid #dbe4ee;border-radius:14px;padding:8px;display:flex;flex-direction:column;min-width:0;min-height:0;height:100%;box-shadow:0 4px 15px #102c5514;overflow:hidden}
+.desa{--accent:#0b73d1;background:#fff;border:1px solid #dbe4ee;border-radius:14px;padding:8px;display:flex;flex-direction:column;min-width:0;min-height:0;height:100%;box-shadow:0 4px 15px #102c5514;overflow:hidden;position:relative}
+.desa:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--accent)}
+.desa[data-desa="BANJARSARI"]{--accent:#0b73d1}
+.desa[data-desa="SIDOMULYO"]{--accent:#19a974}
+.desa[data-desa="SUMBERAGUNG"]{--accent:#f59e0b}
 .dhead{height:58px;flex:none;display:flex;align-items:center;gap:8px;border-bottom:2px solid #e7edf4}
 .dhead img{width:49px;height:49px;object-fit:contain}
-.dn{font-size:18px;font-weight:900;color:#0758b8}
-.ds{font-size:8px;color:#64748b;font-weight:700;margin-top:2px}
+.dn{font-size:18px;font-weight:900;color:var(--accent)}
+.ds{font-size:8px;color:#64748b;font-weight:700;margin-top:2px}.live-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#19a974;vertical-align:middle;box-shadow:0 0 0 2px #e9f8f0}
 
 .metrics{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:5px}
 .m{background:#f7f9fc;border:1px solid #e5ebf2;border-radius:7px;padding:4px 6px;min-width:0}
-.m:hover{background:#f2f7fd;border-color:#cfdceb}
+.m:hover{background:#f2f7fd;border-color:#cfdceb}.metrics .m:nth-child(3){border-left:3px solid #19a974;padding-left:5px}
 .lab{font-size:6.5px;font-weight:800;color:#64748b}
 .val{font-size:16px;font-weight:900;margin-top:1px}
 .wide{grid-column:span 2}
@@ -182,12 +186,12 @@ function card(d){
   const vals=[safeNum(d.calon_1),safeNum(d.calon_2),safeNum(d.calon_3)];
   const total=vals.reduce((a,b)=>a+b,0);
 
-  return `<section class="desa">
+  return `<section class="desa" data-desa="${d.desa}">
     <div class="dhead">
       <img src="${logos[d.desa]||''}" onerror="this.style.display='none'">
       <div>
         <div class="dn">${d.desa}</div>
-        <div class="ds">AGREGAT PER DESA</div>
+        <div class="ds"><span class="live-dot"></span> AGREGAT PER DESA</div>
       </div>
     </div>
 
@@ -207,7 +211,7 @@ function card(d){
         <div class="lab">PROGRES TPS</div>
         <div class="val">${p(prog)}</div>
         <div class="bar">
-          <div class="fill" style="width:${Math.max(0,Math.min(100,prog))}%"></div>
+          <div class="fill" style="width:${Math.max(0,Math.min(100,prog))}%;background:var(--accent)"></div>
         </div>
       </div>
     </div>
