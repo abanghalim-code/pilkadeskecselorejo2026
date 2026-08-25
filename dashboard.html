@@ -11,7 +11,7 @@
 <main id="grid" class="grid"></main><footer class="foot">SIPITUNG 2026 • Pilkades Kecamatan Selorejo • Data dari Google Sheets</footer></div>
 <script>
 const ID='1GWDd6GWzpbfO6h0LsqWlhCDguDAggSjO5iic1eYslFc',SHEET='dashboard_desa',ORDER=['BANJARSARI','SIDOMULYO','SUMBERAGUNG'];
-const logos={BANJARSARI:'assets/desa-banjarsari.jpeg',SIDOMULYO:'assets/desa-sidomulyo.png',SUMBERAGUNG:'assets/desa-sumberagung.jpeg'};
+const logos={BANJARSARI:'assets/desa-banjarsari.jpeg',SIDOMULYO:'assets/desa sidomulyo.png',SUMBERAGUNG:'assets/desa-sumberagung.jpeg'};
 const f=n=>n===''||n==null?'—':new Intl.NumberFormat('id-ID').format(Number(n)||0);
 const p=v=>{if(v===''||v==null)return'—';let n=Number(String(v).replace('%','').replace(',','.'));if(n<=1)n*=100;return n.toLocaleString('id-ID',{minimumFractionDigits:2,maximumFractionDigits:2})+'%'};
 function card(d){let prog=Number(d.progres_tps)||0;if(prog<=1)prog*=100;return `<section class="desa"><div class="dhead"><img src="${logos[d.desa]||''}" onerror="this.style.display='none'"><div><div class="dn">${d.desa}</div><div class="ds">AGREGAT PER DESA</div></div></div><div class="metrics">
