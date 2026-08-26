@@ -675,13 +675,18 @@ Informasi terbaru seputar Pilkades Serentak 2026.
                 <td><strong>${r.tps.replace(desa + " ", "")}</strong></td>
                 <td>${r.alamat}</td>
                 <td>${r.koordinator}</td>
+                <td>${formatNumber(r.dpt_l)}</td>
+                <td>${formatNumber(r.dpt_p)}</td>
                 <td>${formatNumber(r.dpt)}</td>
             </tr>
         `).join("");
 
-        const totalDpt = rows.reduce((s,r) => s + Number(r.dpt || 0), 0);
-        total.textContent = `${rows.length} TPS • ${formatNumber(totalDpt)} DPT`;
+                const totalL = rows.reduce((s,r) => s + Number(r.dpt_l || 0), 0);
+                const totalP = rows.reduce((s,r) => s + Number(r.dpt_p || 0), 0);
+                const totalDpt = rows.reduce((s,r) => s + Number(r.dpt || 0), 0);
 
+total.textContent =
+    `${rows.length} TPS • ${formatNumber(totalL)} L • ${formatNumber(totalP)} P • ${formatNumber(totalDpt)} DPT`;
         modal.classList.add("show");
         modal.setAttribute("aria-hidden","false");
         document.body.style.overflow = "hidden";
