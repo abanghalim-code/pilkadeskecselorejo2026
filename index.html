@@ -693,8 +693,10 @@ Informasi terbaru seputar Pilkades Serentak 2026.
         document.body.style.overflow = "";
     }
 
-    fetch("data/tps.json")
+fetch("data/tps.json")
+.then(res => res.json())
 .then(data => {
+
     tpsData = data;
 
     const desaList = ["Sidomulyo", "Sumberagung", "Banjarsari"];
@@ -729,11 +731,13 @@ Informasi terbaru seputar Pilkades Serentak 2026.
     });
 
     buttons.forEach(btn => {
-        btn.addEventListener("click", () => openModal(btn.dataset.desa));
+        btn.addEventListener("click", () => {
+            openModal(btn.dataset.desa);
+        });
     });
-})        
-      .catch(err => console.error("Data TPS gagal dimuat:", err));
 
+})
+.catch(err => console.error("Data TPS gagal dimuat:", err));
     closeBtn.addEventListener("click", closeModal);
     modal.addEventListener("click", e => {
         if(e.target === modal) closeModal();
