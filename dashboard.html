@@ -64,7 +64,10 @@ body{padding:8px}
 .legend-row:last-child{border-bottom:0}
 .swatch{width:9px;height:9px;border-radius:3px;display:inline-block;margin-right:5px}
 .sw1{background:#0b73d1}.sw2{background:#19a974}.sw3{background:#f59e0b}
-.legend-name{font-weight:800;color:#102c55;display:flex;align-items:center}
+.legend-name{font-weight:900;color:#102c55;display:flex;align-items:center;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.candidate-name{font-size:9px;font-weight:900;letter-spacing:.1px;overflow:hidden;text-overflow:ellipsis}
+.candidate-no{font-size:7px;color:#718096;font-weight:900;margin-right:4px}
+
 .gender-val{text-align:center;font-size:11px;font-weight:900;color:#102c55}
 .total-val{text-align:right;font-size:12px;font-weight:900;color:#102c55}
 .legend-pct{text-align:right;font-size:6.5px;color:#718096}
@@ -188,6 +191,24 @@ function donutSVG(a,b,c){
     </div>`;
 }
 
+let candidateMap={};
+
+function candidateName(d,n){
+  const desa=String(d.desa||'').trim().toUpperCase();
+  return candidateMap[desa]?.[n] || `CALON ${n}`;
+}
+
+function buildCandidateMap(rows){
+  const map={};
+  rows.forEach(r=>{
+    const desa=String(r.nama_desa||r.desa||'').trim().toUpperCase();
+    const no=Number(r.no_urut||r.no||r.urutan||0);
+    const name=String(r.nama_calon||r.calon||'').trim();
+    if(desa && no && name) (map[desa] ||= {})[no]=name;
+  });
+  return map;
+}
+
 function legendRow(n,v,total,d){
   const l=safeNum(candidateGender(d,n,'l'));
   const p=safeNum(candidateGender(d,n,'p'));
@@ -196,7 +217,7 @@ function legendRow(n,v,total,d){
   const cls='sw'+n;
   return `
     <div class="legend-row">
-      <span class="legend-name"><span class="swatch ${cls}"></span>CALON ${n}</span>
+      <span class="legend-name"><span class="swatch ${cls}"></span><span class="candidate-no">${n}</span><span class="candidate-name">${candidateName(d,n)}</span></span>
       <span class="gender-val">${f(l)}</span>
       <span class="gender-val">${f(p)}</span>
       <span class="total-val">${f(v)}</span>
@@ -295,23 +316,31 @@ function clock(){
 setInterval(clock,1000);
 clock();
 
+async function fetchSheet(sheetName){
+  const u=`https://docs.google.com/spreadsheets/d/${ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}`;
+  const r=await fetch(u,{cache:'no-store'});
+  if(!r.ok)throw Error(r.status);
+  const t=await r.text();
+  const j=JSON.parse(t.slice(t.indexOf('{'),t.lastIndexOf('}')+1));
+  const cols=j.table.cols.map(x=>x.label);
+  return j.table.rows.map(x=>Object.fromEntries(
+    cols.map((c,i)=>[c,x.c[i]?.v??''])
+  ));
+}
+
 async function load(){
   let st=document.getElementById('status');
   try{
-    let u=`https://docs.google.com/spreadsheets/d/${ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET)}`,
-        r=await fetch(u,{cache:'no-store'});
+    const [desaRows, calonRows]=await Promise.all([
+      fetchSheet(SHEET),
+      fetchSheet('calon')
+    ]);
 
-    if(!r.ok)throw Error(r.status);
+    candidateMap=buildCandidateMap(calonRows);
 
-    let t=await r.text(),
-        j=JSON.parse(t.slice(t.indexOf('{'),t.lastIndexOf('}')+1)),
-        cols=j.table.cols.map(x=>x.label),
-        rows=j.table.rows.map(x=>Object.fromEntries(
-          cols.map((c,i)=>[c,x.c[i]?.v??''])
-        )),
-        map=Object.fromEntries(
-          rows.map(x=>[String(x.desa).trim().toUpperCase(),x])
-        );
+    const map=Object.fromEntries(
+      desaRows.map(x=>[String(x.desa).trim().toUpperCase(),x])
+    );
 
     document.getElementById('grid').innerHTML=
       ORDER.map(x=>map[x]
