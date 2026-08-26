@@ -30,7 +30,7 @@ body{padding:8px}
 .dhead{height:58px;flex:none;display:flex;align-items:center;gap:8px;border-bottom:2px solid #e7edf4}
 .dhead img{width:49px;height:49px;object-fit:contain}
 .dn{font-size:18px;font-weight:900;color:var(--accent)}
-.ds{font-size:8px;color:#64748b;font-weight:700;margin-top:2px}.live-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#19a974;vertical-align:middle;box-shadow:0 0 0 2px #e9f8f0}
+.ds{font-size:7px;color:#64748b;font-weight:700;font-style:italic;line-height:1.2;margin-top:3px;max-width:250px}.live-dot{display:none}
 
 .metrics{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:5px}
 .m{background:#f7f9fc;border:1px solid #e5ebf2;border-radius:7px;padding:4px 6px;min-width:0}
@@ -128,6 +128,12 @@ const logos={
   BANJARSARI:'assets/images/desa-banjarsari.jpeg',
   SIDOMULYO:'assets/images/desa sidomulyo.png',
   SUMBERAGUNG:'assets/images/desa-sumberagung.jpeg'
+};
+
+const taglines={
+  BANJARSARI:'Saatnya Transparansi Memimpin Desa Ini.',
+  SIDOMULYO:'Saatnya Rakyat Tahu, Bukan Sekadar Memilih.',
+  SUMBERAGUNG:'Saatnya Demokrasi Tak Berhenti di Bilik Suara.'
 };
 
 const f=n=>n===''||n==null?'—':new Intl.NumberFormat('id-ID').format(Number(n)||0);
@@ -237,7 +243,7 @@ function card(d){
       <img src="${logos[d.desa]||''}" onerror="this.style.display='none'">
       <div>
         <div class="dn">${d.desa}</div>
-        <div class="ds"><span class="live-dot"></span> AGREGAT PER DESA</div>
+        <div class="ds">${taglines[String(d.desa).trim().toUpperCase()]||'Data Pilkades Terbuka dan Terukur.'}</div>
       </div>
     </div>
 
