@@ -42,7 +42,7 @@ body{padding:8px}
 .bar{height:6px;background:#e7edf4;border-radius:9px;overflow:hidden;margin-top:3px}
 .fill{height:100%;background:#0b73d1;border-radius:9px;transition:width .5s ease}
 
-.result{margin-top:5px;border:1px solid #dfe7f0;border-radius:10px;background:#fbfdff;padding:6px}
+.result{margin-top:5px;border:1px solid #dfe7f0;border-radius:10px;background:#fbfdff;padding:7px}
 .result-title{font-size:7.5px;font-weight:900;color:#49647f;letter-spacing:.3px;margin-bottom:4px}
 
 .result-body{display:grid;grid-template-columns:96px 1fr;gap:7px;align-items:center}
@@ -56,19 +56,27 @@ body{padding:8px}
 .donut-label{font-size:6.5px;color:#718096;font-weight:800;margin-top:2px}
 .no-vote{font-size:10px;color:#94a3b8;font-weight:800;line-height:1.2}
 
-.legend{display:grid;gap:5px}
-.legend-row{display:grid;grid-template-columns:9px 1fr auto;align-items:center;gap:4px;font-size:8px}
-.swatch{width:9px;height:9px;border-radius:3px}
+.gender-head{display:grid;grid-template-columns:1fr 38px 38px 52px 40px;align-items:center;gap:4px;padding:0 2px 4px;border-bottom:1px solid #e5ebf2;color:#4b6480;font-size:7px;font-weight:900}
+.gender-head .g{text-align:center}
+.g-m{color:#126bd0;font-size:13px;line-height:1}.g-f{color:#ed3c8d;font-size:13px;line-height:1}
+.legend{display:grid;gap:0}
+.legend-row{display:grid;grid-template-columns:1fr 38px 38px 52px 40px;align-items:center;gap:4px;min-height:27px;border-bottom:1px solid #edf1f5;font-size:8px}
+.legend-row:last-child{border-bottom:0}
+.swatch{width:9px;height:9px;border-radius:3px;display:inline-block;margin-right:5px}
 .sw1{background:#0b73d1}.sw2{background:#19a974}.sw3{background:#f59e0b}
-.legend-name{font-weight:800;color:#334e68}
-.legend-vote{font-size:12px;font-weight:900;color:#102c55}
-.legend-pct{font-size:7px;color:#718096;margin-left:3px}
-
-.cand{display:none}
-.c{display:none}
+.legend-name{font-weight:800;color:#102c55;display:flex;align-items:center}
+.gender-val{text-align:center;font-size:11px;font-weight:900;color:#102c55}
+.total-val{text-align:right;font-size:12px;font-weight:900;color:#102c55}
+.legend-pct{text-align:right;font-size:6.5px;color:#718096}
+.result-body{grid-template-columns:130px 1fr}
+.donut-wrap{width:112px;height:112px}
+.donut{width:112px;height:112px}
+.donut-total{font-size:18px}
+.donut-label{font-size:7px}
+.no-vote{font-size:9px}
+.cand{display:none}.c{display:none}
 .num{width:25px;height:25px;border-radius:50%;background:#102c55;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px}
-.cn{font-size:9px;font-weight:800}
-.cv{font-size:18px;font-weight:900}
+.cn{font-size:9px;font-weight:800}.cv{font-size:18px;font-weight:900}
 
 .foot{height:20px;flex:none;text-align:center;font-size:8px;color:#718096;display:flex;align-items:center;justify-content:center}
 
@@ -133,6 +141,22 @@ function safeNum(v){
   return Number.isFinite(n)&&n>0?n:0;
 }
 
+function pick(d, keys){
+  for(const k of keys){
+    if(d[k]!==undefined && d[k]!==null && d[k]!=='') return d[k];
+  }
+  return 0;
+}
+
+function candidateGender(d,n,gender){
+  const g=gender==='l' ? ['l','lk','laki','laki_laki'] : ['p','pr','perempuan','wanita'];
+  const keys=[];
+  for(const x of g){
+    keys.push(`calon_${n}_${x}`,`calon${n}_${x}`,`c${n}_${x}`,`calon_${n}${x}`);
+  }
+  return pick(d,keys);
+}
+
 function donutSVG(a,b,c){
   const vals=[safeNum(a),safeNum(b),safeNum(c)];
   const total=vals.reduce((x,y)=>x+y,0);
@@ -164,18 +188,19 @@ function donutSVG(a,b,c){
     </div>`;
 }
 
-function legendRow(n,v,total){
+function legendRow(n,v,total,d){
+  const l=safeNum(candidateGender(d,n,'l'));
+  const p=safeNum(candidateGender(d,n,'p'));
   const val=safeNum(v);
   const pct=total>0?(val/total*100):0;
   const cls='sw'+n;
   return `
     <div class="legend-row">
-      <span class="swatch ${cls}"></span>
-      <span class="legend-name">CALON ${n}</span>
-      <span>
-        <b class="legend-vote">${f(v)}</b>
-        <span class="legend-pct">${pct.toLocaleString('id-ID',{minimumFractionDigits:1,maximumFractionDigits:1})}%</span>
-      </span>
+      <span class="legend-name"><span class="swatch ${cls}"></span>CALON ${n}</span>
+      <span class="gender-val">${f(l)}</span>
+      <span class="gender-val">${f(p)}</span>
+      <span class="total-val">${f(v)}</span>
+      <span class="legend-pct">${pct.toLocaleString('id-ID',{minimumFractionDigits:2,maximumFractionDigits:2})}%</span>
     </div>`;
 }
 
@@ -220,10 +245,19 @@ function card(d){
       <div class="result-title">PEROLEHAN SUARA CALON</div>
       <div class="result-body">
         ${donutSVG(...vals)}
-        <div class="legend">
-          ${legendRow(1,d.calon_1,total)}
-          ${legendRow(2,d.calon_2,total)}
-          ${legendRow(3,d.calon_3,total)}
+        <div>
+          <div class="gender-head">
+            <span></span>
+            <span class="g g-m">♂<br><small>L</small></span>
+            <span class="g g-f">♀<br><small>P</small></span>
+            <span class="g">TOTAL</span>
+            <span class="g">%</span>
+          </div>
+          <div class="legend">
+            ${legendRow(1,d.calon_1,total,d)}
+            ${legendRow(2,d.calon_2,total,d)}
+            ${legendRow(3,d.calon_3,total,d)}
+          </div>
         </div>
       </div>
     </div>
