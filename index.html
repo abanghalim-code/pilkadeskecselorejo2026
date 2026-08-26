@@ -376,8 +376,10 @@ Kepala Desa saat ini, Bapak Sumaji, telah menjalani satu kali masa bakti 6 (enam
 </p>
 
 <div class="desa-tps-summary">
-<span><i class="fa-solid fa-location-dot"></i> 6 TPS</span>
-<span><i class="fa-solid fa-users"></i> 4.678 DPT</span>
+    <span><i class="fa-solid fa-location-dot"></i> 6 TPS</span>
+    <span><i class="fa-solid fa-person"></i> <b id="sidomulyo-l">0</b> L</span>
+    <span><i class="fa-solid fa-person-dress"></i> <b id="sidomulyo-p">0</b> P</span>
+    <span><i class="fa-solid fa-users"></i> <b id="sidomulyo-dpt">0</b> DPT</span>
 </div>
 
 <button type="button" class="btn-card tps-btn" data-desa="Sidomulyo">
@@ -401,8 +403,10 @@ Saat ini Desa dipimpin oleh Bapak Eko Harmono, dengan masa bakti 2 (dua) kali 6 
 </p>
 
 <div class="desa-tps-summary">
-<span><i class="fa-solid fa-location-dot"></i> 5 TPS</span>
-<span><i class="fa-solid fa-users"></i> 3.888 DPT</span>
+    <span><i class="fa-solid fa-location-dot"></i> 5 TPS</span>
+    <span><i class="fa-solid fa-person"></i> <b id="sumberagung-l">0</b> L</span>
+    <span><i class="fa-solid fa-person-dress"></i> <b id="sumberagung-p">0</b> P</span>
+    <span><i class="fa-solid fa-users"></i> <b id="sumberagung-dpt">0</b> DPT</span>
 </div>
 
 <button type="button" class="btn-card tps-btn" data-desa="Sumberagung">
@@ -426,8 +430,10 @@ Kepala Desa saat ini adalah Bapak Drs. Bambang Sutedjo yang mengantongi masa bak
 </p>
 
 <div class="desa-tps-summary">
-<span><i class="fa-solid fa-location-dot"></i> 5 TPS</span>
-<span><i class="fa-solid fa-users"></i> 3.036 DPT</span>
+    <span><i class="fa-solid fa-location-dot"></i> 5 TPS</span>
+    <span><i class="fa-solid fa-person"></i> <b id="banjarsari-l">0</b> L</span>
+    <span><i class="fa-solid fa-person-dress"></i> <b id="banjarsari-p">0</b> P</span>
+    <span><i class="fa-solid fa-users"></i> <b id="banjarsari-dpt">0</b> DPT</span>
 </div>
 
 <button type="button" class="btn-card tps-btn" data-desa="Banjarsari">
@@ -688,14 +694,44 @@ Informasi terbaru seputar Pilkades Serentak 2026.
     }
 
     fetch("data/tps.json")
-        .then(r => r.json())
-        .then(data => {
-            tpsData = data;
-            buttons.forEach(btn => {
-                btn.addEventListener("click", () => openModal(btn.dataset.desa));
-            });
-        })
-        .catch(err => console.error("Data TPS gagal dimuat:", err));
+.then(data => {
+    tpsData = data;
+
+    const desaList = ["Sidomulyo", "Sumberagung", "Banjarsari"];
+
+    desaList.forEach(desa => {
+
+        const rows = tpsData.filter(
+            x => x.desa.toLowerCase() === desa.toLowerCase()
+        );
+
+        const totalL = rows.reduce(
+            (s, r) => s + Number(r.dpt_l || 0), 0
+        );
+
+        const totalP = rows.reduce(
+            (s, r) => s + Number(r.dpt_p || 0), 0
+        );
+
+        const totalDpt = rows.reduce(
+            (s, r) => s + Number(r.dpt || 0), 0
+        );
+
+        const key = desa.toLowerCase();
+
+        const elL = document.getElementById(key + "-l");
+        const elP = document.getElementById(key + "-p");
+        const elDpt = document.getElementById(key + "-dpt");
+
+        if (elL) elL.textContent = formatNumber(totalL);
+        if (elP) elP.textContent = formatNumber(totalP);
+        if (elDpt) elDpt.textContent = formatNumber(totalDpt);
+    });
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => openModal(btn.dataset.desa));
+    });
+})        .catch(err => console.error("Data TPS gagal dimuat:", err));
 
     closeBtn.addEventListener("click", closeModal);
     modal.addEventListener("click", e => {
