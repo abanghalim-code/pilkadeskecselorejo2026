@@ -9,16 +9,16 @@
 html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;background:#eef3f8;color:#102c55}
 body{padding:8px}
 .page{height:calc(100vh - 16px);display:flex;flex-direction:column;gap:7px;min-height:0}
-.head{height:94px;flex:none;background:#fff;border:1px solid #dbe4ee;border-radius:14px;padding:8px 15px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 15px #102c5514}
-.brand{display:flex;align-items:center;gap:13px}
-.brand img{width:78px;height:78px;object-fit:contain}
+.head{height:108px;flex:none;background:#fff;border:1px solid #dbe4ee;border-radius:14px;padding:8px 18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 15px #102c5514}
+.brand{display:flex;align-items:center;gap:16px;min-width:0}
+.brand img{width:92px;height:92px;object-fit:contain;flex:none}
 .small{font-size:10px;font-weight:900;letter-spacing:2px;color:#0758b8}
-.title{font-size:28px;font-weight:900;line-height:1.02}
-.sub{font-size:10px;color:#64748b;margin-top:3px}
-.status{font-size:9px;color:#159447;font-weight:700;margin-top:4px}
+.title{font-size:23px;font-weight:900;line-height:1.05;color:#0758b8;letter-spacing:.2px}
+.sub{font-size:16px;color:#102c55;font-weight:900;line-height:1.15;margin-top:2px;max-width:850px}
+.status{font-size:9px;color:#159447;font-weight:700;margin-top:3px}
 .err{color:#d71920}
 .clock{text-align:right}
-.time{font-size:25px;font-weight:900}
+.time{font-size:27px;font-weight:900}
 .date{font-size:10px;color:#64748b;margin-top:2px}
 
 .grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
@@ -103,8 +103,8 @@ body{padding:8px}
   <div class="brand">
     <img src="assets/images/logo-sipitung.png" onerror="this.style.display='none'">
     <div>
-      <div class="title">SIPITUNG 2026</div>
-      <div class="sub">Rekapitulasi Perolehan Suara Pilkades Kecamatan Selorejo</div>
+      <div class="title">PILKADES 2026 — MOMENTUM KEMANDIRIAN DESA</div>
+      <div class="sub">“Jadikan Momentum Pilkades sebagai Titik Kulminasi: Kemandirian Desa Tumbuh, Ketergantungan Harus Runtuh.”</div>
       <div id="status" class="status">Memuat data...</div>
     </div>
   </div>
@@ -131,7 +131,7 @@ const logos={
 };
 
 const taglines={
-  BANJARSARI:'Saatnya Transparansi Menjadi Panglima.',
+  BANJARSARI:'Saatnya Transparansi Memimpin Desa Ini.',
   SIDOMULYO:'Saatnya Rakyat Tahu, Bukan Sekadar Memilih.',
   SUMBERAGUNG:'Saatnya Demokrasi Tak Berhenti di Bilik Suara.'
 };
