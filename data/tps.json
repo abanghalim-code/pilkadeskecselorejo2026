@@ -5,7 +5,7 @@
     "tps": "Banjarsari TPS 01",
     "alamat": "dusun kalilegi_1",
     "koordinator": "sumari",
-    "dpt": 1000
+    "dpt": 756
   },
   {
     "no": 2,
@@ -13,7 +13,7 @@
     "tps": "Banjarsari TPS 02",
     "alamat": "dusun kalilegi_2",
     "koordinator": "rois efendi",
-    "dpt": 1000
+    "dpt": 751
   },
   {
     "no": 3,
@@ -21,7 +21,7 @@
     "tps": "Banjarsari TPS 03",
     "alamat": "dusun pakel_1",
     "koordinator": "lasturi",
-    "dpt": 1000
+    "dpt": 602
   },
   {
     "no": 4,
@@ -29,7 +29,7 @@
     "tps": "Banjarsari TPS 04",
     "alamat": "dusun pakel_2",
     "koordinator": "sari sulistyorini",
-    "dpt": 1000
+    "dpt": 619
   },
   {
     "no": 5,
@@ -37,7 +37,7 @@
     "tps": "Banjarsari TPS 05",
     "alamat": "dusun lungurkulon",
     "koordinator": "nasirun",
-    "dpt": 1000
+    "dpt": 308
   },
   {
     "no": 6,
@@ -45,7 +45,7 @@
     "tps": "Sidomulyo TPS 01",
     "alamat": "sdn sidomulyo 1 dusun sidomulyo",
     "koordinator": "sujianto",
-    "dpt": 1000
+    "dpt": 837
   },
   {
     "no": 7,
@@ -53,7 +53,7 @@
     "tps": "Sidomulyo TPS 02",
     "alamat": "musholla al mukminin dusun sidomulyo",
     "koordinator": "heming pebrianto",
-    "dpt": 1000
+    "dpt": 832
   },
   {
     "no": 8,
@@ -61,7 +61,7 @@
     "tps": "Sidomulyo TPS 03",
     "alamat": "balai dusun sidorejo",
     "koordinator": "dian sumantri",
-    "dpt": 1000
+    "dpt": 824
   },
   {
     "no": 9,
@@ -69,7 +69,7 @@
     "tps": "Sidomulyo TPS 04",
     "alamat": "smpn 2 selorejo dusun sidorejo",
     "koordinator": "agus waluyo",
-    "dpt": 1000
+    "dpt": 829
   },
   {
     "no": 10,
@@ -77,7 +77,7 @@
     "tps": "Sidomulyo TPS 05",
     "alamat": "masjid baitul muhtadin dusun gunungsari",
     "koordinator": "siswantoro",
-    "dpt": 1000
+    "dpt": 680
   },
   {
     "no": 11,
@@ -85,7 +85,7 @@
     "tps": "Sidomulyo TPS 06",
     "alamat": "kdmp desa sidomulyo dusun gunungsari",
     "koordinator": "hamam nuryadi",
-    "dpt": 1000
+    "dpt": 676
   },
   {
     "no": 12,
@@ -93,7 +93,7 @@
     "tps": "Sumberagung TPS 01",
     "alamat": "sdn sumberagung 4 dusun sumberagung",
     "koordinator": "vivin herawati",
-    "dpt": 1000
+    "dpt": 947
   },
   {
     "no": 13,
@@ -101,7 +101,7 @@
     "tps": "Sumberagung TPS 02",
     "alamat": "tk dharma wanita 1 sumberagung dusun sumberagung",
     "koordinator": "amin trisnawati",
-    "dpt": 1000
+    "dpt": 954
   },
   {
     "no": 14,
@@ -109,7 +109,7 @@
     "tps": "Sumberagung TPS 03",
     "alamat": "sdn sumberagung 1 dusun kepel",
     "koordinator": "supianto",
-    "dpt": 1000
+    "dpt": 932
   },
   {
     "no": 15,
@@ -117,7 +117,7 @@
     "tps": "Sumberagung TPS 04",
     "alamat": "sdn sumberagung 2 dusun sumberwader",
     "koordinator": "atik kristianingsih",
-    "dpt": 1000
+    "dpt": 492
   },
   {
     "no": 16,
@@ -125,6 +125,6 @@
     "tps": "Sumberagung TPS 05",
     "alamat": "rumah bu kitri dusun sumberwader",
     "koordinator": "andi kristiawan",
-    "dpt": 1000
+    "dpt": 563
   }
 ]
