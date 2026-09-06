@@ -232,6 +232,171 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 </style>
 
+
+<style>
+/* ==========================================================
+   BAKAL CALON DI DALAM KARTU DESA
+   ========================================================== */
+.desa-bacalon-panel{
+    margin:18px 0 16px;
+    padding:14px;
+    border:1px solid rgba(37,99,235,.14);
+    border-radius:16px;
+    background:linear-gradient(180deg,#f8fbff 0%,#ffffff 100%);
+}
+
+.desa-bacalon-heading{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:12px;
+}
+
+.desa-bacalon-heading span{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    color:#195cbe;
+    font-size:.78rem;
+    font-weight:800;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+}
+
+.desa-bacalon-heading a{
+    color:#195cbe;
+    font-size:.76rem;
+    font-weight:700;
+    text-decoration:none;
+    white-space:nowrap;
+}
+
+.desa-bacalon-heading a:hover{
+    text-decoration:underline;
+}
+
+.desa-bacalon-list{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+}
+
+.desa-bacalon-card{
+    min-width:0;
+    display:grid;
+    grid-template-columns:52px minmax(0,1fr) 12px;
+    align-items:center;
+    gap:9px;
+    padding:8px;
+    border:1px solid #e5edf8;
+    border-radius:13px;
+    background:#fff;
+    color:inherit;
+    text-decoration:none;
+    box-shadow:0 4px 12px rgba(28,72,125,.06);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.desa-bacalon-card:hover{
+    transform:translateY(-2px);
+    border-color:rgba(37,99,235,.28);
+    box-shadow:0 8px 18px rgba(28,72,125,.11);
+}
+
+.desa-bacalon-photo{
+    position:relative;
+    width:52px;
+    height:62px;
+    overflow:hidden;
+    border-radius:9px;
+    background:#eef3f9;
+    border:1px solid #e1e8f2;
+    flex:none;
+}
+
+.desa-bacalon-photo img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center top;
+}
+
+.desa-bacalon-photo span{
+    position:absolute;
+    left:4px;
+    bottom:4px;
+    min-width:19px;
+    height:19px;
+    padding:0 4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:6px;
+    background:#195cbe;
+    color:#fff;
+    font-size:.68rem;
+    line-height:1;
+    font-weight:900;
+    box-shadow:0 2px 6px rgba(0,0,0,.18);
+}
+
+.desa-bacalon-info{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+.desa-bacalon-info small{
+    color:#7b8797;
+    font-size:.61rem;
+    line-height:1.1;
+    font-weight:800;
+    letter-spacing:.05em;
+}
+
+.desa-bacalon-info strong{
+    color:#17365f;
+    font-size:.77rem;
+    line-height:1.22;
+    font-weight:800;
+    overflow-wrap:anywhere;
+}
+
+.desa-bacalon-card > i{
+    color:#9aabc0;
+    font-size:.72rem;
+}
+
+@media (max-width: 900px){
+    .desa-bacalon-list{
+        grid-template-columns:1fr;
+    }
+}
+
+@media (max-width: 560px){
+    .desa-bacalon-panel{
+        padding:12px;
+    }
+
+    .desa-bacalon-card{
+        grid-template-columns:58px minmax(0,1fr) 12px;
+        padding:8px;
+    }
+
+    .desa-bacalon-photo{
+        width:58px;
+        height:70px;
+    }
+
+    .desa-bacalon-info strong{
+        font-size:.8rem;
+    }
+}
+</style>
+
 </head>
 
 <body>
@@ -265,7 +430,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 <li><a href="#countdown">Countdown</a></li>
                 <li><a href="#profil">Profil</a></li>
                 <li><a href="#desa">Desa</a></li>
-                <li><a href="#profil-bacalon">Bakal Calon</a></li>
                 <li><a href="#tahapan">Tahapan</a></li>
                 <li><a href="#berita">Berita</a></li>
                 <li><a href="#dashboard">
@@ -551,6 +715,40 @@ Kepala Desa saat ini, Bapak Sumaji, telah menjalani satu kali masa bakti 6 (enam
     <span><i class="fa-solid fa-users"></i> <b id="sidomulyo-dpt">0</b> DPT</span>
 </div>
 
+
+<div class="desa-bacalon-panel">
+    <div class="desa-bacalon-heading">
+        <span><i class="fa-solid fa-user-tie"></i> Bakal Calon Kepala Desa</span>
+        <a href="profil-bacalon.html?desa=Sidomulyo">Lihat semua</a>
+    </div>
+    <div class="desa-bacalon-list">
+
+        <a class="desa-bacalon-card" href="profil-bacalon.html?id=SDM-001" aria-label="Lihat profil WAKHID BASUKI">
+            <div class="desa-bacalon-photo">
+                <img src="assets/images/bacalon/sdm-01.png" alt="Foto WAKHID BASUKI">
+                <span>01</span>
+            </div>
+            <div class="desa-bacalon-info">
+                <small>BAKAL CALON</small>
+                <strong>WAKHID BASUKI</strong>
+            </div>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </a>
+
+        <a class="desa-bacalon-card" href="profil-bacalon.html?id=SDM-002" aria-label="Lihat profil SUMAJI">
+            <div class="desa-bacalon-photo">
+                <img src="assets/images/bacalon/sdm-02.png" alt="Foto SUMAJI">
+                <span>02</span>
+            </div>
+            <div class="desa-bacalon-info">
+                <small>BAKAL CALON</small>
+                <strong>SUMAJI</strong>
+            </div>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
 <button type="button" class="btn-card tps-btn" data-desa="Sidomulyo">
 Lihat Data TPS
 </button>
@@ -576,6 +774,40 @@ Saat ini Desa dipimpin oleh Bapak Eko Harmono, dengan masa bakti 2 (dua) kali 6 
     <span><i class="fa-solid fa-person"></i> <b id="sumberagung-l">0</b> L</span>
     <span><i class="fa-solid fa-person-dress"></i> <b id="sumberagung-p">0</b> P</span>
     <span><i class="fa-solid fa-users"></i> <b id="sumberagung-dpt">0</b> DPT</span>
+</div>
+
+
+<div class="desa-bacalon-panel">
+    <div class="desa-bacalon-heading">
+        <span><i class="fa-solid fa-user-tie"></i> Bakal Calon Kepala Desa</span>
+        <a href="profil-bacalon.html?desa=Sumberagung">Lihat semua</a>
+    </div>
+    <div class="desa-bacalon-list">
+
+        <a class="desa-bacalon-card" href="profil-bacalon.html?id=SBR-001" aria-label="Lihat profil EKO HARMONO">
+            <div class="desa-bacalon-photo">
+                <img src="assets/images/bacalon/sbr-01.png" alt="Foto EKO HARMONO">
+                <span>01</span>
+            </div>
+            <div class="desa-bacalon-info">
+                <small>BAKAL CALON</small>
+                <strong>EKO HARMONO</strong>
+            </div>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </a>
+
+        <a class="desa-bacalon-card" href="profil-bacalon.html?id=SBR-002" aria-label="Lihat profil CASLAM">
+            <div class="desa-bacalon-photo">
+                <img src="assets/images/bacalon/sbr-02.png" alt="Foto CASLAM">
+                <span>02</span>
+            </div>
+            <div class="desa-bacalon-info">
+                <small>BAKAL CALON</small>
+                <strong>CASLAM</strong>
+            </div>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </a>
+    </div>
 </div>
 
 <button type="button" class="btn-card tps-btn" data-desa="Sumberagung">
@@ -605,6 +837,52 @@ Kepala Desa saat ini adalah Bapak Drs. Bambang Sutedjo yang mengantongi masa bak
     <span><i class="fa-solid fa-users"></i> <b id="banjarsari-dpt">0</b> DPT</span>
 </div>
 
+
+<div class="desa-bacalon-panel">
+    <div class="desa-bacalon-heading">
+        <span><i class="fa-solid fa-user-tie"></i> Bakal Calon Kepala Desa</span>
+        <a href="profil-bacalon.html?desa=Banjarsari">Lihat semua</a>
+    </div>
+    <div class="desa-bacalon-list">
+
+        <a class="desa-bacalon-card" href="profil-bacalon.html?id=BJR-001" aria-label="Lihat profil BAMBANG SUTEDJO">
+            <div class="desa-bacalon-photo">
+                <img src="assets/images/bacalon/bjr-01.png" alt="Foto BAMBANG SUTEDJO">
+                <span>01</span>
+            </div>
+            <div class="desa-bacalon-info">
+                <small>BAKAL CALON</small>
+                <strong>BAMBANG SUTEDJO</strong>
+            </div>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </a>
+
+        <a class="desa-bacalon-card" href="profil-bacalon.html?id=BJR-002" aria-label="Lihat profil SUWARDI">
+            <div class="desa-bacalon-photo">
+                <img src="assets/images/bacalon/bjr-02.png" alt="Foto SUWARDI">
+                <span>02</span>
+            </div>
+            <div class="desa-bacalon-info">
+                <small>BAKAL CALON</small>
+                <strong>SUWARDI</strong>
+            </div>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </a>
+
+        <a class="desa-bacalon-card" href="profil-bacalon.html?id=BJR-003" aria-label="Lihat profil SUNARDI">
+            <div class="desa-bacalon-photo">
+                <img src="assets/images/bacalon/bjr-03.png" alt="Foto SUNARDI">
+                <span>03</span>
+            </div>
+            <div class="desa-bacalon-info">
+                <small>BAKAL CALON</small>
+                <strong>SUNARDI</strong>
+            </div>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+
 <button type="button" class="btn-card tps-btn" data-desa="Banjarsari">
 Lihat Data TPS
 </button>
@@ -619,224 +897,6 @@ Lihat Data TPS
 
 </section>
 
-
-<!-- ================= PROFIL BAKAL CALON ================= -->
-<section id="profil-bacalon" class="profil-bacalon-section" aria-label="Profil Bakal Calon Kepala Desa">
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Profil Bakal Calon Kepala Desa</h2>
-      <p>
-        Kenali bakal calon Kepala Desa pada Pilkades Serentak Tahun 2026
-        Kecamatan Selorejo.
-      </p>
-    </div>
-
-    <div class="profil-bacalon-intro">
-      <div class="profil-bacalon-icon" aria-hidden="true">
-        <i class="fa-solid fa-user-tie"></i>
-      </div>
-
-      <div class="profil-bacalon-copy">
-        <span>7 BAKAL CALON TERDAFTAR</span>
-        <h3>Profil Bakal Calon dari Tiga Desa Pelaksana</h3>
-        <p>
-          Informasi profil, nomor urut, pendidikan, pengalaman, visi, misi,
-          dan motto bakal calon Kepala Desa tersedia pada halaman khusus.
-        </p>
-      </div>
-    </div>
-
-    <div class="profil-bacalon-grid">
-
-      <a class="profil-bacalon-card" href="profil-bacalon.html?desa=Sidomulyo">
-        <span class="profil-bacalon-number">02</span>
-        <div>
-          <small>DESA</small>
-          <h3>SIDOMULYO</h3>
-          <p>2 bakal calon</p>
-        </div>
-        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-      </a>
-
-      <a class="profil-bacalon-card" href="profil-bacalon.html?desa=Sumberagung">
-        <span class="profil-bacalon-number">02</span>
-        <div>
-          <small>DESA</small>
-          <h3>SUMBERAGUNG</h3>
-          <p>2 bakal calon</p>
-        </div>
-        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-      </a>
-
-      <a class="profil-bacalon-card" href="profil-bacalon.html?desa=Banjarsari">
-        <span class="profil-bacalon-number">03</span>
-        <div>
-          <small>DESA</small>
-          <h3>BANJARSARI</h3>
-          <p>3 bakal calon</p>
-        </div>
-        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-      </a>
-
-    </div>
-
-    <div class="profil-bacalon-action">
-      <a href="profil-bacalon.html" class="btn-primary">
-        <i class="fa-solid fa-users"></i>
-        Lihat Semua Profil Bakal Calon
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<style>
-/* ==========================================================
-   PROFIL BAKAL CALON — PORTAL
-========================================================== */
-
-.profil-bacalon-section{
-    width:100%;
-    padding:56px clamp(24px,5vw,72px);
-    box-sizing:border-box;
-    background:linear-gradient(180deg,#f7fbff 0%,#ffffff 100%);
-}
-
-.profil-bacalon-intro{
-    max-width:1100px;
-    margin:0 auto 26px;
-    display:grid;
-    grid-template-columns:86px minmax(0,1fr);
-    gap:24px;
-    align-items:center;
-    padding:28px 30px;
-    background:linear-gradient(135deg,#eef5ff 0%,#ffffff 100%);
-    border:1px solid rgba(25,92,190,.12);
-    border-radius:22px;
-    box-shadow:0 12px 30px rgba(22,67,126,.08);
-    box-sizing:border-box;
-}
-
-.profil-bacalon-icon{
-    width:76px;
-    height:76px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:20px;
-    background:#e7f0ff;
-    color:#1456b8;
-    font-size:32px;
-}
-
-.profil-bacalon-copy span{
-    display:inline-block;
-    margin-bottom:7px;
-    color:#1456b8;
-    font-size:13px;
-    font-weight:800;
-    letter-spacing:.05em;
-}
-
-.profil-bacalon-copy h3{
-    margin:0 0 7px;
-    color:#17365d;
-    font-size:clamp(22px,2.5vw,30px);
-    line-height:1.2;
-}
-
-.profil-bacalon-copy p{
-    margin:0;
-    color:#52657d;
-    line-height:1.6;
-}
-
-.profil-bacalon-grid{
-    max-width:1100px;
-    margin:0 auto;
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:18px;
-}
-
-.profil-bacalon-card{
-    display:grid;
-    grid-template-columns:54px minmax(0,1fr) 20px;
-    gap:15px;
-    align-items:center;
-    padding:22px;
-    text-decoration:none;
-    background:#fff;
-    border:1px solid rgba(25,92,190,.12);
-    border-radius:18px;
-    box-shadow:0 10px 26px rgba(22,67,126,.07);
-    transition:transform .2s ease,box-shadow .2s ease;
-    box-sizing:border-box;
-}
-
-.profil-bacalon-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 16px 32px rgba(22,67,126,.13);
-}
-
-.profil-bacalon-number{
-    width:54px;
-    height:54px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:16px;
-    background:#1456b8;
-    color:#fff;
-    font-size:18px;
-    font-weight:900;
-}
-
-.profil-bacalon-card small{
-    color:#1456b8;
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:.06em;
-}
-
-.profil-bacalon-card h3{
-    margin:3px 0 2px;
-    color:#17365d;
-    font-size:18px;
-    line-height:1.2;
-}
-
-.profil-bacalon-card p{
-    margin:0;
-    color:#718197;
-    font-size:13px;
-}
-
-.profil-bacalon-card > i{
-    color:#1456b8;
-}
-
-.profil-bacalon-action{
-    margin-top:26px;
-    text-align:center;
-}
-
-@media(max-width:800px){
-    .profil-bacalon-section{
-        padding:40px 20px;
-    }
-
-    .profil-bacalon-intro{
-        grid-template-columns:1fr;
-        padding:24px;
-    }
-
-    .profil-bacalon-grid{
-        grid-template-columns:1fr;
-    }
-}
-</style>
 
 <!-- ================= BERITA ================= -->
 
