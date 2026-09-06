@@ -219,6 +219,10 @@
 .profile-photo-wrap{max-width:300px;}
 
 .detail-photo{
+  width:100%;
+  height:auto;
+  aspect-ratio:auto;
+  object-fit:contain;
   border-radius:20px;
   box-shadow:0 12px 28px rgba(22,67,126,.14);
 }
