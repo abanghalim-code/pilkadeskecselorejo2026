@@ -102,6 +102,92 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
   .bpjs-photo{order:2;}
   .bpjs-photo img{max-height:210px;}
 }
+
+/* ==========================================================
+   DASHBOARD PILKADES
+========================================================== */
+.dashboard-section{
+  width:100%;
+  padding:56px clamp(24px,5vw,72px);
+  box-sizing:border-box;
+  background:#fff;
+}
+
+.dashboard-card{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:110px minmax(0,1fr);
+  gap:28px;
+  align-items:center;
+  padding:34px;
+  box-sizing:border-box;
+  background:linear-gradient(135deg,#f7fbff 0%,#eef5ff 55%,#ffffff 100%);
+  border:1px solid rgba(25,92,190,.12);
+  border-radius:22px;
+  box-shadow:0 14px 36px rgba(22,67,126,.10);
+}
+
+.dashboard-icon{
+  width:88px;
+  height:88px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:22px;
+  background:#e7f0ff;
+  color:#1456b8;
+  font-size:36px;
+}
+
+.dashboard-badge{
+  display:inline-block;
+  margin-bottom:9px;
+  padding:6px 12px;
+  border-radius:999px;
+  background:#e7f0ff;
+  color:#1456b8;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.04em;
+}
+
+.dashboard-content h3{
+  margin:0 0 10px;
+  color:#17365d;
+  font-size:clamp(23px,2.4vw,32px);
+  line-height:1.2;
+  font-weight:900;
+}
+
+.dashboard-content p{
+  margin:0 0 20px;
+  color:#52657d;
+  font-size:16px;
+  line-height:1.6;
+}
+
+.btn-dashboard{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+@media(max-width:700px){
+  .dashboard-section{padding:40px 20px;}
+  .dashboard-card{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:24px;
+  }
+  .dashboard-icon{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    font-size:28px;
+  }
+}
 </style>
 
 </head>
@@ -139,6 +225,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 <li><a href="#desa">Desa</a></li>
                 <li><a href="#tahapan">Tahapan</a></li>
                 <li><a href="#berita">Berita</a></li>
+                <li><a href="#dashboard">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Dashboard
+                </a></li>
                 <li><a href="#regulasi">Regulasi</a></li>
                 <li><a href="#galeri">Galeri</a></li>
 
@@ -265,6 +355,42 @@ Hari H dan Jam D : Pemungutan Suara
 
 </section>
 
+
+<!-- ================= DASHBOARD PILKADES ================= -->
+<section id="dashboard" class="dashboard-section" aria-label="Dashboard Pilkades 2026">
+  <div class="container">
+    <div class="section-title">
+      <h2>Dashboard Pilkades 2026</h2>
+      <p>
+        Pusat informasi dan monitoring pelaksanaan
+        Pilkades Serentak Tahun 2026 Kecamatan Selorejo.
+      </p>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="dashboard-icon" aria-hidden="true">
+        <i class="fa-solid fa-chart-line"></i>
+      </div>
+
+      <div class="dashboard-content">
+        <span class="dashboard-badge">MONITORING PILKADES</span>
+        <h3>Dashboard Pilkades Kecamatan Selorejo</h3>
+        <p>
+          Pantau informasi, data pemilih, TPS, dan perkembangan
+          pelaksanaan Pilkades Serentak Tahun 2026 dalam satu dashboard.
+        </p>
+
+        <a href="https://abanghalim-code.github.io/pilkadeskecselorejo2026/dashboard.html"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn-primary">
+          <i class="fa-solid fa-chart-line"></i>
+          Buka Dashboard
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ================= BPJS KETENAGAKERJAAN ================= -->
 <section id="bpjs-ketenagakerjaan" class="bpjs-banner" aria-label="Perlindungan BPJS Ketenagakerjaan">
