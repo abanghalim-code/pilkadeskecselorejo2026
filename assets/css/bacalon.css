@@ -213,7 +213,8 @@
 .candidate-card-body h3{
   margin:5px 0 4px;
   color:#17365d;
-  font-size:19px;
+  font-size:14px;
+  font-weight:400;
   line-height:1.25;
 }
 
