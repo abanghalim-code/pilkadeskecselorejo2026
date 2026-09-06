@@ -265,6 +265,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 <li><a href="#countdown">Countdown</a></li>
                 <li><a href="#profil">Profil</a></li>
                 <li><a href="#desa">Desa</a></li>
+                <li><a href="#profil-bacalon">Bakal Calon</a></li>
                 <li><a href="#tahapan">Tahapan</a></li>
                 <li><a href="#berita">Berita</a></li>
                 <li><a href="#dashboard">
@@ -617,6 +618,225 @@ Lihat Data TPS
 </div>
 
 </section>
+
+
+<!-- ================= PROFIL BAKAL CALON ================= -->
+<section id="profil-bacalon" class="profil-bacalon-section" aria-label="Profil Bakal Calon Kepala Desa">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Profil Bakal Calon Kepala Desa</h2>
+      <p>
+        Kenali bakal calon Kepala Desa pada Pilkades Serentak Tahun 2026
+        Kecamatan Selorejo.
+      </p>
+    </div>
+
+    <div class="profil-bacalon-intro">
+      <div class="profil-bacalon-icon" aria-hidden="true">
+        <i class="fa-solid fa-user-tie"></i>
+      </div>
+
+      <div class="profil-bacalon-copy">
+        <span>7 BAKAL CALON TERDAFTAR</span>
+        <h3>Profil Bakal Calon dari Tiga Desa Pelaksana</h3>
+        <p>
+          Informasi profil, nomor urut, pendidikan, pengalaman, visi, misi,
+          dan motto bakal calon Kepala Desa tersedia pada halaman khusus.
+        </p>
+      </div>
+    </div>
+
+    <div class="profil-bacalon-grid">
+
+      <a class="profil-bacalon-card" href="profil-bacalon.html?desa=Sidomulyo">
+        <span class="profil-bacalon-number">02</span>
+        <div>
+          <small>DESA</small>
+          <h3>SIDOMULYO</h3>
+          <p>2 bakal calon</p>
+        </div>
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+
+      <a class="profil-bacalon-card" href="profil-bacalon.html?desa=Sumberagung">
+        <span class="profil-bacalon-number">02</span>
+        <div>
+          <small>DESA</small>
+          <h3>SUMBERAGUNG</h3>
+          <p>2 bakal calon</p>
+        </div>
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+
+      <a class="profil-bacalon-card" href="profil-bacalon.html?desa=Banjarsari">
+        <span class="profil-bacalon-number">03</span>
+        <div>
+          <small>DESA</small>
+          <h3>BANJARSARI</h3>
+          <p>3 bakal calon</p>
+        </div>
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+
+    </div>
+
+    <div class="profil-bacalon-action">
+      <a href="profil-bacalon.html" class="btn-primary">
+        <i class="fa-solid fa-users"></i>
+        Lihat Semua Profil Bakal Calon
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ==========================================================
+   PROFIL BAKAL CALON — PORTAL
+========================================================== */
+
+.profil-bacalon-section{
+    width:100%;
+    padding:56px clamp(24px,5vw,72px);
+    box-sizing:border-box;
+    background:linear-gradient(180deg,#f7fbff 0%,#ffffff 100%);
+}
+
+.profil-bacalon-intro{
+    max-width:1100px;
+    margin:0 auto 26px;
+    display:grid;
+    grid-template-columns:86px minmax(0,1fr);
+    gap:24px;
+    align-items:center;
+    padding:28px 30px;
+    background:linear-gradient(135deg,#eef5ff 0%,#ffffff 100%);
+    border:1px solid rgba(25,92,190,.12);
+    border-radius:22px;
+    box-shadow:0 12px 30px rgba(22,67,126,.08);
+    box-sizing:border-box;
+}
+
+.profil-bacalon-icon{
+    width:76px;
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:20px;
+    background:#e7f0ff;
+    color:#1456b8;
+    font-size:32px;
+}
+
+.profil-bacalon-copy span{
+    display:inline-block;
+    margin-bottom:7px;
+    color:#1456b8;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:.05em;
+}
+
+.profil-bacalon-copy h3{
+    margin:0 0 7px;
+    color:#17365d;
+    font-size:clamp(22px,2.5vw,30px);
+    line-height:1.2;
+}
+
+.profil-bacalon-copy p{
+    margin:0;
+    color:#52657d;
+    line-height:1.6;
+}
+
+.profil-bacalon-grid{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;
+}
+
+.profil-bacalon-card{
+    display:grid;
+    grid-template-columns:54px minmax(0,1fr) 20px;
+    gap:15px;
+    align-items:center;
+    padding:22px;
+    text-decoration:none;
+    background:#fff;
+    border:1px solid rgba(25,92,190,.12);
+    border-radius:18px;
+    box-shadow:0 10px 26px rgba(22,67,126,.07);
+    transition:transform .2s ease,box-shadow .2s ease;
+    box-sizing:border-box;
+}
+
+.profil-bacalon-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 32px rgba(22,67,126,.13);
+}
+
+.profil-bacalon-number{
+    width:54px;
+    height:54px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:16px;
+    background:#1456b8;
+    color:#fff;
+    font-size:18px;
+    font-weight:900;
+}
+
+.profil-bacalon-card small{
+    color:#1456b8;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.06em;
+}
+
+.profil-bacalon-card h3{
+    margin:3px 0 2px;
+    color:#17365d;
+    font-size:18px;
+    line-height:1.2;
+}
+
+.profil-bacalon-card p{
+    margin:0;
+    color:#718197;
+    font-size:13px;
+}
+
+.profil-bacalon-card > i{
+    color:#1456b8;
+}
+
+.profil-bacalon-action{
+    margin-top:26px;
+    text-align:center;
+}
+
+@media(max-width:800px){
+    .profil-bacalon-section{
+        padding:40px 20px;
+    }
+
+    .profil-bacalon-intro{
+        grid-template-columns:1fr;
+        padding:24px;
+    }
+
+    .profil-bacalon-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
 
 <!-- ================= BERITA ================= -->
 
