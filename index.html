@@ -853,10 +853,18 @@ Informasi terbaru seputar Pilkades Serentak 2026.
             `${formatNumber(rows.length)} pemilih ditampilkan`;
     }
 
+    function normalizeTpsCode(value){
+        const text = String(value ?? "").toUpperCase().replace(/\\s+/g," ");
+        const match = text.match(/(SDM|SBR|BJR)\\s*-\\s*(\\d{2})/);
+        return match ? `${match[1]}-${match[2]}` : text.trim();
+    }
+
     function openDptModal(desa, tps){
+        const targetTps = normalizeTpsCode(tps);
+
         currentDptRows = dptData.filter(r =>
             String(r.desa).toLowerCase() === String(desa).toLowerCase() &&
-            String(r.tps).toLowerCase() === String(tps).toLowerCase()
+            normalizeTpsCode(r.tps) === targetTps
         );
 
         dptTitle.textContent = "Daftar DPT " + tps;
