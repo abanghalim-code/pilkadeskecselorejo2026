@@ -854,9 +854,9 @@ Informasi terbaru seputar Pilkades Serentak 2026.
     }
 
     function normalizeTpsCode(value){
-        const text = String(value ?? "").toUpperCase().replace(/\\s+/g," ");
-        const match = text.match(/(SDM|SBR|BJR)\\s*-\\s*(\\d{2})/);
-        return match ? `${match[1]}-${match[2]}` : text.trim();
+        const text = String(value ?? "").toUpperCase().replace(/\s+/g," ");
+        const match = text.match(/(SDM|SBR|BJR)\s*-?\s*(\d{1,2})/);
+        return match ? `${match[1]}-${String(match[2]).padStart(2,"0")}` : text.trim();
     }
 
     function openDptModal(desa, tps){
