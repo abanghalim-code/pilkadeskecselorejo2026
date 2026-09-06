@@ -55,16 +55,38 @@
       : `<p class="muted">Belum tersedia</p>`;
   }
 
+  /*
+   * Data bacalon.js menyimpan nama file saja, misalnya:
+   * "bjr-01.png"
+   *
+   * File fisiknya berada di:
+   * assets/images/bacalon/bjr-01.png
+   *
+   * Karena itu path foto dibentuk di sini.
+   */
   function photo(src, alt, cls = '') {
-    return src
-      ? `<img class="candidate-photo ${cls}" src="${esc(src)}" alt="${esc(alt)}">`
-      : `<div class="candidate-photo placeholder ${cls}">
-           <i class="fa-solid fa-user"></i><span>Foto belum tersedia</span>
-         </div>`;
+    if (!src) {
+      return `<div class="candidate-photo placeholder ${cls}">
+        <i class="fa-solid fa-user"></i>
+        <span>Foto belum tersedia</span>
+      </div>`;
+    }
+
+    const photoSrc =
+      /^(https?:)?\/\//i.test(src) ||
+      src.startsWith('/') ||
+      src.startsWith('assets/')
+        ? src
+        : `assets/images/bacalon/${src}`;
+
+    return `<img class="candidate-photo ${cls}"
+      src="${esc(photoSrc)}"
+      alt="${esc(alt)}">`;
   }
 
   function renderVillages() {
     const desaList = getDesaBacalon();
+
     app.innerHTML = `
       <section class="village-picker">
         <div class="section-intro">
@@ -86,18 +108,23 @@
 
   function renderList(desaName) {
     const candidates = getBacalonByDesa(desaName);
+
     if (!candidates.length) return renderVillages();
 
     app.innerHTML = `
       <div class="page-actions">
-        <a href="profil-bacalon.html"><i class="fa-solid fa-arrow-left"></i> Pilih Desa</a>
+        <a href="profil-bacalon.html">
+          <i class="fa-solid fa-arrow-left"></i> Pilih Desa
+        </a>
       </div>
+
       <section class="candidate-list">
         <div class="section-intro">
           <span class="village-label">DESA ${esc(desaName).toUpperCase()}</span>
           <h2>Daftar Bakal Calon</h2>
           <p>${candidates.length} bakal calon terdaftar.</p>
         </div>
+
         <div class="candidate-grid">
           ${candidates.map(c => `
             <article class="candidate-card">
@@ -105,10 +132,12 @@
                 ${photo(c.foto_resmi, c.nama)}
                 <span class="number-badge">${String(c.no_urut).padStart(2,'0')}</span>
               </div>
+
               <div class="candidate-card-body">
                 <span class="candidate-village">DESA ${esc(c.desa).toUpperCase()}</span>
                 <h3>${esc(c.nama)}</h3>
                 <p>${esc(c.pekerjaan || '')}</p>
+
                 <a class="profile-button" href="profil-bacalon.html?id=${encodeURIComponent(c.id)}">
                   Lihat Profil <i class="fa-solid fa-arrow-right"></i>
                 </a>
@@ -122,16 +151,26 @@
   function renderDetail(candidate) {
     if (!candidate) return renderVillages();
 
-    const fullBirth = [candidate.tempat_lahir, candidate.tanggal_lahir].filter(Boolean).join(', ');
+    const fullBirth = [
+      candidate.tempat_lahir,
+      candidate.tanggal_lahir
+    ].filter(Boolean).join(', ');
+
     app.innerHTML = `
       <div class="page-actions">
         <a href="profil-bacalon.html?desa=${encodeURIComponent(candidate.desa)}">
-          <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar ${esc(candidate.desa)}
+          <i class="fa-solid fa-arrow-left"></i>
+          Kembali ke Daftar ${esc(candidate.desa)}
         </a>
       </div>
+
       <article class="profile-detail">
+
         <div class="profile-hero">
-          <div class="profile-photo-wrap">${photo(candidate.foto_resmi, candidate.nama, 'detail-photo')}</div>
+          <div class="profile-photo-wrap">
+            ${photo(candidate.foto_resmi, candidate.nama, 'detail-photo')}
+          </div>
+
           <div class="profile-identity">
             <span class="number-large">${String(candidate.no_urut).padStart(2,'0')}</span>
             <span class="village-label">DESA ${esc(candidate.desa).toUpperCase()}</span>
@@ -141,53 +180,105 @@
         </div>
 
         <section class="profile-section">
-          <h3><i class="fa-solid fa-id-card"></i> Profil Pribadi</h3>
+          <h3>
+            <i class="fa-solid fa-id-card"></i>
+            Profil Pribadi
+          </h3>
+
           <div class="info-grid">
-            <div><span>Tempat / Tanggal Lahir</span><strong>${esc(fullBirth)}</strong></div>
-            <div><span>Alamat</span><strong>${esc(candidate.alamat)}</strong></div>
-            <div><span>Pendidikan Terakhir</span><strong>${esc(candidate.pendidikan)}</strong></div>
-            <div><span>Jurusan</span><strong>${esc(candidate.jurusan)}</strong></div>
-            <div><span>Sekolah</span><strong>${esc(candidate.sekolah)}</strong></div>
-            <div><span>Pekerjaan</span><strong>${esc(candidate.pekerjaan)}</strong></div>
+            <div>
+              <span>Tempat / Tanggal Lahir</span>
+              <strong>${esc(fullBirth)}</strong>
+            </div>
+
+            <div>
+              <span>Alamat</span>
+              <strong>${esc(candidate.alamat)}</strong>
+            </div>
+
+            <div>
+              <span>Pendidikan Terakhir</span>
+              <strong>${esc(candidate.pendidikan)}</strong>
+            </div>
+
+            <div>
+              <span>Jurusan</span>
+              <strong>${esc(candidate.jurusan)}</strong>
+            </div>
+
+            <div>
+              <span>Sekolah</span>
+              <strong>${esc(candidate.sekolah)}</strong>
+            </div>
+
+            <div>
+              <span>Pekerjaan</span>
+              <strong>${esc(candidate.pekerjaan)}</strong>
+            </div>
           </div>
         </section>
 
         <section class="profile-section">
-          <h3><i class="fa-solid fa-graduation-cap"></i> Riwayat Pendidikan</h3>
+          <h3>
+            <i class="fa-solid fa-graduation-cap"></i>
+            Riwayat Pendidikan
+          </h3>
           ${list(candidate.riwayat_pendidikan)}
         </section>
 
         <section class="profile-section">
-          <h3><i class="fa-solid fa-briefcase"></i> Riwayat Pekerjaan / Pengalaman</h3>
+          <h3>
+            <i class="fa-solid fa-briefcase"></i>
+            Riwayat Pekerjaan / Pengalaman
+          </h3>
           ${list(candidate.pengalaman)}
         </section>
 
         <section class="profile-section vision-section">
-          <h3><i class="fa-solid fa-eye"></i> Visi</h3>
+          <h3>
+            <i class="fa-solid fa-eye"></i>
+            Visi
+          </h3>
           <blockquote>${esc(candidate.visi || 'Belum tersedia')}</blockquote>
         </section>
 
         <section class="profile-section">
-          <h3><i class="fa-solid fa-list-ol"></i> Misi</h3>
+          <h3>
+            <i class="fa-solid fa-list-ol"></i>
+            Misi
+          </h3>
           ${list(candidate.misi)}
         </section>
 
         <section class="profile-section motto-section">
-          <h3><i class="fa-solid fa-quote-left"></i> Motto</h3>
+          <h3>
+            <i class="fa-solid fa-quote-left"></i>
+            Motto
+          </h3>
           <blockquote>${esc(candidate.motto || 'Belum tersedia')}</blockquote>
         </section>
 
         ${candidate.foto_informal ? `
         <section class="profile-section informal-section">
-          <h3><i class="fa-solid fa-camera"></i> Foto Informal</h3>
-          <img src="${esc(candidate.foto_informal)}" alt="Foto informal ${esc(candidate.nama)}">
+          <h3>
+            <i class="fa-solid fa-camera"></i>
+            Foto Informal
+          </h3>
+          <img
+            src="${esc(candidate.foto_informal)}"
+            alt="Foto informal ${esc(candidate.nama)}">
         </section>` : ''}
+
       </article>`;
   }
 
-  if (id) renderDetail(getBacalonById(id));
-  else if (desa) renderList(desa);
-  else renderVillages();
+  if (id) {
+    renderDetail(getBacalonById(id));
+  } else if (desa) {
+    renderList(desa);
+  } else {
+    renderVillages();
+  }
 })();
 </script>
 </body>
