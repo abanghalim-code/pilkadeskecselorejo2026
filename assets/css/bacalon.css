@@ -214,8 +214,12 @@
   margin:5px 0 4px;
   color:#17365d;
   font-size:14px;
-  font-weight:400;
+  font-weight:400 !important;
   line-height:1.25;
+  text-transform:none !important;
+  letter-spacing:normal;
+  word-break:normal;
+  overflow-wrap:normal;
 }
 
 .candidate-card-body p{
