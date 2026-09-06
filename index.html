@@ -190,6 +190,48 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 }
 </style>
 
+<style>
+
+/* ==========================================================
+   DASHBOARD NAVBAR — ACTIVE / FEATURED MENU
+========================================================== */
+.header nav ul li a.nav-dashboard{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-weight:800;
+    position:relative;
+}
+
+.header nav ul li a.nav-dashboard i{
+    font-size:.9em;
+}
+
+.header nav ul li a.nav-dashboard::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-9px;
+    height:3px;
+    border-radius:999px;
+    background:currentColor;
+    opacity:.95;
+}
+
+/* Jangan bergantung pada hover agar penanda Dashboard tetap jelas */
+.header nav ul li a.nav-dashboard:hover{
+    opacity:1;
+}
+
+@media(max-width:800px){
+    .header nav ul li a.nav-dashboard::after{
+        display:none;
+    }
+}
+
+</style>
+
 </head>
 
 <body>
