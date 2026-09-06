@@ -35,7 +35,7 @@ const bacalon = [
       "Memperkuat gotong royong dan partisipasi masyarakat dalam pembangunan desa."
     ],
     "motto": "“Bersama Membangun, Bersama Sejahtera.”",
-    "foto_resmi": "",
+    "foto_resmi": "bjr-01.png",
     "foto_informal": ""
   },
   {
@@ -69,7 +69,7 @@ const bacalon = [
       "Meningkatkan keterbukaan informasi serta partisipasi masyarakat dalam pengambilan keputusan."
     ],
     "motto": "“Melayani dengan Hati, Membangun dengan Bukti.”",
-    "foto_resmi": "",
+    "foto_resmi": "bjr-02.png",
     "foto_informal": ""
   },
   {
@@ -103,7 +103,7 @@ const bacalon = [
       "Mendorong inovasi dan pemanfaatan teknologi dalam pembangunan desa."
     ],
     "motto": "“Desa Maju, Masyarakat Sejahtera.”",
-    "foto_resmi": "",
+    "foto_resmi": "bjr-03.png",
     "foto_informal": ""
   },
   {
@@ -137,7 +137,7 @@ const bacalon = [
       "Memperkuat kerukunan, kebersamaan, dan kepedulian sosial masyarakat."
     ],
     "motto": "“Jujur dalam Memimpin, Nyata dalam Bertindak.”",
-    "foto_resmi": "",
+    "foto_resmi": "sdm-01.png",
     "foto_informal": ""
   },
   {
@@ -171,7 +171,7 @@ const bacalon = [
       "Meningkatkan keterampilan masyarakat melalui pelatihan dan pendampingan usaha."
     ],
     "motto": "“Dari Rakyat, Untuk Rakyat, Bersama Rakyat.”",
-    "foto_resmi": "",
+    "foto_resmi": "sdm-02.png",
     "foto_informal": ""
   },
   {
@@ -205,7 +205,7 @@ const bacalon = [
       "Mengoptimalkan pengelolaan sumber daya desa untuk kepentingan masyarakat."
     ],
     "motto": "“Kerja Nyata untuk Desa yang Lebih Baik.”",
-    "foto_resmi": "",
+    "foto_resmi": "sbr-01.png",
     "foto_informal": ""
   },
   {
@@ -239,7 +239,7 @@ const bacalon = [
       "Mewujudkan masyarakat yang mandiri, sejahtera, guyub, dan berdaya saing."
     ],
     "motto": "“Guyub, Transparan, dan Berkemajuan.”",
-    "foto_resmi": "",
+    "foto_resmi": "sbr-02.png",
     "foto_informal": ""
   }
 ];
