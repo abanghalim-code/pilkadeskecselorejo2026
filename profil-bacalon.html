@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Bakal Calon Kepala Desa — Pilkades Selorejo 2026</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/bacalon.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <img src="assets/images/logo-blitarkab.png" alt="Logo Kabupaten Blitar">
+      <div class="logo-text">
+        <small>PEMERINTAH KABUPATEN BLITAR</small>
+        <h2>KECAMATAN SELOREJO</h2>
+        <span>Portal Pilkades Serentak 2026</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="bacalon-page">
+  <div class="container">
+    <div class="bacalon-heading">
+      <span class="bacalon-kicker">PILKADES SERENTAK 2026</span>
+      <h1>BAKAL CALON KEPALA DESA</h1>
+      <p>Kecamatan Selorejo — Kabupaten Blitar</p>
+    </div>
+    <div id="bacalon-app"></div>
+  </div>
+</main>
+
+<script src="assets/js/bacalon.js"></script>
+<script>
+(function () {
+  const app = document.getElementById('bacalon-app');
+  const params = new URLSearchParams(window.location.search);
+  const desa = params.get('desa');
+  const id = params.get('id');
+
+  function esc(value) {
+    return String(value ?? '').replace(/[&<>'"]/g, c => ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;'
+    }[c]));
+  }
+
+  function list(items) {
+    const data = Array.isArray(items) ? items.filter(Boolean) : [];
+    return data.length
+      ? `<ul>${data.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`
+      : `<p class="muted">Belum tersedia</p>`;
+  }
+
+  function photo(src, alt, cls = '') {
+    return src
+      ? `<img class="candidate-photo ${cls}" src="${esc(src)}" alt="${esc(alt)}">`
+      : `<div class="candidate-photo placeholder ${cls}">
+           <i class="fa-solid fa-user"></i><span>Foto belum tersedia</span>
+         </div>`;
+  }
+
+  function renderVillages() {
+    const desaList = getDesaBacalon();
+    app.innerHTML = `
+      <section class="village-picker">
+        <div class="section-intro">
+          <h2>Pilih Desa</h2>
+          <p>Pilih desa untuk melihat daftar bakal calon kepala desa.</p>
+        </div>
+        <div class="village-grid">
+          ${desaList.map(d => `
+            <a class="village-card" href="profil-bacalon.html?desa=${encodeURIComponent(d)}">
+              <span class="village-icon"><i class="fa-solid fa-location-dot"></i></span>
+              <strong>Desa ${esc(d)}</strong>
+              <span>${getBacalonByDesa(d).length} bakal calon</span>
+              <i class="fa-solid fa-arrow-right village-arrow"></i>
+            </a>
+          `).join('')}
+        </div>
+      </section>`;
+  }
+
+  function renderList(desaName) {
+    const candidates = getBacalonByDesa(desaName);
+    if (!candidates.length) return renderVillages();
+
+    app.innerHTML = `
+      <div class="page-actions">
+        <a href="profil-bacalon.html"><i class="fa-solid fa-arrow-left"></i> Pilih Desa</a>
+      </div>
+      <section class="candidate-list">
+        <div class="section-intro">
+          <span class="village-label">DESA ${esc(desaName).toUpperCase()}</span>
+          <h2>Daftar Bakal Calon</h2>
+          <p>${candidates.length} bakal calon terdaftar.</p>
+        </div>
+        <div class="candidate-grid">
+          ${candidates.map(c => `
+            <article class="candidate-card">
+              <div class="candidate-card-photo">
+                ${photo(c.foto_resmi, c.nama)}
+                <span class="number-badge">${String(c.no_urut).padStart(2,'0')}</span>
+              </div>
+              <div class="candidate-card-body">
+                <span class="candidate-village">DESA ${esc(c.desa).toUpperCase()}</span>
+                <h3>${esc(c.nama)}</h3>
+                <p>${esc(c.pekerjaan || '')}</p>
+                <a class="profile-button" href="profil-bacalon.html?id=${encodeURIComponent(c.id)}">
+                  Lihat Profil <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </article>
+          `).join('')}
+        </div>
+      </section>`;
+  }
+
+  function renderDetail(candidate) {
+    if (!candidate) return renderVillages();
+
+    const fullBirth = [candidate.tempat_lahir, candidate.tanggal_lahir].filter(Boolean).join(', ');
+    app.innerHTML = `
+      <div class="page-actions">
+        <a href="profil-bacalon.html?desa=${encodeURIComponent(candidate.desa)}">
+          <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar ${esc(candidate.desa)}
+        </a>
+      </div>
+      <article class="profile-detail">
+        <div class="profile-hero">
+          <div class="profile-photo-wrap">${photo(candidate.foto_resmi, candidate.nama, 'detail-photo')}</div>
+          <div class="profile-identity">
+            <span class="number-large">${String(candidate.no_urut).padStart(2,'0')}</span>
+            <span class="village-label">DESA ${esc(candidate.desa).toUpperCase()}</span>
+            <h2>${esc(candidate.nama)}</h2>
+            <p class="profile-job">${esc(candidate.pekerjaan || '')}</p>
+          </div>
+        </div>
+
+        <section class="profile-section">
+          <h3><i class="fa-solid fa-id-card"></i> Profil Pribadi</h3>
+          <div class="info-grid">
+            <div><span>Tempat / Tanggal Lahir</span><strong>${esc(fullBirth)}</strong></div>
+            <div><span>Alamat</span><strong>${esc(candidate.alamat)}</strong></div>
+            <div><span>Pendidikan Terakhir</span><strong>${esc(candidate.pendidikan)}</strong></div>
+            <div><span>Jurusan</span><strong>${esc(candidate.jurusan)}</strong></div>
+            <div><span>Sekolah</span><strong>${esc(candidate.sekolah)}</strong></div>
+            <div><span>Pekerjaan</span><strong>${esc(candidate.pekerjaan)}</strong></div>
+          </div>
+        </section>
+
+        <section class="profile-section">
+          <h3><i class="fa-solid fa-graduation-cap"></i> Riwayat Pendidikan</h3>
+          ${list(candidate.riwayat_pendidikan)}
+        </section>
+
+        <section class="profile-section">
+          <h3><i class="fa-solid fa-briefcase"></i> Riwayat Pekerjaan / Pengalaman</h3>
+          ${list(candidate.pengalaman)}
+        </section>
+
+        <section class="profile-section vision-section">
+          <h3><i class="fa-solid fa-eye"></i> Visi</h3>
+          <blockquote>${esc(candidate.visi || 'Belum tersedia')}</blockquote>
+        </section>
+
+        <section class="profile-section">
+          <h3><i class="fa-solid fa-list-ol"></i> Misi</h3>
+          ${list(candidate.misi)}
+        </section>
+
+        <section class="profile-section motto-section">
+          <h3><i class="fa-solid fa-quote-left"></i> Motto</h3>
+          <blockquote>${esc(candidate.motto || 'Belum tersedia')}</blockquote>
+        </section>
+
+        ${candidate.foto_informal ? `
+        <section class="profile-section informal-section">
+          <h3><i class="fa-solid fa-camera"></i> Foto Informal</h3>
+          <img src="${esc(candidate.foto_informal)}" alt="Foto informal ${esc(candidate.nama)}">
+        </section>` : ''}
+      </article>`;
+  }
+
+  if (id) renderDetail(getBacalonById(id));
+  else if (desa) renderList(desa);
+  else renderVillages();
+})();
+</script>
+</body>
+</html>
