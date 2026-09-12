@@ -63,11 +63,19 @@ body{padding:8px}
 .legend-row:last-child{border-bottom:0}
 .swatch{width:9px;height:9px;border-radius:3px;display:inline-block;margin-right:5px}
 .sw1{background:#0b73d1}.sw2{background:#19a974}.sw3{background:#f59e0b}
+    .winner-card{margin-top:6px;padding:6px 9px;border-radius:8px;border:1px solid #f0d58a;background:linear-gradient(135deg,#fffaf0,#fffdf8);display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .winner-left{min-width:0}
+    .winner-label{font-size:6.5px;font-weight:900;color:#a66a00;letter-spacing:.5px;text-transform:uppercase}
+    .winner-name{font-size:10px;font-weight:900;color:#102c55;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+    .winner-detail{font-size:9px;font-weight:900;color:#a66a00;white-space:nowrap}
+    .winner-trophy{font-size:18px;flex:none}
+    .legend-row.winner-row{background:#fffaf0;border-radius:5px}
+    .legend-row.winner-row .candidate-name{font-weight:900}
 .legend-name{font-weight:900;color:#102c55;display:flex;align-items:center;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .candidate-name{font-size:9px;font-weight:900;letter-spacing:.1px;overflow:hidden;text-overflow:ellipsis}
 .candidate-no{font-size:7px;color:#718096;font-weight:900;margin-right:4px}
 .total-val{text-align:right;font-size:12px;font-weight:900;color:#102c55}
-.legend-pct{text-align:right;font-size:13px;font-weight:900;color:#102c55}
+.legend-pct{text-align:right;font-size:15px;font-weight:900;line-height:1;color:var(--candidate-color,#102c55);white-space:nowrap}
 .result-body{grid-template-columns:130px 1fr}
 .donut-wrap{width:112px;height:112px}
 .donut{width:112px;height:112px}
@@ -198,21 +206,32 @@ function buildCandidateMap(rows){
 
 /* L/P PEROLEHAN SUARA DIHAPUS.
    L/P KEHADIRAN DAN TIDAK HADIR TETAP DITAMPILKAN PADA METRIK. */
-function legendRow(n,v,total,d){
+function legendRow(n,v,total,d,winnerNo){
   const val=safeNum(v);
   const pct=total>0?(val/total*100):0;
   const cls='sw'+n;
+  const colors={1:'#0b73d1',2:'#19a974',3:'#f59e0b'};
+  const isWinner=winnerNo===n && val>0;
 
   return `
-    <div class="legend-row">
+    <div class="legend-row ${isWinner?'winner-row':''}">
       <span class="legend-name">
         <span class="swatch ${cls}"></span>
         <span class="candidate-no">${n}</span>
         <span class="candidate-name">${candidateName(d,n)}</span>
       </span>
       <span class="total-val">${f(val)}</span>
-      <span class="legend-pct">${pct.toLocaleString('id-ID',{minimumFractionDigits:2,maximumFractionDigits:2})}%</span>
+      <span class="legend-pct" style="--candidate-color:${colors[n]}">${pct.toLocaleString('id-ID',{minimumFractionDigits:2,maximumFractionDigits:2})}%</span>
     </div>`;
+}
+
+function winnerData(d,vals){
+  const candidates=vals.map((total,i)=>({no:i+1,total,name:candidateName(d,i+1)}));
+  const active=candidates.filter(x=>x.total>0);
+  if(!active.length)return null;
+  const max=Math.max(...active.map(x=>x.total));
+  const winners=active.filter(x=>x.total===max);
+  return winners.length===1 ? winners[0] : {tie:true,total:max,names:winners.map(x=>x.name).join(' & ')};
 }
 
 function card(d){
@@ -221,6 +240,8 @@ function card(d){
 
   const vals=[safeNum(d.calon_1),safeNum(d.calon_2),safeNum(d.calon_3)];
   const total=vals.reduce((a,b)=>a+b,0);
+  const winner=winnerData(d,vals);
+  const winnerNo=winner && !winner.tie ? winner.no : null;
 
   return `<section class="desa" data-desa="${d.desa}">
     <div class="dhead">
@@ -263,12 +284,16 @@ function card(d){
             <span class="g">%</span>
           </div>
           <div class="legend">
-            ${legendRow(1,d.calon_1,total,d)}
-            ${legendRow(2,d.calon_2,total,d)}
-            ${legendRow(3,d.calon_3,total,d)}
+            ${legendRow(1,d.calon_1,total,d,winnerNo)}
+            ${legendRow(2,d.calon_2,total,d,winnerNo)}
+            ${legendRow(3,d.calon_3,total,d,winnerNo)}
           </div>
         </div>
       </div>
+      ${winner ? (winner.tie
+        ? `<div class="winner-card"><div class="winner-trophy">🏆</div><div class="winner-left"><div class="winner-label">HASIL IMBANG</div><div class="winner-name">${winner.names}</div></div><div class="winner-detail">${f(winner.total)} suara</div></div>`
+        : `<div class="winner-card"><div class="winner-trophy">🏆</div><div class="winner-left"><div class="winner-label">PEMENANG</div><div class="winner-name">${winner.name}</div></div><div class="winner-detail">${f(winner.total)} suara • ${(winner.total/total*100).toLocaleString('id-ID',{minimumFractionDigits:2,maximumFractionDigits:2})}%</div></div>`
+      ) : ''}
     </div>
 
   </section>`;
@@ -320,9 +345,12 @@ async function load(){
   let st=document.getElementById('status');
 
   try{
-    const [desaRows, calonRows]=await Promise.all([
+    const [desaRows, calonRows, praTpsRows, tpsRows, hasilRows]=await Promise.all([
       fetchSheet(SHEET),
-      fetchSheet('calon')
+      fetchSheet('calon'),
+      fetchSheet('pra_tps'),
+      fetchSheet('tps'),
+      fetchSheet('hasil')
     ]);
 
     candidateMap=buildCandidateMap(calonRows);
@@ -333,6 +361,72 @@ async function load(){
         {...x}
       ])
     );
+
+    /*
+      MASTER TPS
+      pra_tps = daftar TPS resmi + hubungan TPS -> Desa
+    */
+    const tpsMaster={};
+
+    praTpsRows.forEach(r=>{
+      const namaTps=String(r.nama_tps||'').trim().toUpperCase();
+      const desa=String(r.nama_desa||'').trim().toUpperCase();
+
+      if(namaTps && desa){
+        tpsMaster[namaTps]=desa;
+      }
+    });
+
+    /*
+      TPS MASUK = TPS unik yang mempunyai data
+      di tabel tps ATAU tabel hasil.
+      Satu TPS tetap dihitung satu kali.
+    */
+    const tpsMasuk={};
+
+    ORDER.forEach(desa=>{
+      tpsMasuk[desa]=new Set();
+    });
+
+    // TPS yang sudah mempunyai record di tabel tps
+    tpsRows.forEach(r=>{
+      const namaTps=String(r.nama_tps_text||'').trim().toUpperCase();
+
+      if(!namaTps)return;
+
+      const desa=tpsMaster[namaTps];
+
+      if(desa && tpsMasuk[desa]){
+        tpsMasuk[desa].add(namaTps);
+      }
+    });
+
+    // TPS yang sudah mempunyai record di tabel hasil
+    hasilRows.forEach(r=>{
+      const namaTps=String(r.nama_tps_text||'').trim().toUpperCase();
+
+      if(!namaTps)return;
+
+      const desa=tpsMaster[namaTps];
+
+      if(desa && tpsMasuk[desa]){
+        tpsMasuk[desa].add(namaTps);
+      }
+    });
+
+    /*
+      Hitung TPS resmi dari pra_tps dan TPS masuk
+      dari gabungan tps + hasil.
+    */
+    ORDER.forEach(desa=>{
+      map[desa].tps_total=
+        praTpsRows.filter(r=>
+          String(r.nama_desa||'').trim().toUpperCase()===desa
+        ).length;
+
+      map[desa].tps_masuk=
+        tpsMasuk[desa].size;
+    });
 
     document.getElementById('grid').innerHTML=
       ORDER.map(x=>map[x]
