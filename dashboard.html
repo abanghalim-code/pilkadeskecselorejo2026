@@ -408,7 +408,7 @@ function inlineDusunTable(desa){
   }).join('');
   return `<div class="dusun-section">
     <div class="dusun-section-title">RINCIAN PEROLEHAN SUARA PER DUSUN</div>
-    <div class="dusun-table-wrap"><table class="dusun-table"><thead><tr><th>DUSUN</th><th class="candidate-head">${names[0]}</th><th class="candidate-head">${names[1]}</th><th class="candidate-head">${names[2]}</th><th>TOTAL</th><th class="winner-head">PEMENANG</th></tr></thead><tbody>${body}<tr class="total-row"><td>TOTAL DESA</td><td>${f(totals[0])}</td><td>${f(totals[1])}</td><td>${f(totals[2])}</td><td>${f(grand)}</td><td class="winner-cell">—</td></tr></tbody></table></div>
+    <div class="dusun-table-wrap"><table class="dusun-table"><thead><tr><th>DUSUN</th><th class="candidate-head">${names[0]}</th><th class="candidate-head">${names[1]}</th><th class="candidate-head">${names[2]}</th><th>TOTAL</th><th class="winner-head">PEMENANG</th></tr></thead><tbody>${body}</tbody></table></div>
   </div>`;
 }
 
