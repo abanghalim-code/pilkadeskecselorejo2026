@@ -262,6 +262,7 @@ function card(d){
       ${m('KEHADIRAN TOTAL',p(d.kehadiran_total))}
       ${m('TIDAK HADIR L',f(d.tidak_hadir_l))}
       ${m('TIDAK HADIR P',f(d.tidak_hadir_p))}
+      ${m('TIDAK HADIR TOTAL',f(safeNum(d.tidak_hadir_l)+safeNum(d.tidak_hadir_p)))}
       ${m('TPS',f(d.tps_masuk)+' / '+f(d.tps_total))}
 
       <div class="m wide">
