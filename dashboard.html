@@ -320,12 +320,9 @@ async function load(){
   let st=document.getElementById('status');
 
   try{
-    const [desaRows, calonRows, praTpsRows, tpsRows, hasilRows]=await Promise.all([
+    const [desaRows, calonRows]=await Promise.all([
       fetchSheet(SHEET),
-      fetchSheet('calon'),
-      fetchSheet('pra_tps'),
-      fetchSheet('tps'),
-      fetchSheet('hasil')
+      fetchSheet('calon')
     ]);
 
     candidateMap=buildCandidateMap(calonRows);
@@ -336,72 +333,6 @@ async function load(){
         {...x}
       ])
     );
-
-    /*
-      MASTER TPS
-      pra_tps = daftar TPS resmi + hubungan TPS -> Desa
-    */
-    const tpsMaster={};
-
-    praTpsRows.forEach(r=>{
-      const namaTps=String(r.nama_tps||'').trim().toUpperCase();
-      const desa=String(r.nama_desa||'').trim().toUpperCase();
-
-      if(namaTps && desa){
-        tpsMaster[namaTps]=desa;
-      }
-    });
-
-    /*
-      TPS MASUK = TPS unik yang mempunyai data
-      di tabel tps ATAU tabel hasil.
-      Satu TPS tetap dihitung satu kali.
-    */
-    const tpsMasuk={};
-
-    ORDER.forEach(desa=>{
-      tpsMasuk[desa]=new Set();
-    });
-
-    // TPS yang sudah mempunyai record di tabel tps
-    tpsRows.forEach(r=>{
-      const namaTps=String(r.nama_tps_text||'').trim().toUpperCase();
-
-      if(!namaTps)return;
-
-      const desa=tpsMaster[namaTps];
-
-      if(desa && tpsMasuk[desa]){
-        tpsMasuk[desa].add(namaTps);
-      }
-    });
-
-    // TPS yang sudah mempunyai record di tabel hasil
-    hasilRows.forEach(r=>{
-      const namaTps=String(r.nama_tps_text||'').trim().toUpperCase();
-
-      if(!namaTps)return;
-
-      const desa=tpsMaster[namaTps];
-
-      if(desa && tpsMasuk[desa]){
-        tpsMasuk[desa].add(namaTps);
-      }
-    });
-
-    /*
-      Hitung TPS resmi dari pra_tps dan TPS masuk
-      dari gabungan tps + hasil.
-    */
-    ORDER.forEach(desa=>{
-      map[desa].tps_total=
-        praTpsRows.filter(r=>
-          String(r.nama_desa||'').trim().toUpperCase()===desa
-        ).length;
-
-      map[desa].tps_masuk=
-        tpsMasuk[desa].size;
-    });
 
     document.getElementById('grid').innerHTML=
       ORDER.map(x=>map[x]
