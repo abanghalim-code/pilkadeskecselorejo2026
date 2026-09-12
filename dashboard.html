@@ -24,6 +24,7 @@ body{padding:8px}
 .grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
 .desa{--accent:#0b73d1;background:#fff;border:1px solid #dbe4ee;border-radius:14px;padding:8px;display:flex;flex-direction:column;min-width:0;min-height:0;height:100%;box-shadow:0 4px 15px #102c5514;overflow:hidden;position:relative}
 .desa:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--accent)}
+.desa::-webkit-scrollbar{width:5px}.desa::-webkit-scrollbar-track{background:transparent}.desa::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px}.desa{scrollbar-width:thin;scrollbar-color:#cbd5e1 transparent}
 .desa[data-desa="BANJARSARI"]{--accent:#0b73d1}
 .desa[data-desa="SIDOMULYO"]{--accent:#19a974}
 .desa[data-desa="SUMBERAGUNG"]{--accent:#f59e0b}
@@ -86,6 +87,33 @@ body{padding:8px}
 .num{width:25px;height:25px;border-radius:50%;background:#102c55;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px}
 .cn{font-size:9px;font-weight:800}.cv{font-size:18px;font-weight:900}
 
+.dusun-section{margin-top:7px;border-top:1px solid #e3eaf2;padding-top:6px}.dusun-section-title{font-size:7px;font-weight:900;color:#49647f;letter-spacing:.45px;margin-bottom:5px}.village-winner{margin-top:7px}
+.dusun-btn{display:none;margin-top:5px;width:100%;border:1px solid #dbe4ee;background:#f7f9fc;color:var(--accent);border-radius:7px;padding:5px 8px;font-size:7px;font-weight:900;letter-spacing:.2px;cursor:pointer}
+.dusun-btn:hover{background:#eef5fb;border-color:var(--accent)}
+.dusun-modal{position:fixed;inset:0;background:rgba(16,44,85,.42);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+.dusun-modal.show{display:flex}
+.dusun-box{width:min(1000px,96vw);max-height:88vh;overflow:auto;background:#fff;border:1px solid #dbe4ee;border-radius:14px;box-shadow:0 18px 55px rgba(16,44,85,.25);padding:14px}
+.dusun-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid #e5ebf2;padding-bottom:9px;margin-bottom:10px}
+.dusun-title{font-size:15px;font-weight:900;color:var(--accent)}
+.dusun-sub{font-size:8px;color:#64748b;font-weight:800;margin-top:4px}
+.dusun-close{border:0;background:#eef3f8;color:#102c55;border-radius:7px;width:28px;height:28px;font-weight:900;cursor:pointer}
+.dusun-table-wrap{overflow-x:auto}
+.dusun-table{width:100%;border-collapse:separate;border-spacing:0;font-size:9px;color:#102c55}
+.dusun-table th{background:#f3f7fb;color:#49647f;font-size:7px;font-weight:900;text-transform:uppercase;padding:7px 8px;border-bottom:1px solid #dfe7f0;text-align:right;white-space:nowrap}
+.dusun-table th:first-child,.dusun-table td:first-child{text-align:left}
+.dusun-table td{padding:8px;border-bottom:1px solid #edf1f5;text-align:right;font-weight:800;white-space:nowrap}
+.dusun-table tbody tr:hover td{background:#fbfdff}
+.dusun-table .dusun-name{font-weight:900;color:#102c55}
+.dusun-table .total-row td{background:#f7f9fc;font-weight:900;border-top:1px solid #dbe4ee}
+.dusun-table .candidate-head{color:var(--accent)}
+.dusun-table .winner-head{color:#15803d;text-align:left!important}
+.dusun-table td.winner-cell{text-align:left!important;font-weight:900}
+.winner-badge{display:inline-block;background:#eaf8ef;color:#15803d;border:1px solid #bfe8cb;border-radius:999px;padding:4px 7px;font-size:7px;line-height:1.1;white-space:nowrap}
+.winner-badge.tie{background:#fff7e6;color:#a16207;border-color:#f4d38b}
+.winner-badge.none{background:#f5f7fa;color:#64748b;border-color:#dfe5ec}
+.dusun-empty{padding:18px;text-align:center;color:#94a3b8;font-weight:800;font-size:9px}
+.dusun-note{margin-top:8px;font-size:7px;color:#718096;line-height:1.4}
+
 .foot{height:20px;flex:none;text-align:center;font-size:8px;color:#718096;display:flex;align-items:center;justify-content:center}
 
 @media(max-width:1100px){
@@ -120,6 +148,19 @@ body{padding:8px}
 </header>
 
 <main id="grid" class="grid"></main>
+
+<div id="dusunModal" class="dusun-modal" aria-hidden="true">
+  <div class="dusun-box" id="dusunBox">
+    <div class="dusun-head">
+      <div>
+        <div id="dusunTitle" class="dusun-title">RINCIAN PEROLEHAN SUARA — DESA</div>
+        <div id="dusunSub" class="dusun-sub"></div>
+      </div>
+      <button class="dusun-close" onclick="closeDusun()" aria-label="Tutup">×</button>
+    </div>
+    <div id="dusunContent"></div>
+  </div>
+</div>
 
 <footer class="foot">SIPITUNG 2026 • Pilkades Kecamatan Selorejo • Data dari Google Sheets</footer>
 </div>
@@ -242,6 +283,11 @@ function card(d){
   const total=vals.reduce((a,b)=>a+b,0);
   const winner=winnerData(d,vals);
   const winnerNo=winner && !winner.tie ? winner.no : null;
+  const dusunHtml=inlineDusunTable(d.desa);
+  const winnerHtml=winner ? (winner.tie
+    ? `<div class="winner-card village-winner"><div class="winner-trophy">🏆</div><div class="winner-left"><div class="winner-label">PEMENANG TINGKAT DESA — HASIL IMBANG</div><div class="winner-name">${winner.names}</div></div><div class="winner-detail">${f(winner.total)} suara</div></div>`
+    : `<div class="winner-card village-winner"><div class="winner-trophy">🏆</div><div class="winner-left"><div class="winner-label">PEMENANG TINGKAT DESA</div><div class="winner-name">${winner.name}</div></div><div class="winner-detail">${f(winner.total)} suara • ${(total>0?winner.total/total*100:0).toLocaleString('id-ID',{minimumFractionDigits:2,maximumFractionDigits:2})}%</div></div>`
+  ) : '';
 
   return `<section class="desa" data-desa="${d.desa}">
     <div class="dhead">
@@ -264,13 +310,10 @@ function card(d){
       ${m('TIDAK HADIR P',f(d.tidak_hadir_p))}
       ${m('TIDAK HADIR TOTAL',f(safeNum(d.tidak_hadir_l)+safeNum(d.tidak_hadir_p)))}
       ${m('TPS',f(d.tps_masuk)+' / '+f(d.tps_total))}
-
       <div class="m wide">
         <div class="lab">PROGRES TPS</div>
         <div class="val">${p(prog)}</div>
-        <div class="bar">
-          <div class="fill" style="width:${Math.max(0,Math.min(100,prog))}%;background:var(--accent)"></div>
-        </div>
+        <div class="bar"><div class="fill" style="width:${Math.max(0,Math.min(100,prog))}%;background:var(--accent)"></div></div>
       </div>
     </div>
 
@@ -279,11 +322,7 @@ function card(d){
       <div class="result-body">
         ${donutSVG(...vals)}
         <div>
-          <div class="gender-head">
-            <span>CALON</span>
-            <span class="g">TOTAL</span>
-            <span class="g">%</span>
-          </div>
+          <div class="gender-head"><span>CALON</span><span class="g">TOTAL</span><span class="g">%</span></div>
           <div class="legend">
             ${legendRow(1,d.calon_1,total,d,winnerNo)}
             ${legendRow(2,d.calon_2,total,d,winnerNo)}
@@ -291,14 +330,158 @@ function card(d){
           </div>
         </div>
       </div>
-      ${winner ? (winner.tie
-        ? `<div class="winner-card"><div class="winner-trophy">🏆</div><div class="winner-left"><div class="winner-label">HASIL IMBANG</div><div class="winner-name">${winner.names}</div></div><div class="winner-detail">${f(winner.total)} suara</div></div>`
-        : `<div class="winner-card"><div class="winner-trophy">🏆</div><div class="winner-left"><div class="winner-label">PEMENANG</div><div class="winner-name">${winner.name}</div></div><div class="winner-detail">${f(winner.total)} suara • ${(winner.total/total*100).toLocaleString('id-ID',{minimumFractionDigits:2,maximumFractionDigits:2})}%</div></div>`
-      ) : ''}
     </div>
 
+    ${dusunHtml}
+    ${winnerHtml}
   </section>`;
 }
+
+let dusunRowsByDesa={};
+let dusunCandidateNames={};
+
+function norm(v){return String(v??'').trim().toUpperCase();}
+
+function buildDusunData(praRows,hasilRows){
+  const tpsInfo={};
+  const grouped={};
+  praRows.forEach(r=>{
+    const tps=norm(r.nama_tps||r.nama_tps_text);
+    const desa=norm(r.nama_desa||r.desa);
+    const dusun=String(r.nama_dusun||r.dusun||'').trim() || 'Dusun Belum Diisi';
+    if(tps && desa){
+      tpsInfo[tps]={desa,dusun};
+      grouped[desa] ||= {};
+      grouped[desa][dusun] ||= {tps:new Set(),votes:[0,0,0]};
+      grouped[desa][dusun].tps.add(tps);
+    }
+  });
+
+  const nameToNo={};
+  Object.keys(candidateMap).forEach(desa=>{
+    nameToNo[desa]={};
+    Object.entries(candidateMap[desa]).forEach(([no,name])=>{
+      nameToNo[desa][norm(name)]=Number(no);
+    });
+  });
+
+  hasilRows.forEach(r=>{
+    const tps=norm(r.nama_tps_text||r.nama_tps);
+    const info=tpsInfo[tps];
+    if(!info)return;
+    const desa=info.desa;
+    const dusun=info.dusun;
+    const rawName=String(r.nama_calon_text||r.nama_calon||r.calon||'').trim();
+    let no=Number(r.no_urut||r.no||r.urutan||0);
+    if(!no && rawName) no=nameToNo[desa]?.[norm(rawName)]||0;
+    if(!no || no<1 || no>3)return;
+    const suara=safeNum(r.suara);
+    grouped[desa] ||= {};
+    grouped[desa][dusun] ||= {tps:new Set(),votes:[0,0,0]};
+    grouped[desa][dusun].tps.add(tps);
+    grouped[desa][dusun].votes[no-1]+=suara;
+  });
+
+  dusunRowsByDesa={};
+  Object.keys(grouped).forEach(desa=>{
+    dusunRowsByDesa[desa]=Object.entries(grouped[desa]).map(([dusun,x])=>({
+      dusun,tps:Array.from(x.tps).sort(),votes:x.votes,total:x.votes.reduce((a,b)=>a+b,0)
+    })).sort((a,b)=>a.dusun.localeCompare(b.dusun,'id'));
+  });
+}
+
+function inlineDusunTable(desa){
+  const dName=norm(desa);
+  const rows=dusunRowsByDesa[dName]||[];
+  const names=[1,2,3].map(n=>candidateMap[dName]?.[n]||`CALON ${n}`);
+  if(!rows.length) return `<div class="dusun-section"><div class="dusun-section-title">RINCIAN PEROLEHAN SUARA PER DUSUN</div><div class="dusun-empty">Belum ada data dusun.</div></div>`;
+  const totals=[0,0,0]; rows.forEach(r=>r.votes.forEach((v,i)=>totals[i]+=v));
+  const grand=totals.reduce((a,b)=>a+b,0);
+  const body=rows.map(r=>{
+    const max=Math.max(...r.votes);
+    let winner='BELUM ADA', cls='none';
+    if(max>0){
+      const idx=r.votes.map((v,i)=>v===max?i:-1).filter(i=>i>=0);
+      if(idx.length===1){winner=names[idx[0]];cls='';} else {winner='IMBANG';cls='tie';}
+    }
+    return `<tr><td class="dusun-name">${r.dusun}</td><td>${f(r.votes[0])}</td><td>${f(r.votes[1])}</td><td>${f(r.votes[2])}</td><td>${f(r.total)}</td><td class="winner-cell"><span class="winner-badge ${cls}">${winner}</span></td></tr>`;
+  }).join('');
+  return `<div class="dusun-section">
+    <div class="dusun-section-title">RINCIAN PEROLEHAN SUARA PER DUSUN</div>
+    <div class="dusun-table-wrap"><table class="dusun-table"><thead><tr><th>DUSUN</th><th class="candidate-head">${names[0]}</th><th class="candidate-head">${names[1]}</th><th class="candidate-head">${names[2]}</th><th>TOTAL</th><th class="winner-head">PEMENANG</th></tr></thead><tbody>${body}<tr class="total-row"><td>TOTAL DESA</td><td>${f(totals[0])}</td><td>${f(totals[1])}</td><td>${f(totals[2])}</td><td>${f(grand)}</td><td class="winner-cell">—</td></tr></tbody></table></div>
+  </div>`;
+}
+
+function openDusun(desa){
+  const rows=dusunRowsByDesa[norm(desa)]||[];
+  const dName=String(desa).trim().toUpperCase();
+  const accent=dName==='BANJARSARI'?'#0b73d1':dName==='SIDOMULYO'?'#19a974':'#f59e0b';
+  const modal=document.getElementById('dusunModal');
+  const box=document.getElementById('dusunBox');
+  box.style.setProperty('--accent',accent);
+  document.getElementById('dusunTitle').textContent=`RINCIAN PEROLEHAN SUARA — ${dName}`;
+  const desaCard=document.querySelector(`.desa[data-desa="${CSS.escape(dName)}"]`);
+  const totalSah=desaCard?.querySelector('.metrics .m:nth-child(3) .val')?.textContent||'—';
+  const tps=desaCard?.querySelector('.metrics .m:nth-child(11) .val')?.textContent||'—';
+  document.getElementById('dusunSub').textContent=`Total Suara Sah : ${totalSah}    •    TPS : ${tps}`;
+
+  const names=[1,2,3].map(n=>candidateMap[dName]?.[n]||`CALON ${n}`);
+  const totals=[0,0,0]; rows.forEach(r=>r.votes.forEach((v,i)=>totals[i]+=v));
+  const grand=totals.reduce((a,b)=>a+b,0);
+
+  if(!rows.length){
+    document.getElementById('dusunContent').innerHTML=`<div class="dusun-empty">Belum ada data hasil suara yang dapat dirinci per dusun.</div>`;
+  }else{
+    const body=rows.map(r=>{
+      const max=Math.max(...r.votes);
+      let winner='BELUM ADA';
+      let winnerClass='none';
+      if(max>0){
+        const idx=r.votes.map((v,i)=>v===max?i:-1).filter(i=>i>=0);
+        if(idx.length===1){
+          winner=names[idx[0]];
+          winnerClass='';
+        }else{
+          winner='IMBANG';
+          winnerClass='tie';
+        }
+      }
+      return `<tr>
+        <td class="dusun-name">${r.dusun}</td>
+        <td>${f(r.votes[0])}</td><td>${f(r.votes[1])}</td><td>${f(r.votes[2])}</td><td>${f(r.total)}</td>
+        <td class="winner-cell"><span class="winner-badge ${winnerClass}">${winner}</span></td>
+      </tr>`;
+    }).join('');
+    document.getElementById('dusunContent').innerHTML=`
+      <div class="dusun-table-wrap">
+        <table class="dusun-table">
+          <thead><tr>
+            <th>DUSUN</th>
+            <th class="candidate-head">${names[0]}</th>
+            <th class="candidate-head">${names[1]}</th>
+            <th class="candidate-head">${names[2]}</th>
+            <th>TOTAL</th>
+            <th class="winner-head">PEMENANG</th>
+          </tr></thead>
+          <tbody>${body}
+            <tr class="total-row"><td>TOTAL</td><td>${f(totals[0])}</td><td>${f(totals[1])}</td><td>${f(totals[2])}</td><td>${f(grand)}</td><td class="winner-cell"><span class="winner-badge">DESA</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="dusun-note">Sumber: pemetaan TPS pada <b>pra_tps</b> dan perolehan suara pada <b>hasil</b>. Setiap TPS dijumlahkan ke dusun sesuai pemetaan TPS. Pemenang dusun ditentukan dari perolehan suara terbanyak pada dusun tersebut.</div>`;
+  }
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
+}
+
+function closeDusun(){
+  const modal=document.getElementById('dusunModal');
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden','true');
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDusun();});
+document.getElementById('dusunModal').addEventListener('click',e=>{if(e.target.id==='dusunModal')closeDusun();});
 
 function m(a,b){
   return `<div class="m"><div class="lab">${a}</div><div class="val">${b}</div></div>`;
@@ -355,6 +538,7 @@ async function load(){
     ]);
 
     candidateMap=buildCandidateMap(calonRows);
+    buildDusunData(praTpsRows,hasilRows);
 
     const map=Object.fromEntries(
       desaRows.map(x=>[
