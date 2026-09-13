@@ -148,6 +148,36 @@ body{padding:8px}
   .head{height:auto}
   .desa{height:auto;min-height:0}
 }
+
+/* PENEKANAN PEMENANG — suara & persentase */
+.legend-row.winner-row{
+  background:linear-gradient(90deg,#fff8e6,#fffdf7);
+  border:1px solid #f3d48b;
+  border-left:4px solid var(--candidate-color,#f59e0b);
+  border-radius:7px;
+  min-height:32px;
+  padding:2px 4px;
+  box-shadow:0 2px 6px rgba(15,43,75,.06);
+}
+.legend-row.winner-row .candidate-name{font-size:10px;font-weight:900}
+.legend-row.winner-row .candidate-no{font-size:8px;font-weight:900}
+.legend-row.winner-row .total-val{
+  font-size:14px;font-weight:1000;color:#102c55;
+}
+.legend-row.winner-row .legend-pct{
+  font-size:18px;font-weight:1000;line-height:1;
+}
+.winner-card.village-winner{
+  min-height:45px;
+  padding:7px 10px;
+  border-width:1px;
+  box-shadow:0 2px 7px rgba(15,43,75,.05);
+}
+.winner-card.village-winner .winner-label{font-size:7px;letter-spacing:.7px}
+.winner-card.village-winner .winner-name{font-size:11px}
+.winner-card.village-winner .winner-detail{font-size:12px;font-weight:1000}
+.winner-card.village-winner .winner-trophy{font-size:20px}
+
 </style>
 </head>
 
