@@ -63,6 +63,24 @@
     "ringkasan": "Ketua panitia pilkades desa sidomulyo menerima Bpk Wachid Basuki.",
     "gambar": "assets/images/pendaftar 1.jpeg",
     "isi": "Pendaftar pertama pilkades desa sidomulyo adalah Bapak wachid basuki sang mantan sebelum pak kades sumaji."
+  },
+  {
+      "id": 8,
+    "tanggal": "1 September 2026",
+    "kategori": "Berita",
+    "judul": "Pendaftar Kedua desa banjarsari",
+    "ringkasan": "Ketua panitia pilkades desa sidomulyo menerima Bpk Sunardi.",
+    "gambar": "assets/images/daftar_sunardi.jpeg",
+    "isi": "Pendaftar kedua pilkades desa banjarsari adalah Bapak Sunardi sang mantan kapolsek selorejo."
+  },
+  {
+      "id": 9,
+    "tanggal": "2 September 2026",
+    "kategori": "Berita",
+    "judul": "MONEV Camat ke desa banjarsari",
+    "ringkasan": "Foto bersama bersama.",
+    "gambar": "assets/images/monev_camat.jpeg",
+    "isi": "Foto bersama panilita pilkades desa banjarsari, pak camat, pak sekcam, incumbent dan pak sunardi."
   }
 
 ]
