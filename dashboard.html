@@ -588,11 +588,10 @@ async function load(){
   let st=document.getElementById('status');
 
   try{
-    const [desaRows, calonRows, praTpsRows, tpsRows, hasilRows]=await Promise.all([
+    const [desaRows, calonRows, praTpsRows, hasilRows]=await Promise.all([
       fetchSheet(SHEET),
       fetchSheet('calon'),
       fetchSheet('pra_tps'),
-      fetchSheet('tps'),
       fetchSheet('hasil')
     ]);
 
@@ -622,8 +621,10 @@ async function load(){
     });
 
     /*
-      TPS MASUK = TPS unik yang mempunyai data
-      di tabel tps ATAU tabel hasil.
+      TPS MASUK = TPS unik yang sudah mempunyai data
+      di tabel hasil.
+      pra_tps hanya digunakan sebagai master TPS resmi
+      dan hubungan TPS -> Desa.
       Satu TPS tetap dihitung satu kali.
     */
     const tpsMasuk={};
@@ -632,20 +633,7 @@ async function load(){
       tpsMasuk[desa]=new Set();
     });
 
-    // TPS yang sudah mempunyai record di tabel tps
-    tpsRows.forEach(r=>{
-      const namaTps=String(r.nama_tps_text||'').trim().toUpperCase();
-
-      if(!namaTps)return;
-
-      const desa=tpsMaster[namaTps];
-
-      if(desa && tpsMasuk[desa]){
-        tpsMasuk[desa].add(namaTps);
-      }
-    });
-
-    // TPS yang sudah mempunyai record di tabel hasil
+    // HANYA TPS yang sudah mempunyai record di tabel hasil
     hasilRows.forEach(r=>{
       const namaTps=String(r.nama_tps_text||'').trim().toUpperCase();
 
@@ -660,7 +648,7 @@ async function load(){
 
     /*
       Hitung TPS resmi dari pra_tps dan TPS masuk
-      dari gabungan tps + hasil.
+      hanya dari hasil.
     */
     ORDER.forEach(desa=>{
       map[desa].tps_total=
