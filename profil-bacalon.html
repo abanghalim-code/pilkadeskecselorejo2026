@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profil Bakal Calon Kepala Desa — Pilkades Selorejo 2026</title>
+<title>Profil Calon Kepala Desa — Pilkades Selorejo 2026</title>
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/bacalon.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -27,7 +27,7 @@
   <div class="container">
     <div class="bacalon-heading">
       <span class="bacalon-kicker">PILKADES SERENTAK 2026</span>
-      <h1>BAKAL CALON KEPALA DESA</h1>
+      <h1>CALON KEPALA DESA</h1>
       <p>Kecamatan Selorejo — Kabupaten Blitar</p>
     </div>
     <div id="bacalon-app"></div>
@@ -91,14 +91,14 @@
       <section class="village-picker">
         <div class="section-intro">
           <h2>Pilih Desa</h2>
-          <p>Pilih desa untuk melihat daftar bakal calon kepala desa.</p>
+          <p>Pilih desa untuk melihat daftar calon kepala desa.</p>
         </div>
         <div class="village-grid">
           ${desaList.map(d => `
             <a class="village-card" href="profil-bacalon.html?desa=${encodeURIComponent(d)}">
               <span class="village-icon"><i class="fa-solid fa-location-dot"></i></span>
               <strong>Desa ${esc(d)}</strong>
-              <span>${getBacalonByDesa(d).length} bakal calon</span>
+              <span>${getBacalonByDesa(d).length} calon</span>
               <i class="fa-solid fa-arrow-right village-arrow"></i>
             </a>
           `).join('')}
@@ -121,8 +121,8 @@
       <section class="candidate-list">
         <div class="section-intro">
           <span class="village-label">DESA ${esc(desaName).toUpperCase()}</span>
-          <h2>Daftar Bakal Calon</h2>
-          <p>${candidates.length} bakal calon terdaftar.</p>
+          <h2>Daftar Calon</h2>
+          <p>${candidates.length} calon terdaftar.</p>
         </div>
 
         <div class="candidate-grid">
